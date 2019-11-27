@@ -188,7 +188,7 @@ There are two main ways to alleviate this issue:
 1. Move the Python package source code under a ``src/`` folder in the root of
 the repo. This is a common package layout for Python projects, and it means
 that you can not import your package relative to the git root, meaning it
-will be imported from the installed sdist.
+will be imported from the installed sdist, see https://setuptools.readthedocs.io/en/latest/setuptools.html#using-a-src-layout for details.
 
 2. Configure tox to run ``pytest`` from a temporary directory so that the
 local import does not work. With this method you make use of pytest's

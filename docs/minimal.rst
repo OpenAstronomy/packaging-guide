@@ -7,13 +7,14 @@ To start off, we will take a look at the minimal set of files you will need to
 create an installable Python package. Once you have set these up, your package
 directory should look like::
 
-    LICENSE
-    MANIFEST.in
-    README.rst
-    my_package/__init__.py
-    pyproject.toml
-    setup.cfg
-    setup.py
+    ├── LICENCE
+    ├── MANIFEST.in
+    ├── my_package
+    │   └── __init__.py
+    ├── pyproject.toml
+    ├── README.rst
+    ├── setup.cfg
+    └── setup.py
 
 where ``my_package`` is the name of your package. We will now take a look at all of
 these files in turn.
@@ -65,7 +66,7 @@ the version of the package, since users typically expect to be able to access
 ``my_package.__version__`` to find out the current package version. While you
 could simply set e.g.::
 
-    __version__ = '1.2`
+    __version__ = '1.2'
 
 in the ``__init__.py`` file, you then would need to make sure that the version
 number is in sync with the version number defined in the :ref:`setup_cfg` file,
@@ -117,9 +118,10 @@ we strongly recommend making the package and the module name the same to avoid c
 
 Note that the version of the package is **not** defined in the file above, because
 we will be using the `setuptools_scm
-<https://pypi.org/project/setuptools-scm/>`_ package in the :ref:`setup_py` and :ref:`pyproject`
-files (see those sections for more details). However, if you choose to not use that package,
-you can also set the version in the ``[metadata]`` section using for example::
+<https://pypi.org/project/setuptools-scm/>`_ package in the :ref:`setup_py`
+and :ref:`pyproject` files (see those sections for more details). However, if
+you choose to not use that package, you can also set the version in the
+``[metadata]`` section using for example::
 
     version = 0.12
 
@@ -138,7 +140,7 @@ Python modules to install based on the presence of ``__init__.py`` files.
 Finally, the ``install_requires`` section is important since it is where you will
 be declaring the dependencies for your package. The cleanest way to do this is
 to specify one package per line, as shown above. You can optionally include version
-restrictions if needed (as shown with ``astropy>=3.2`` above.
+restrictions if needed (as shown with ``astropy>=3.2`` above. If your package has no dependencies then you don't need this option.
 
 In the rest of this guide, we will discuss other options that can be added to
 the ``setup.cfg`` file, but the above provide the minimal set you will need to
@@ -171,12 +173,13 @@ version.
 pyproject.toml
 --------------
 
-In :ref:`setup_cfg`, we discussed the ``install_requires`` option which can be
-used to declare run-time dependencies for the package, which are dependencies
-that are needed for the package to import and run correctly. However, your package
-may have dependencies that are needed to build the package in the first place.
-For example, the :ref:`setup_py` file shown previously will only run correctly if
-both `setuptools <https://setuptools.readthedocs.io>`_ and `setuptools_scm
+In :ref:`setup_cfg`, we discussed the ``install_requires`` option which can
+be used to declare run-time dependencies for the package, which are
+dependencies that are needed for the package to import and run correctly.
+However, your package may have dependencies that are needed to build the
+package in the first place. For example, the :ref:`setup_py` file shown
+previously will only run correctly if both `setuptools
+<https://setuptools.readthedocs.io>`_ and `setuptools_scm
 <https://pypi.org/project/setuptools-scm/>`_ are installed.
 
 The recommended way to specify build-time dependencies is to create a file
@@ -188,7 +191,7 @@ called ``pyproject.toml`` which contains::
 
 If you choose to not use ``setuptools_scm``, you can remove it from this list.
 If your package has C extensions that interface with `Numpy <https://numpy.org>`_,
-you may also need to add Numpy to the above list - see :ref:`exetnsions` for
+you may also need to add Numpy to the above list - see :ref:`extensions` for
 more details.
 
 .. _manifest:
