@@ -13,5 +13,4 @@ Welcome to OpenAstronomy Packaging Guide's documentation!
    extensions
    scripts
    data
-   changelog
    releasing
