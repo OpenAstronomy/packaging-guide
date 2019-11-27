@@ -1,0 +1,4 @@
+.. _ci:
+
+Continuious Integration
+=======================
