@@ -83,32 +83,37 @@ This feature is called `generative envlist <https://tox.readthedocs.io/en/latest
 Named Environments
 ##################
 
-As well as generative build environments you can define extra named
-environments which can be useful for special builds such as documentation or
-tests against development versions of dependencies. So far on this page we
-have assumed that all your dependencies are specified in :ref:`setup_cfg`.
-You can extend or override this by using the ``deps =`` configuration option
-in tox. Here we define a named test environment which installs the
-development version of numpy.
+Using generative build environments you can define extra named environments
+which can be useful for builds that need to specify specific dependencies or
+settings. So far on this page we have assumed that all your dependencies are
+specified in :ref:`setup_cfg`. You can extend or override this by using the
+``deps =`` configuration option in tox. Here we define a named test
+environment which installs the development version of numpy.
 
 .. code-block:: ini
 
     [tox]
-    envlist = {py37,38}, numpydev
+    envlist = py{37,38}{-numpydev,}
     isolated_build = True
 
     [testenv]
+    extras = test
     commands = pytest {posargs}
+    deps =
+      numpydev: git+https://github.com/numpy/numpy
 
-    [testenv:numpydev]
-    deps = git+https://github.com/numpy/numpy
 
+the ``envlist`` is now more complex, the result of this the following:
 
-By default all the settings in ``[testenv]`` are inherited by
-``[testenv:numpydev]`` unless they are overridden. It is possible to
-explicitly inherit `values from other sections
-<https://tox.readthedocs.io/en/latest/config.html#substitution-for-values-from-other-sections>`__
-and extend them.
+.. code-block:: console
+
+    $ tox -l
+    py37-numpydev
+    py37
+    py38-numpydev
+    py38
+
+with the ``deps`` overridden for ``numpydev`` builds.
 
 
 Building Documentation with tox
