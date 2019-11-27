@@ -163,7 +163,7 @@ As configured in this guide so far, tox will perform the following actions (all 
 (See https://tox.readthedocs.io/en/latest/index.html#system-overview for more details.)
 
 
-For packages layed out as described in this guide, i.e. with the Python
+For packages laid out as described in this guide, i.e. with the Python
 package in a directory in the root repo, i.e. ``astropy/``, this means that
 when ``pytest`` is run, it will collect the tests from the local directory
 (as desired), and all imports of the package i.e. ``astropy`` will be
@@ -187,12 +187,15 @@ will be imported from the installed sdist.
 
 2. Configure tox to run ``pytest`` from a temporary directory so that the
 local import does not work. With this method you make use of pytest's
-``--pyargs`` flag to run the tests against the installed version of the
-package. This ensures that any compiled extensions are properly detected, but
-prevents things like specifying paths to pytest from working.
+`--pyargs flag
+<https://docs.pytest.org/en/latest/example/pythoncollection.html#interpreting-cmdline-arguments-as-python-packages>`__
+to run the tests against the installed version of the package. This ensures
+that any compiled extensions are properly detected, but prevents things like
+specifying paths to pytest from working.
 
 
-To configure tox to run ``pytest`` from a temporary directory do the following in ``tox.ini``:
+To configure tox to run ``pytest`` from a temporary directory do the
+following in ``tox.ini``:
 
 
 .. code-block:: ini
@@ -204,7 +207,7 @@ To configure tox to run ``pytest`` from a temporary directory do the following i
     [testenv]
     changedir = tmp
     extras = test
-    commands = pytest --pyasrgs packagename {posargs}
+    commands = pytest --pyargs packagename {posargs}
 
 replacing ``packagename`` with the name of your package as you import it,
 i.e. ``astropy``.
