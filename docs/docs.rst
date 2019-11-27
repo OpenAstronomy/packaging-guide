@@ -75,3 +75,80 @@ The ``index.rst`` file is the root of your documentation. You can start writing 
 in it and you can also start adding more ``.rst`` pages if needed. If you haven't used
 Sphinx before, we recommend taking a look at their
 `Getting Started <http://www.sphinx-doc.org/en/master/usage/quickstart.html>`_ guide.
+
+.. _automodapi:
+
+Including docstrings in the narrative documentation
+---------------------------------------------------
+
+As part of the narrative documentation, it is also common practice to include an
+Application programming interface (API) page which lists the available classes,
+methods, and functions in your package. Thankfully, if you've defined your docstrings
+as described in :ref:`docstrings`, then this can be automated using the
+`sphinx-automodapi <https://sphinx-automodapi.readthedocs.io>`_
+package. See the documentation of that package for more details, but briefly,
+you will need to add ``'sphinx_automodapi.automodapi'`` to the ``extensions``
+variable in your ``conf.py`` file::
+
+    extensions = ['sphinx_automodapi.automodapi']
+
+In addition, if you use the numpydoc format for your docstrings, as recommended in :ref:`docstrings`,
+you will need to include either ``'numpydoc'`` or ``'sphinx.ext.napoleon'`` in
+the list of ``extensions`` (both packages provide a way to parse numpydoc-style
+docstrings). If you use the numpydoc package, you will need to also include::
+
+    numpydoc_show_class_members = False
+
+in your ``conf.py`` file.
+
+Declaring dependencies for documentation
+----------------------------------------
+
+To make it easier for contributors to get set up with the dependencies
+required to build the documentation, as well as to make it easier to
+configure automated builds (whether for :ref:`ReadTheDocs <readthedocs>`
+or :ref:`tox <tox>`), you should define an ``extras_require`` section in
+your ``setup.cfg`` file named ``docs`` which lists the dependencies
+required to build the documentation (not including dependencies already
+mentioned in ``install_requires``)::
+
+    [options.extras_require]
+    docs =
+        sphinx
+        sphinx-automodapi
+        numpydoc
+
+This will then allow contributors to type::
+
+    pip install -e .[docs]
+
+to install the package in developer/editable mode along with the documentation
+dependencies.
+
+.. _readthedocs:
+
+Setting up ReadTheDocs
+----------------------
+
+`ReadTheDocs <http://readthedocs.org/>`_ is a platform that will build
+docuemntation with sphinx and will then host it, and is used by many of
+the Scientific Python packages. The easiest way to configure the build
+is to add a file called ``.readthedocs.yml`` to your package, and we
+recommend starting off with::
+
+    version: 2
+
+    build:
+    image: latest
+
+    python:
+    version: 3.7
+    install:
+        - method: pip
+        path: .
+        extra_requirements:
+            - docs
+
+Once you have added this to your repository, you can then import your
+package into ReadTheDocs as described in `this guide
+<https://docs.readthedocs.io/en/stable/intro/import-guide.html>`_.
