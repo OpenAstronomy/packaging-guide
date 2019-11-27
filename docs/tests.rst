@@ -1,5 +1,5 @@
-Writing tests for your package
-==============================
+Testing your package
+====================
 
 While writing new functionality for your package, you should also make sure that
 you write unit tests. We suggest using the `pytest <https://docs.pytest.org/>`_
