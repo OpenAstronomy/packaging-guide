@@ -4,7 +4,9 @@ Documenting your Package
 ========================
 
 There are two main ways to document your project, both of
-which are essential.
+which are essential: :ref:`docstrings` and :ref:`narrative`.
+
+.. _docstrings:
 
 Docstrings
 ----------
@@ -41,6 +43,8 @@ format for docstrings. An example of such a docstring is::
 
 These docstrings should be included in the Python files alongside the Python
 objects they document.
+
+.. _narrative:
 
 Narrative Documentation
 -----------------------
