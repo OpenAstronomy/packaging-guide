@@ -2,7 +2,7 @@ Welcome to OpenAstronomy Packaging Guide's documentation!
 =========================================================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Contents:
 
    minimal
