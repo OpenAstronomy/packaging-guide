@@ -107,7 +107,7 @@ Declaring dependencies for documentation
 To make it easier for contributors to get set up with the dependencies
 required to build the documentation, as well as to make it easier to
 configure automated builds (whether for :ref:`ReadTheDocs <readthedocs>`
-or :ref:`tox <tox>`), you should define an ``extras_require`` section in
+or :ref:`tox <tox>`), you should define an ``[options.extras_require]`` section in
 your ``setup.cfg`` file named ``docs`` which lists the dependencies
 required to build the documentation (not including dependencies already
 mentioned in ``install_requires``)::

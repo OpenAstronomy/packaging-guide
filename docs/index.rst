@@ -7,6 +7,7 @@ Welcome to OpenAstronomy Packaging Guide's documentation!
 
    minimal
    docs
+   tests
    tox
    ci
    extensions
