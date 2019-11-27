@@ -3,7 +3,7 @@
 Minimal package layout
 ======================
 
-To start off, we will take a look at the minmal set of files you will need to
+To start off, we will take a look at the minimal set of files you will need to
 create an installable Python package. Once you have set these up, your package
 directory should look like::
 
@@ -32,7 +32,7 @@ unless you have a good reason not to.
 
 To include the license in your package, create a file called LICENSE
 and paste the license text into it, making sure that you update the
-copyright year, authors, and any other required filelds
+copyright year, authors, and any other required fields
 
 .. _readme:
 
@@ -77,7 +77,7 @@ so a better approach is to put the following in your ``__init__.py`` file::
     except DistributionNotFound:
         pass  # package is not installed
 
-.. TODO: consider using imporlib_metadata for performance
+.. TODO: consider using importlib_metadata for performance
 
 This will automatically set ``__version__`` to the global version of the package
 declared in :ref:`setup_cfg` or set by the `setuptools_scm
