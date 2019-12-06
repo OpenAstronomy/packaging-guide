@@ -57,7 +57,7 @@ the primary place people will search for installable Python packages.
 
 The source distribution is a tarball of all the files needed by your package,
 which includes everything in your ``my_package`` directory as well as everything
-specified in your :ref:`mainifest` file.
+specified in your :ref:`manifest` file.
 
 The most common way to build a source distribution (sdist) is with ``python
 setup.py sdist``. This will put a tarball in the ``dist/`` folder next to your

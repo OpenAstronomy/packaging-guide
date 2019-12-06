@@ -130,8 +130,8 @@ dependencies.
 Setting up ReadTheDocs
 ----------------------
 
-`ReadTheDocs <http://readthedocs.org/>`_ is a platform that will build
-docuemntation with sphinx and will then host it, and is used by many of
+`ReadTheDocs <http://readthedocs.org/>`__ is a platform that will build
+documentation with sphinx and will then host it, and is used by many of
 the Scientific Python packages. The easiest way to configure the build
 is to add a file called ``.readthedocs.yml`` to your package, and we
 recommend starting off with::
