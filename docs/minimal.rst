@@ -82,7 +82,7 @@ so a better approach is to put the following in your ``__init__.py`` file::
 
 This will automatically set ``__version__`` to the global version of the package
 declared in :ref:`setup_cfg` or set by the `setuptools_scm
-<https://pypi.org/project/setuptools-scm/>`_ package (see :ref:`setup_py` and
+<https://pypi.org/project/setuptools-scm/>`__ package (see :ref:`setup_py` and
 :ref:`pyproject` for more details).
 
 .. _setup_cfg:
