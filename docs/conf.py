@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'OpenAstronomy Packaging Guide'
+project = 'OpenAstronomy Python Packaging Guide'
 copyright = '2019, OpenAstronomy Developers'
 author = 'OpenAstronomy Developers'
 
