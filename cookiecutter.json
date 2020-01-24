@@ -8,7 +8,7 @@
     "project_url": "",
     "minimum_python_version": ["3.7", "3.6", "3.5"],
     "use_compiled_extensions": "n",
-    "include_example_code": "f",
+    "include_example_code": "n",
     "_sphinx_theme": "alabaster",
     "_parent_project": "",
     "_install_requires": "",

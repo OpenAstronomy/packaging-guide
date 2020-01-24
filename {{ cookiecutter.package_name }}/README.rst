@@ -1,9 +1,6 @@
 {{ cookiecutter.short_description }}
 {{ '-' * cookiecutter.short_description|length }}
 
-{{ cookiecutter.long_description|wordwrap(break_long_words=False) }}
-
-
 License
 -------
 
