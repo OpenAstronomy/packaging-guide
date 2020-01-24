@@ -4,14 +4,19 @@
     "short_description": "",
     "author_name": "",
     "author_email": "",
-    "license": ["BSD 3-Clause", "GNU GPL v3+", "Apache Software Licence 2.0", "BSD 2-Clause", "Other"],
+    "license": ["BSD 3-Clause", "GNU GPL v3+", "Apache Software License 2.0", "BSD 2-Clause", "Other"],
     "project_url": "",
     "minimum_python_version": ["3.7", "3.6", "3.5"],
     "use_compiled_extensions": "n",
     "include_example_code": "n",
+
     "_sphinx_theme": "alabaster",
     "_parent_project": "",
     "_install_requires": "",
+    "_copy_without_render": [
+        "docs/_templates",
+        "docs/_static"
+    ],
 
     "_parameters": {
         "package_name": {
@@ -56,5 +61,4 @@
         }
 
     }
-
 }
