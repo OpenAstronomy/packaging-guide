@@ -1,0 +1,21 @@
+{
+    "package_name": "packagename",
+    "module_name": "{{ cookiecutter.package_name|lower()|replace(' ', '_') }}",
+    "short_description": "{{ cookiecutter.package_name|replace('-', ' ')|replace('_', ' ') }}",
+    "long_description": "",
+    "author_name": "{{ cookiecutter.package_name }} Developers",
+    "author_email": "",
+    "license": ["BSD 3-Clause", "GNU GPL v3+", "Apache Software Licence 2.0", "BSD 2-Clause", "Other"],
+    "project_url": "",
+    "minimum_python_version": ["3.7", "3.6", "3.5"],
+    "use_compiled_extensions": "n",
+    "include_example_code": "y",
+    "use_travis_ci": "n",
+    "use_read_the_docs": "n",
+    "_sphinx_theme": "alabaster",
+    "_parent_project": "",
+    "_install_requires": "",
+    "_copy_without_render": [
+        "docs/_templates"
+    ]
+}
