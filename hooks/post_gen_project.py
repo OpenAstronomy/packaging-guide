@@ -43,7 +43,7 @@ if __name__ == '__main__':
     include_examples = '{{ cookiecutter.include_example_code }}' == 'y'
     use_compiled = '{{ cookiecutter.use_compiled_extensions }}' == 'y'
 
-    if not(include_exmaples and use_compiled):
+    if not(include_examples and use_compiled):
         remove_file('{{ cookiecutter.module_name }}/example_c.pyx')
 
     if not include_examples:
