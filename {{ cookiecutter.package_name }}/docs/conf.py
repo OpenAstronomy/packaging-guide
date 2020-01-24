@@ -10,8 +10,8 @@
 # -- Project information -----------------------------------------------------
 
 project = '{{ cookiecutter.package_name }}'
-copyright = '2020, {{ cookiecutter.package_name }}'
-author = '{{ cookiecutter.package_name }}'
+copyright = '2020, {{ cookiecutter.author_name }}'
+author = '{{ cookiecutter.author_name }}'
 
 # The full version, including alpha/beta/rc tags
 from {{ cookiecutter.module_name }} import __version__
