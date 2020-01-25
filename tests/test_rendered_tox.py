@@ -1,11 +1,10 @@
 """
 Test that tox runs inside a rendered template.
 """
-
 import subprocess
 
-import tox
 import pytest
+import tox
 
 
 def test_tox_runs(cookiejar, cmd):
@@ -17,4 +16,7 @@ def test_tox_runs(cookiejar, cmd):
 
     # The cmd fixture is imported from tox._pytestplugins and runs tox with the
     # given CLI args.
-    cmd("-c", str(cookiejar.project))
+    result = cmd("-c", str(cookiejar.project))
+
+    # Validate that we actually ran all the sub toxs
+    assert "SKIPPED" not in result.output()
