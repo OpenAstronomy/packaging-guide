@@ -1,5 +1,5 @@
-Welcome to OpenAstronomy Packaging Guide's documentation!
-=========================================================
+Python Packaging Guide
+======================
 
 .. toctree::
    :maxdepth: 2
