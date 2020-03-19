@@ -27,7 +27,6 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip tox
-
     - name: Run tox
       run: |
         tox -e test
