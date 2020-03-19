@@ -16,6 +16,7 @@ author = '{{ cookiecutter.author_name }}'
 # The full version, including alpha/beta/rc tags
 from {{ cookiecutter.module_name }} import __version__
 release = __version__
+is_development = '.dev' in __version__
 
 # -- General configuration ---------------------------------------------------
 
@@ -51,18 +52,65 @@ source_suffix = '.rst'
 # The master toctree document.
 master_doc = 'index'
 
+# The reST default role (used for this markup: `text`) to use for all
+# documents. Set to the "smart" one.
+default_role = 'obj'
+
 # -- Options for intersphinx extension ---------------------------------------
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3/',
+               (None, 'http://data.astropy.org/intersphinx/python3.inv')),
+    'numpy': ('https://docs.scipy.org/doc/numpy/',
+              (None, 'http://data.astropy.org/intersphinx/numpy.inv')),
+    'scipy': ('https://docs.scipy.org/doc/scipy/reference/',
+              (None, 'http://data.astropy.org/intersphinx/scipy.inv')),
+    'matplotlib': ('https://matplotlib.org/',
+                   (None, 'http://data.astropy.org/intersphinx/matplotlib.inv')),
+    'astropy': ('http://docs.astropy.org/en/stable/', None),
+    'sunpy': ('https://docs.sunpy.org/en/stable/', None)}
 
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
+{% if cookiecutter._sphinx_theme == "sunpy" %}
+try:
+    from sunpy_sphinx_theme.conf import *
+except ImportError:
+  html_theme = 'default'
+{% else %}
 html_theme = '{{ cookiecutter._sphinx_theme }}'
+{% endif %}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 # html_static_path = ['_static']
+
+# Render inheritance diagrams in SVG
+graphviz_output_format = "svg"
+
+graphviz_dot_args = [
+    '-Nfontsize=10',
+    '-Nfontname=Helvetica Neue, Helvetica, Arial, sans-serif',
+    '-Efontsize=10',
+    '-Efontname=Helvetica Neue, Helvetica, Arial, sans-serif',
+    '-Gfontsize=10',
+    '-Gfontname=Helvetica Neue, Helvetica, Arial, sans-serif'
+]
+
+
+"""
+Write the latest changelog into the documentation.
+"""
+target_file = os.path.abspath("./whatsnew/latest_changelog.txt")
+try:
+    from sunpy.util.towncrier import generate_changelog_for_docs
+    if is_development:
+        generate_changelog_for_docs("../", target_file)
+except Exception as e:
+    print(f"Failed to add changelog to docs with error {e}.")
+# Make sure the file exists or else sphinx will complain.
+open(target_file, 'a').close()

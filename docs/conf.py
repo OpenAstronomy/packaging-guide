@@ -17,9 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'OpenAstronomy Python Packaging Guide'
-copyright = '2019, OpenAstronomy Developers'
-author = 'OpenAstronomy Developers'
+project = 'SunPy Package Template'
+copyright = '2020, The SunPy Developers'
+author = 'The SunPy Developers'
 
 
 # -- General configuration ---------------------------------------------------
@@ -44,15 +44,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
-
-html_theme_options = {
-    "description": "A generic Python packaging guide and template.",
-    "code_font_family": "'Fira Code', monospace",
-    "github_user": "OpenAstronomy",
-    "github_repo": "packaging-guide",
-    "sidebar_width": "300px"
-}
+from sunpy_sphinx_theme.conf import *
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

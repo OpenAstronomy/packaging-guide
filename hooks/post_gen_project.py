@@ -28,8 +28,11 @@ license_files = {"BSD 3-Clause": 'BSD3.rst',
 
 def process_license(license_name):
     if license_name in license_files:
+        license_path = os.path.join(PROJECT_DIRECTORY, 'licenses', 'LICENSE.rst')
         shutil.copyfile(os.path.join(PROJECT_DIRECTORY, 'licenses', license_files[license_name]),
-                        os.path.join(PROJECT_DIRECTORY, 'licenses', 'LICENSE.rst'))
+                        license_path)
+        if not os.path.exists(os.path.join(PROJECT_DIRECTORY, 'LICENSE.rst')):
+            os.symlink(license_path, os.path.join(PROJECT_DIRECTORY, 'LICENSE.rst'))
 
     if license_name != "Other":
         for license_file in license_files.values():
