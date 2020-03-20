@@ -79,7 +79,7 @@ intersphinx_mapping = {
 try:
     from sunpy_sphinx_theme.conf import *
 except ImportError:
-  html_theme = 'default'
+    html_theme = 'default'
 {% else %}
 html_theme = '{{ cookiecutter._sphinx_theme }}'
 {% endif %}

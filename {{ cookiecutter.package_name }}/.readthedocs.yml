@@ -16,6 +16,8 @@ formats: []
 python:
   version: 3.7
   install:
-    extra_requirements:
-      - docs
-      - all
+    - method: pip
+      path: .
+      extra_requirements:
+        - docs
+        - all
