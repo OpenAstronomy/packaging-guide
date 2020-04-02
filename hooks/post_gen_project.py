@@ -2,7 +2,8 @@
 
 import os
 import shutil
-import urllib.request
+import json
+from collections import OrderedDict  # noqa
 
 
 def remove_file(filepath):
@@ -37,7 +38,6 @@ def process_license(license_name):
 
 
 if __name__ == '__main__':
-
     process_license('{{ cookiecutter.license }}')
 
     include_examples = '{{ cookiecutter.include_example_code }}' == 'y'
@@ -50,3 +50,13 @@ if __name__ == '__main__':
         remove_dir('{{ cookiecutter.module_name }}/example_subpkg/')
         remove_file('{{ cookiecutter.module_name }}/example_mod.py')
         remove_file('{{ cookiecutter.module_name }}/tests/test_example.py')
+
+    # Write out a cookiecutter config file, by doing nasty things with json
+    with open(".{{ cookiecutter._parent_project }}-template.yml", "w") as f:
+        context = {{ cookiecutter }}
+        for key in list(context.keys()):
+            if key.startswith("_"):
+                context.pop(key)
+        json_dump = json.dumps(context, indent=2)[2:-2].replace('"', '').replace(',', '')
+        config_file = f"default_context:\n{json_dump}"
+        f.write(config_file)
