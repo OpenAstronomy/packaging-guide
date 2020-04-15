@@ -1,6 +1,6 @@
 {
     "package_name": "packagename",
-    "module_name": "{{ cookiecutter.package_name|lower()|replace(' ', '_') }}",
+    "module_name": "{{ cookiecutter.package_name|lower()|replace(' ', '_')|replace('-', '_') }}",
     "short_description": "",
     "author_name": "",
     "author_email": "",
