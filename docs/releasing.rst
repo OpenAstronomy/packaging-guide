@@ -39,7 +39,7 @@ To mark a new release of your package in your git history run:
 
 .. code-block:: console
 
-   $ git tag -a v0.1.0 -m Release version 0.1.0
+   $ git tag -a v0.1.0 -m "Release version 0.1.0"
 
 Here we use the convention of prepending release tags with ``v``.
 
