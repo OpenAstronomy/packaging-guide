@@ -15,3 +15,9 @@ prune docs/_build
 prune docs/api
 
 global-exclude *.pyc *.o
+{% if cookiecutter.setuptools_scm_git == 'y' %}
+
+# This subpackage is only used in development checkouts
+# and should not be included in built tarballs
+prune {{ cookiecutter.module_name }}/_dev
+{% endif %}

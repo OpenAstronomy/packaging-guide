@@ -1,6 +1,5 @@
 import py
 import pytest
-import time
 
 import tox
 from _toxplugin import RunResult, reset_report
@@ -55,7 +54,7 @@ def cookiejar(request):
     return request.getfixturevalue(request.param)
 
 
-@pytest.fixture(params=["bake_default",])
+@pytest.fixture(params=["bake_default", ])
 def cookiejar_no_examples(request):
     """
     Templates rendered without the examples

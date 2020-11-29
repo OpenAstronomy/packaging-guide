@@ -3,8 +3,6 @@ Test that tox runs inside a rendered template.
 """
 import subprocess
 
-import pytest
-import tox
 
 
 def test_tox_runs(cookiejar, cmd):

@@ -4,12 +4,23 @@
     "short_description": "",
     "author_name": "",
     "author_email": "",
-    "license": ["BSD 3-Clause", "GNU GPL v3+", "Apache Software License 2.0", "BSD 2-Clause", "Other"],
+    "license": [
+        "BSD 3-Clause",
+        "GNU GPL v3+",
+        "Apache Software License 2.0",
+        "BSD 2-Clause",
+        "Other"
+    ],
     "project_url": "",
-    "minimum_python_version": ["3.8", "3.7", "3.6", "3.5"],
+    "minimum_python_version": [
+        "3.8",
+        "3.9",
+        "3.7",
+        "3.6"
+    ],
     "use_compiled_extensions": "n",
+    "setuptools_scm_git": "n",
     "include_example_code": "n",
-
     "_sphinx_theme": "alabaster",
     "_parent_project": "",
     "_install_requires": "",
@@ -17,7 +28,6 @@
         "docs/_templates",
         "docs/_static"
     ],
-
     "_parameters": {
         "package_name": {
             "prompt": "package name",
@@ -58,7 +68,10 @@
         "include_example_code": {
             "prompt": "include example code",
             "help": "Would you like to have some example code included in your package?"
+        },
+        "setuptools_scm_git": {
+            "prompt": "include development setuptools_scm_git support",
+            "help": "Would you like to support fancier git versioning in your package?"
         }
-
     }
 }

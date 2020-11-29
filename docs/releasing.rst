@@ -46,7 +46,6 @@ Here we use the convention of prepending release tags with ``v``.
 If you now import your package and print ``my_package.__version__`` it should say
 ``0.1.0``.
 
-
 Building Source Distributions
 -----------------------------
 

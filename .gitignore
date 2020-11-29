@@ -133,3 +133,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Vscode plugin
+.history
+
+# Just in case you want to test out the defaults in the repo
+packagename

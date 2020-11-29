@@ -12,7 +12,7 @@ def test_examples_removed(cookiejar_no_examples):
         "example_c.pyx",
         "example_subpkg/"
         "tests/"
-        ]
+    ]
 
     for afile in example_files:
         assert not cj.project.join(ctx['package_name'], afile).exists()
@@ -31,7 +31,7 @@ def test_examples_present(cookiejar_examples):
         "tests/",
         "tests/test_example.py",
         "tests/__init__.py",
-        ]
+    ]
 
     if ctx['use_compiled_extensions'] == 'y':
         example_files.append("example_c.pyx")
@@ -70,7 +70,6 @@ def test_other_licence(cookies):
 
     assert not cj.project.join("licenses", "LICENSE.rst").exists()
 
-
     license_files = {"BSD 3-Clause": 'BSD3.rst',
                      "GNU GPL v3+": 'GPLv3.rst',
                      "Apache Software License 2.0": 'APACHE2.rst',
@@ -78,4 +77,3 @@ def test_other_licence(cookies):
 
     for name, lfile in license_files.items():
         assert cj.project.join("licenses", lfile).exists()
-

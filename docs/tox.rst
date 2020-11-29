@@ -7,8 +7,6 @@ Running Commands with Tox
 automating Python testing. We recommend using tox to specify the environments
 in which your tests are run, both locally and on :ref:`ci` services.
 
-
-
 Getting Started with Tox: Running tests
 ---------------------------------------
 
@@ -48,14 +46,12 @@ To run your tests with tox run:
 
     $ tox -e py38
 
-
 To pass arguments through to ``pytest`` use ``--`` here we tell pytest to
 stop after the first failure.
 
 .. code-block:: console
 
     $ tox -e py38 -- -x
-
 
 Multiple builds
 ###############
@@ -115,7 +111,6 @@ the ``envlist`` is now more complex, the result of this the following:
 
 with the ``deps`` overridden for ``numpydev`` builds.
 
-
 Building Documentation with tox
 -------------------------------
 
@@ -153,8 +148,6 @@ cache you can run:
 
     $ tox -e build_docs -- -aE
 
-
-
 Testing Packages with Compiled Extensions
 -----------------------------------------
 
@@ -166,7 +159,6 @@ As configured in this guide so far, tox will perform the following actions (all 
 4. Run the commands listed in ``commands =``, which here we assume to be ``pytest``.
 
 (See https://tox.readthedocs.io/en/latest/index.html#system-overview for more details.)
-
 
 For packages laid out as described in this guide, i.e. with the Python
 package in a directory in the root repo, i.e. ``astropy/``, this means that
@@ -197,7 +189,6 @@ local import does not work. With this method you make use of pytest's
 to run the tests against the installed version of the package. This ensures
 that any compiled extensions are properly detected, but prevents things like
 specifying paths to pytest from working.
-
 
 To configure tox to run ``pytest`` from a temporary directory do the
 following in ``tox.ini``:
