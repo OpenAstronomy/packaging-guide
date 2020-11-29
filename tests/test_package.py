@@ -26,5 +26,3 @@ def test_examples_present(installed_cookiejar):
         cprimes = packagename.do_primes(10, usecython=True)
 
         assert primes == cprimes
-
-

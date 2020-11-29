@@ -77,9 +77,15 @@ so a better approach is to put the following in your ``__init__.py`` file
     try:
         __version__ = get_distribution(__name__).version
     except DistributionNotFound:
-        pass  # package is not installed
+        pass
 
-.. TODO: consider using importlib_metadata for performance
+If you support Python 3.8 or higher only, you can replace the above with::
+
+    from importlib_metadata import version as _version, PackageNotFoundError
+    try:
+        __version__ = _version(__name__)
+    except PackageNotFoundError:
+        pass
 
 This will automatically set ``__version__`` to the global version of the package
 declared in :ref:`pyproject` or set by the `setuptools_scm
@@ -227,6 +233,13 @@ The minimal ``setup.py`` file is very simple:
     from setuptools import setup
     
     setup()
+
+If you do use ``setuptools_scm``, you have to be aware that **everything** that is git versioned will be included **by default**.
+You will have to add::
+
+    prune <folder or files>
+
+to prevent this and slim down your final built package.
 
 Trying out your package
 -----------------------

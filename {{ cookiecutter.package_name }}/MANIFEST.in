@@ -4,15 +4,10 @@
 prune build
 prune docs/_build
 prune docs/api
-prune .circleci
-prune .github
-prune .jupyter
-prune binder
-# exclude a bunch of common hidden files, you probably want to add your own here
-exclude .mailmap
-exclude .gitignore
-exclude .gitattributes
-exclude .editorconfig
-exclude .zenodo.json
-exclude *.yml
-exclude *.yaml
+global-exclude *.pyc *.o
+{% if cookiecutter.setuptools_scm_git == 'y' %}
+
+# This subpackage is only used in development checkouts
+# and should not be included in built tarballs
+prune {{ cookiecutter.module_name }}/_dev
+{% endif %}
