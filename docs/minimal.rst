@@ -240,6 +240,7 @@ You will have to add::
     prune <folder or files>
 
 to prevent this and slim down your final built package.
+This important if you store test files or documentation and do not want to ship them in your final package.
 
 Trying out your package
 -----------------------

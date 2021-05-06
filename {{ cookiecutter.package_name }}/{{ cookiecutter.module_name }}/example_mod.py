@@ -7,15 +7,14 @@ def primes(imax):
 
     Parameters
     ----------
-    imax: int
+    imax : `int`
         The number of primes to return. This should be less or equal to 10000.
 
     Returns
     -------
-    result: list
+    result : `list`
         The list of prime numbers.
     """
-
     p = list(range(10000))
     result = []
     k = 0
