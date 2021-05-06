@@ -32,7 +32,7 @@ def process_license(license_name):
 def process_version(setuptools_scm_git):
     if setuptools_scm_git != "y":
         remove_dir(os.path.join(PROJECT_DIRECTORY, '{{ cookiecutter.module_name }}', '_dev'))
-        remove_dir(os.path.join(PROJECT_DIRECTORY, '{{ cookiecutter.module_name }}', 'version.py'))
+        remove_file(os.path.join(PROJECT_DIRECTORY, '{{ cookiecutter.module_name }}', 'version.py'))
 
 if __name__ == '__main__':
     process_license('{{ cookiecutter.license }}')

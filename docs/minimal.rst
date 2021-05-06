@@ -174,6 +174,12 @@ automatically based on git tags, which will produce version strings such as
 ``0.13`` for a stable release, or ``0.16.0.dev113+g3d1a8747`` for a developer
 version.
 
+In addition to this, there is a second version of ``setuptools_scm`` which is called ``setuptools_scm_git``.
+This is turned off by default but if you enable it, it will reconfigure the ``setuptools_scm`` system to the following.
+First a new folder ``{{ cookiecutter.package_name }}/{{ cookiecutter.module_name }}/_dev`` is added and ``scm_version.py`` file is added.
+This file deals with the versioning instead of having ``setup.py`` write a ``_version.py`` to ``{{ cookiecutter.package_name }}/{{ cookiecutter.module_name }}``.
+The benefit of this is so the git versioning works without adding in a runtime dependency on ``setuptools_scm``, you do not have relative imports and the versioning can break under `very specific packaging situations <https://github.com/astropy/astropy/issues/10760>`__.
+
 .. _pyproject:
 
 pyproject.toml
@@ -226,6 +232,7 @@ You will have to add::
     prune <folder or files>
 
 to prevent this and slim down your final built package.
+This important if you store test files or documentation and do not want to ship them in your final package.
 
 Trying out your package
 -----------------------
