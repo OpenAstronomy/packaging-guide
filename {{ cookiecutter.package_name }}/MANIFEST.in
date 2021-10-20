@@ -1,17 +1,18 @@
-include README.rst
-include CHANGES.rst
-include setup.cfg
-include LICENSE.rst
-include pyproject.toml
-
-recursive-include {{ cookiecutter.module_name }} *.pyx *.c *.pxd
-recursive-include docs *
-recursive-include licenses *
-recursive-include cextern *
-recursive-include scripts *
-
+# Exclude specific files
+# All files which are tracked by git and not explicitly excluded here are included by setuptools_scm
+# Prune folders
 prune build
 prune docs/_build
 prune docs/api
-
-global-exclude *.pyc *.o
+prune .circleci
+prune .github
+prune .jupyter
+prune binder
+# exclude a bunch of common hidden files, you probably want to add your own here
+exclude .mailmap
+exclude .gitignore
+exclude .gitattributes
+exclude .editorconfig
+exclude .zenodo.json
+exclude *.yml
+exclude *.yaml
