@@ -16,49 +16,5 @@
     "_copy_without_render": [
         "docs/_templates",
         "docs/_static"
-    ],
-
-    //"_parameters": {
-    //    "package_name": {
-    //        "prompt": "package name",
-    //        "help": "What is the name of your package? This is the name that will appear on PyPI and which users will use when installing the package with e.g. pip or conda."
-    //    },
-    //    "module_name": {
-    //        "prompt": "module name",
-    //        "help": "What is the name of the module in your package? This is the name that users will use to import your package in Python. In general this should be the same as the pakage name, except that if your package name includes hyphens you should generally use underscores for the module name instead."
-    //    },
-    //    "short_description": {
-    //        "prompt": "short description",
-    //        "help": "Give a short one-line/sentence description of what your package does. This will be shown in lists of packages on PyPI."
-    //    },
-    //    "author_name": {
-    //        "prompt": "author names",
-    //        "help": "List the authors of the package, separating the names by commas."
-    //    },
-    //    "author_email": {
-    //        "prompt": "author email",
-    //        "help": "Provide a contact email for users to contact you with questions. You can also leave this blank if you prefer!"
-    //    },
-    //    "license": {
-    //        "prompt": "license",
-    //        "help": "What open-source license would you like to use for your package?"
-    //    },
-    //    "project_url": {
-    //        "prompt": "link to home page",
-    //        "help": "Provide a link to your repository or package home page. Leave blank if you don't have this yet."
-    //    },
-    //    "minimum_python_version": {
-    //        "prompt": "minimum python version",
-    //        "help": "What minimum Python version do you want to impose for your package? Choosing a more recent version means that you will be able to use more recent features, but will reduce your potential user base."
-    //    },
-    //    "use_compiled_extensions": {
-    //        "prompt": "use compiled extensions",
-    //        "help": "Do you plan to use compiled extensions in your package? If so, we'll make sure we add some extra lines to some of the files to make this work."
-    //    },
-    //    "include_example_code": {
-    //        "prompt": "include example code",
-    //        "help": "Would you like to have some example code included in your package?"
-    //    }
-
-    //}
+    ]
 }
