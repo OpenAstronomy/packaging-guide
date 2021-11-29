@@ -62,13 +62,13 @@ specified in your :ref:`manifest` file.
 The most common way to build a source distribution (sdist) is with ``python
 setup.py sdist``. This will put a tarball in the ``dist/`` folder next to your
 ``setup.py`` file. As we have setup a package with a :ref:`pyproject` file, we
-recommend you use the `pep517 <https://pypi.org/project/pep517/>`__ package to
+recommend you use the `build <https://pypa-build.readthedocs.io/en/latest/>`__ package to
 build your sdist in the isolated environment specified in :ref:`pyproject`. You can do this with:
 
 .. code-block:: console
 
-   $ pip install pep517
-   $ python -m pep517.build --source --out-dir dist .
+   $ pip install build
+   $ python -m build --sdist --outdir dist .
 
 This is equivalent to running ``python setup.py sdist`` but ensures that the
 state of your local environment does not affect the generated package.
