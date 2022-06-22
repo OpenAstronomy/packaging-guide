@@ -30,6 +30,6 @@ To get started run:
 
 .. code-block:: console
 
-   $ pip install pieceofcake
-   $ pieceofcake gh:OpenAstronomy/packaging-guide ./output_directory
+   $ pip install cookiecutter
+   $ cookiecutter gh:OpenAstronomy/packaging-guide ./output_directory
 
