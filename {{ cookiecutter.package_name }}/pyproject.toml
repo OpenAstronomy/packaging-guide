@@ -1,3 +1,16 @@
+[build-system]
+requires = [
+  "setuptools>=61.2",
+  "setuptools_scm[toml]>=3.4",
+  "wheel",
+{% if cookiecutter.use_compiled_extensions == 'y' %}
+  "extension-helpers",
+  "oldest-supported-numpy",
+  "cython==0.29.14"
+{% endif %}
+]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = {{ cookiecutter.module_name }}
 description = {{ cookiecutter.short_description }}
@@ -30,19 +43,6 @@ astropy_package_template_example = "{{ cookiecutter.module_name }}.example_mod:m
 
 [project.urls]
 repository = {{ cookiecutter.project_url }} 
-
-[build-system]
-requires = [
-  "setuptools>=61.2",
-  "setuptools_scm[toml]>=3.4",
-  "wheel",
-{% if cookiecutter.use_compiled_extensions == 'y' %}
-  "extension-helpers",
-  "oldest-supported-numpy",
-  "cython==0.29.14"
-{% endif %}
-]
-build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 zip-safe = false
