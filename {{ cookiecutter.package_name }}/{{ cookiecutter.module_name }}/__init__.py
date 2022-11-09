@@ -3,10 +3,10 @@
 {% if cookiecutter.setuptools_scm_git == 'y' %}
 from .version import version as __version__
 {% else %}
-from pkg_resources import get_distribution, DistributionNotFound
+from importlib_metadata import version as _version, PackageNotFoundError
 try:
-    __version__ = get_distribution(__name__).version
-except DistributionNotFound:
+    __version__ = _version(__name__)
+except PackageNotFoundError:
     pass
 {% endif %}
 

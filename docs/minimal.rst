@@ -73,14 +73,6 @@ so a better approach is to put the following in your ``__init__.py`` file
 
 .. code-block:: python
 
-    from pkg_resources import get_distribution, DistributionNotFound
-    try:
-        __version__ = get_distribution(__name__).version
-    except DistributionNotFound:
-        pass
-
-If you support Python 3.8 or higher only, you can replace the above with::
-
     from importlib_metadata import version as _version, PackageNotFoundError
     try:
         __version__ = _version(__name__)
