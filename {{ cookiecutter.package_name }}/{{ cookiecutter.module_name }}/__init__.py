@@ -1,13 +1,8 @@
 # Licensed under a 3-clause BSD style license - see LICENSE.rst
-
-{% if cookiecutter.setuptools_scm_git == 'y' %}
+{% if cookiecutter.enable_dynamic_dev_versions == 'y' %}
 from .version import version as __version__
 {% else %}
-from importlib.metadata import version as _version, PackageNotFoundError
-try:
-    __version__ = _version(__name__)
-except PackageNotFoundError:
-    pass
+from ._version import version as __version__
 {% endif %}
 
 {%- if cookiecutter.include_example_code == 'y' %}

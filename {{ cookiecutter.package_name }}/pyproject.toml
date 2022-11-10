@@ -1,12 +1,12 @@
 [build-system]
 requires = [
   "setuptools>=61.2",
-  "setuptools_scm[toml]>=3.4",
+  "setuptools_scm[toml]>=6.2",
   "wheel",
 {% if cookiecutter.use_compiled_extensions == 'y' %}
   "extension-helpers",
   "oldest-supported-numpy",
-  "cython==0.29.14"
+  "cython"
 {% endif %}
 ]
 build-backend = "setuptools.build_meta"

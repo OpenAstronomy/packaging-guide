@@ -19,7 +19,7 @@
         "3.11"
     ],
     "use_compiled_extensions": "n",
-    "setuptools_scm_git": "n",
+    "enable_dynamic_dev_versions": "n",
     "include_example_code": "n",
     "_sphinx_theme": "alabaster",
     "_parent_project": "",

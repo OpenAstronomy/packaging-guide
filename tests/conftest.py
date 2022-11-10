@@ -63,7 +63,8 @@ def cookiejar_no_examples(request):
 
 
 @pytest.fixture(params=["bake_examples_compiled",
-                        "bake_examples"])
+                        "bake_examples",
+                        "bake_examples_compiled_dev_version"])
 def cookiejar_examples(request):
     """
     Templates rendered with the examples
@@ -79,12 +80,22 @@ def baked(request):
     return request.getfixturevalue(request.param)
 
 
+def _handle_cookiecutter_errors(result):
+    if result.exception is not None:
+        raise result.exception
+
+    assert result.exit_code == 0
+
+    return result
+
+
 @pytest.fixture
 def bake_default(cookies):
     """
     Render with the defaults.
     """
-    return cookies.bake()
+    result = cookies.bake()
+    return _handle_cookiecutter_errors(result)
 
 
 @pytest.fixture
@@ -92,7 +103,8 @@ def bake_examples(cookies):
     """
     Examples on.
     """
-    return cookies.bake(extra_context={"include_example_code": "y"})
+    result = cookies.bake(extra_context={"include_example_code": "y"})
+    return _handle_cookiecutter_errors(result)
 
 
 @pytest.fixture
@@ -100,5 +112,17 @@ def bake_examples_compiled(cookies):
     """
     Examples on.
     """
-    return cookies.bake(extra_context={"include_example_code": "y",
-                                       "use_compiled_extensions": "y"})
+    result = cookies.bake(extra_context={"include_example_code": "y",
+                                         "use_compiled_extensions": "y"})
+    return _handle_cookiecutter_errors(result)
+
+
+@pytest.fixture
+def bake_examples_compiled_dev_version(cookies):
+    """
+    Examples on.
+    """
+    result = cookies.bake(extra_context={"include_example_code": "y",
+                                         "use_compiled_extensions": "y",
+                                         "enable_dynamic_dev_versions": "y"})
+    return _handle_cookiecutter_errors(result)

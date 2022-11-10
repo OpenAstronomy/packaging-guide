@@ -29,14 +29,14 @@ def process_license(license_name):
             os.remove(os.path.join(PROJECT_DIRECTORY, 'licenses', license_file))
 
 
-def process_version(setuptools_scm_git):
-    if setuptools_scm_git != "y":
+def process_version(enable_dynamic_dev_versions):
+    if enable_dynamic_dev_versions != "y":
         remove_dir(os.path.join(PROJECT_DIRECTORY, '{{ cookiecutter.module_name }}', '_dev'))
         remove_file(os.path.join(PROJECT_DIRECTORY, '{{ cookiecutter.module_name }}', 'version.py'))
 
 if __name__ == '__main__':
     process_license('{{ cookiecutter.license }}')
-    process_version('{{ cookiecutter.setuptools_scm_git }}')
+    process_version('{{ cookiecutter.enable_dynamic_dev_versions }}')
     include_examples = '{{ cookiecutter.include_example_code }}' == 'y'
     use_compiled = '{{ cookiecutter.use_compiled_extensions }}' == 'y'
 
