@@ -116,6 +116,31 @@ the ``envlist`` is now more complex, the result of this the following:
 with the ``deps`` overridden for ``numpydev`` builds.
 
 
+Environment variables
+#####################
+
+It is often useful to set environment variables within the building and testing
+environment prior to testing. Environment variables can be set within ``tox.ini``
+with:
+
+.. code-block:: ini
+
+    [testenv]
+    # Pass through the following environment variables which may be needed for the CI
+    passenv = HOME WINDIR LC_ALL LC_CTYPE CC CI TRAVIS
+
+    # Suppress display of matplotlib plots generated during docs build
+    setenv = MPLBACKEND=agg
+
+The variables listed after ``passenv`` will be preserved from the
+environment that you used to run tox, while the ``setenv`` variables
+are set within the testing environment. In the template, we have set the
+``MPLBACKEND`` variable to the ``agg`` backend, which prevents matplotlib
+from launching interactive plot displays when generating figures from the
+matplotlib plot directive or pytest-mpl. For more on making use of this
+feature, see :ref:`plot_directive`.
+
+
 Building Documentation with tox
 -------------------------------
 
