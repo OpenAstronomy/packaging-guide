@@ -82,7 +82,7 @@ Now you have created the sdist to be uploaded to PyPI you can upload it with the
 .. code-block:: console
 
    $ pip install twine
-   $ twine upload sdist/my_package*.tar.gz
+   $ twine upload dist/my_package*.tar.gz
 
 This should ask you for your PyPI account details, and will create your project
 on PyPI if it doesn't already exist.
