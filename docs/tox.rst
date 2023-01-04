@@ -127,7 +127,7 @@ with:
 
     [testenv]
     # Pass through the following environment variables which may be needed for the CI
-    passenv = HOME WINDIR LC_ALL LC_CTYPE CC CI TRAVIS
+    passenv = HOME, WINDIR, LC_ALL, LC_CTYPE, CC, CI, TRAVIS
 
     # Suppress display of matplotlib plots generated during docs build
     setenv = MPLBACKEND=agg
