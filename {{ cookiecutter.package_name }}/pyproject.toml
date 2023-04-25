@@ -1,14 +1,98 @@
-[build-system]
-{% if cookiecutter.use_compiled_extensions == 'y' %}
-requires = ["setuptools",
-            "setuptools_scm",
-            "wheel",
-            "extension-helpers",
-            "oldest-supported-numpy",
-            "cython==0.29.14"]
-{% else %}
-requires = ["setuptools",
-            "setuptools_scm",
-            "wheel"]
+[project]
+name = {{ cookiecutter.module_name }}
+description = {{ cookiecutter.short_description }}
+readme = "README.rst"
+requires-python = ">={{ cookiecutter.minimum_python_version }}"
+license = { file = "licenses/LICENSE.rst", content-type = "text/plain" }
+authors = [
+  { name = {{ cookiecutter.author_name }}, email = {{ cookiecutter.author_email }} },
+]
+dependencies = [
+  {{ cookiecutter._install_requires }}
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-doctestplus",
+]
+docs = [
+    "sphinx",
+    "sphinx-automodapi",
+    "tomli; python_version <\"3.11\"",
+]
+
+{% if cookiecutter.include_example_code == 'y' %}
+[project.scripts]
+astropy_package_template_example = "{{ cookiecutter.module_name }}.example_mod:main"
 {% endif %}
-build-backend = 'setuptools.build_meta'
+
+[project.urls]
+repository = {{ cookiecutter.project_url }} 
+
+[build-system]
+requires = [
+  "setuptools>=61.2",
+  "setuptools_scm[toml]>=3.4",
+  "wheel",
+{% if cookiecutter.use_compiled_extensions == 'y' %}
+  "extension-helpers",
+  "oldest-supported-numpy",
+  "cython==0.29.14"
+{% endif %}
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+zip-safe = false
+include-package-date = true
+
+[tool.setuptools.packages.find]
+
+[tool.setuptools_scm]
+write_to = "{{ cookiecutter.module_name }}/version.py"
+
+[tool.pytest.ini_options]
+testpaths = [
+  "{{ cookiecutter.module_name }}",
+  "docs",
+]
+doctest_plus = "enabled"
+text_file_format = "rst"
+addopts = "--doctest-rst"
+
+[tool.coverage.run]
+omit = [
+ "{{ cookiecutter.module_name }}/_{{ cookiecutter._parent_project }}_init*",
+ "{{ cookiecutter.module_name }}/conftest.py",
+ "{{ cookiecutter.module_name }}/*setup_package*",
+ "{{ cookiecutter.module_name }}/tests/*",
+ "{{ cookiecutter.module_name }}/*/tests/*",
+ "{{ cookiecutter.module_name }}/extern/*",
+ "{{ cookiecutter.module_name }}/version*",
+ "*/{{ cookiecutter.module_name }}/_{{ cookiecutter._parent_project }}_init*",
+ "*/{{ cookiecutter.module_name }}/conftest.py",
+ "*/{{ cookiecutter.module_name }}/*setup_package*",
+ "*/{{ cookiecutter.module_name }}/tests/*",
+ "*/{{ cookiecutter.module_name }}/*/tests/*",
+ "*/{{ cookiecutter.module_name }}/extern/*",
+ "*/{{ cookiecutter.module_name }}/version*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+  # Have to re-enable the standard pragma
+  "pragma: no cover",
+  # Don't complain about packages we have installed
+  "except ImportError",
+  # Don't complain if tests don't hit assertions
+  "raise AssertionError",
+  "raise NotImplementedError",
+  # Don't complain about script hooks
+  "def main(.*):",
+  # Ignore branches that don't pertain to this version of Python
+  "pragma: py{ignore_python_version}",
+  # Don't complain about IPython completion helper
+  "def _ipython_key_completions_", 
+]
