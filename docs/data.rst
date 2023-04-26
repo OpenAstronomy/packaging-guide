@@ -3,8 +3,8 @@
 Including data in your package
 ==============================
 
-Using setuptools_scm to link your Python package to your git repository also makes including data easy.
-By setting ``include_package_data = True`` in the ``[options]`` section of ``setup.cfg`` setuptools_scm will automatically include all files tracked by git in your package.
+Using ``setuptools_scm`` to link your Python package to your git repository also makes including data easy.
+By setting ``include_package_data = true`` in the ``[tool.setuptools]`` section of ``pyproject.toml``, ``setuptools_scm`` will automatically include all files tracked by git in your package.
 While this is useful for including required non-Python files, it's pretty common to have files that don't belong in your distribution in your git repository, such as continuious integration configurations, or even git config files.
 It's possible to exclude certain files and directories which are tracked by git from being included in your built package by adding ``exclude`` or ``prune`` lines to the ``MANIFEST.in`` file in the root of the repository.
 An example ``MANIFIEST.in`` file might look like::

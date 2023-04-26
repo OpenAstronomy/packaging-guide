@@ -8,21 +8,18 @@ create an installable Python package. Once you have set these up, your package
 directory should look like::
 
     ├── LICENCE
-    ├── MANIFEST.in
     ├── my_package
     │   └── __init__.py
     ├── pyproject.toml
-    ├── README.rst
-    ├── setup.cfg
-    └── setup.py
+    └── README.rst
 
 where ``my_package`` is the name of your package. We will now take a look at all of
 these files in turn.
 
 .. _license:
 
-LICENSE
--------
+``LICENSE``
+-----------
 
 Assuming that you are planning to make your package open source, the most
 important file you will need to add to your package is an open source license.
@@ -37,8 +34,8 @@ copyright year, authors, and any other required fields
 
 .. _readme:
 
-README.rst
-----------
+``README.rst``
+--------------
 
 Another important file to include is a README file, which briefly tells users
 what the package is, and either gives some information about how to install/use
@@ -50,8 +47,8 @@ on `GitHub <https://github.com>`_ or `GitLab <https://gitlab.com>`_ and on `PyPI
 
 .. _package_init:
 
-my_package/__init__.py
-----------------------
+``my_package/__init__.py``
+--------------------------
 
 Python code for your package should live in a sub-directory that has the name
 of the Python module you want your users to import. This module name should
@@ -64,13 +61,17 @@ file called ``__init__.py`` which will be the first code to be run when a user
 imports your package. For now, the only information we will add to this file is
 the version of the package, since users typically expect to be able to access
 ``my_package.__version__`` to find out the current package version. While you
-could simply set e.g.::
+could simply set e.g.
+
+.. code-block:: python
 
     __version__ = '1.2'
 
 in the ``__init__.py`` file, you then would need to make sure that the version
-number is in sync with the version number defined in the :ref:`setup_cfg` file,
-so a better approach is to put the following in your ``__init__.py`` file::
+number is in sync with the version number defined in the :ref:`pyproject` file,
+so a better approach is to put the following in your ``__init__.py`` file
+
+.. code-block:: python
 
     from pkg_resources import get_distribution, DistributionNotFound
     try:
@@ -81,34 +82,41 @@ so a better approach is to put the following in your ``__init__.py`` file::
 .. TODO: consider using importlib_metadata for performance
 
 This will automatically set ``__version__`` to the global version of the package
-declared in :ref:`setup_cfg` or set by the `setuptools_scm
+declared in :ref:`pyproject` or set by the `setuptools_scm
 <https://pypi.org/project/setuptools-scm/>`__ package (see :ref:`setup_py` and
 :ref:`pyproject` for more details).
 
-.. _setup_cfg:
+.. _pyproject:
 
-setup.cfg
----------
+``pyproject.toml``
+------------------
 
-The ``setup.cfg`` file is where we will define the metadata about the package.
-At a minimum, this file should contain the following (with the metadata updated
-to that needed for your particular package)::
+The ``pyproject.toml`` file is where we will define the metadata about the package. 
+At a minimum, this file should contain the ``[project]`` table (defined by 
+`PEP621 <https://peps.python.org/pep-0621/>`_) and the ``[build-system]`` table
+(defined by `PEP518 <https://peps.python.org/pep-0518/>`_).
 
-    [metadata]
-    name = my-package
-    description = My package description
-    long_description = file: README.rst
-    author = Your Name
-    author_email = your@email.com
-    url = https://link-to-your-project
-    license = BSD 3-Clause License
+``[project]``
+^^^^^^^^^^^^^
 
-    [options]
-    zip_safe = False
-    packages = find:
-    install_requires =
-        numpy
-        astropy>=3.2
+.. code-block:: toml
+
+    [project]
+    name = "my-package"
+    description = "My package description"
+    readme = "README.rst"
+    authors = [
+        { name = "Your Name", email = "your@email.com" }
+    ]
+    license = { text = "BSD 3-Clause License" }
+    dependencies = [
+        "numpy",
+        "astropy>=3.2",
+    ]
+    dynamic = ["version"]
+
+    [project.urls]
+    homepage = "https://link-to-your-project"
 
 The ``name`` field is the name your package will have on PyPI. It is not necessarily
 the same as the module name, so in this case we've set the package name to
@@ -116,74 +124,44 @@ the same as the module name, so in this case we've set the package name to
 the case where the package name has a hyphen and the module name has an underscore,
 we strongly recommend making the package and the module name the same to avoid confusion.
 
-Note that the version of the package is **not** defined in the file above, because
-we will be using the `setuptools_scm
-<https://pypi.org/project/setuptools-scm/>`_ package in the :ref:`setup_py`
-and :ref:`pyproject` files (see those sections for more details). However, if
-you choose to not use that package, you can also set the version in the
-``[metadata]`` section using for example::
+Note that the version of the package is **not** explicitly defined in the file above, 
+(rather, defined as ``dynamic``), because we are using the 
+`setuptools_scm <https://pypi.org/project/setuptools-scm/>`_ package to automatically 
+retrieve the latest version from Git tags. However, if you choose to not use that 
+package, you can explicitly set the version in the ``[project]`` section (and remove it
+from the ``dynamic`` list):
 
-    version = 0.12
+.. code-block:: toml
+
+    [project]
+    version = "0.12"
 
 The ``description`` should be a short one-line sentence that will appear next to your package name
-on `PyPI <https://pypi.org>`_ when users search for packages. The ``long_description``
-is then set to be loaded from the ``README.rst`` file, and it will be rendered
-nicely on the PyPI page for the package.
+on `PyPI <https://pypi.org>`_ when users search for packages. The ``readme``
+defines the ``README.rst`` file, which will be rendered nicely on the PyPI page for the package.
 
-The ``zip_safe`` option should be set to ``False`` unless you understand the
-implications of setting it to ``True`` - this option is most relevant when
-producing application bundles with Python packages.
-
-The ``packages`` line can be left as-is - this will automatically determine the
-Python modules to install based on the presence of ``__init__.py`` files.
-
-Finally, the ``install_requires`` section is important since it is where you will
+Finally, the ``dependencies`` section is important since it is where you will
 be declaring the dependencies for your package. The cleanest way to do this is
 to specify one package per line, as shown above. You can optionally include version
 restrictions if needed (as shown with ``astropy>=3.2`` above. If your package has no dependencies then you don't need this option.
 
-In the rest of this guide, we will discuss other options that can be added to
-the ``setup.cfg`` file, but the above provide the minimal set you will need to
-get started. For more information about what can go into a ``setup.cfg`` file,
-you can also take a look at the `setuptools documentation
-<https://setuptools.readthedocs.io/en/latest/setuptools.html#configuring-setup-using-setup-cfg-files>`_.
+A complete list of keywords in ``[project]`` can be found in the `Python packaging documentation <https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#declaring-project-metadata>`_.
 
-.. TODO: optional dependencies
+``[build-system]``
+^^^^^^^^^^^^^^^^^^
 
-.. _setup_py:
-
-setup.py
---------
-
-The ``setup.py`` file used to be where a lot of the meta-data now defined in
-the :ref:`setup_cfg` file used to be set, but when using :ref:`setup_cfg`, the
-minimal ``setup.py`` file is very simple::
-
-    from setuptools import setup
-    setup(use_scm_version=True)
-
-The ``use_scm_version`` option indicates that we want to use the `setuptools_scm
-<https://pypi.org/project/setuptools-scm/>`_ package to set the version
-automatically based on git tags, which will produce version strings such as
-``0.13`` for a stable release, or ``0.16.0.dev113+g3d1a8747`` for a developer
-version.
-
-.. _pyproject:
-
-pyproject.toml
---------------
-
-In :ref:`setup_cfg`, we discussed the ``install_requires`` option which can
+In the previous section we discussed the ``dependencies`` which can
 be used to declare run-time dependencies for the package, which are
 dependencies that are needed for the package to import and run correctly.
 However, your package may have dependencies that are needed to build the
-package in the first place. For example, the :ref:`setup_py` file shown
-previously will only run correctly if both `setuptools
-<https://setuptools.readthedocs.io>`_ and `setuptools_scm
-<https://pypi.org/project/setuptools-scm/>`_ are installed.
+package in the first place. For example, the :ref:`setup_py` file 
+will only run correctly if `setuptools <https://setuptools.readthedocs.io>`_ 
+is installed.
 
-The recommended way to specify build-time dependencies is to create a file
-called ``pyproject.toml`` which contains::
+The recommended way to specify build-time dependencies is to define the 
+``build-system`` table:
+
+.. code-block:: toml
 
     [build-system]
     requires = ["setuptools", "wheel", "setuptools_scm"]
@@ -194,31 +172,69 @@ If your package has C extensions that interface with `Numpy <https://numpy.org>`
 you may also need to add Numpy to the above list - see :ref:`extensions` for
 more details.
 
-.. _manifest:
+A complete list of keywords in ``[build-system]`` can be found in `PEP518 <https://packaging.python.org/en/latest/specifications/declaring-build-dependencies/#declaring-build-dependencies>`_.
 
-MANIFEST.in
------------
+``[tool.setuptools]``
+^^^^^^^^^^^^^^^^^^^^^
 
-The last file needed for a minimal set-up is the ``MANIFEST.in`` file,
-which declares which files should be included when you release your
-package (see :ref:`releasing` for more details about how to do this).
-You don't need to declare all the files from the module directory or
-standard files such as ``setup.py`` or ``setup.cfg``, so given the
-files we've seen above you would need to include::
+.. code-block:: toml
 
-    include LICENSE
-    include README.rst
-    include pyproject.toml
+    [tool.setuptools]
+    zip_safe = false
 
-You can find out more about the syntax of this file in
-`Specifying the files to distribute <https://docs.python.org/3.8/distutils/sourcedist.html#specifying-the-files-to-distribute>`_
-in the Python documentation.
+    [tool.setuptools.packages.find]
+
+The ``zip_safe`` option should be set to ``false`` unless you understand the
+implications of setting it to ``true`` - this option is most relevant when
+producing application bundles with Python packages.
+
+The ``packages.find`` line can be left as-is - this will automatically determine the
+Python modules to install based on the presence of ``__init__.py`` files.
+
+A complete list of keywords in ``[tool.setuptools]`` can be found in the 
+`setuptools documentation <https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html>`_.
+
+``[tool.setuptools_scm]``
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: toml
+
+    [tool.setuptools_scm]
+    write_to = "my_package/version.py"
+
+The ``[tool.setuptools_scm]`` table indicates that we want to use the `setuptools_scm
+<https://pypi.org/project/setuptools-scm/>`_ package to set the version
+automatically based on git tags, which will produce version strings such as
+``0.13`` for a stable release, or ``0.16.0.dev113+g3d1a8747`` for a developer
+version. The ``write_to`` option is not necessary; it will write the parsed version 
+to a ``version.py`` with a ``__version__`` variable that can be imported by the 
+package itself.
+
+.. _setup_py:
+
+``setup.py``
+------------
+
+The ``setup.py`` file used to be where project metadata was defined, before the 
+advent of ``setup.cfg`` and then PEP621 and PEP517 (``pyproject.toml``). 
+It is no longer necessary to include a ``setup.py`` file in your project, 
+unless you are building C extensions in your code.
+
+The minimal ``setup.py`` file is very simple:
+
+.. code-block:: python
+
+    from setuptools import setup
+    
+    setup()
 
 Trying out your package
 -----------------------
 
 Once you have committed all of the above files to your repository, you
-can test out the package by running::
+can test out the package by running
+
+.. code-block:: shell
 
     pip install .
 
