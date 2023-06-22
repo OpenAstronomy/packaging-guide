@@ -143,7 +143,7 @@ defines the ``README.rst`` file, which will be rendered nicely on the PyPI page 
 Finally, the ``dependencies`` section is important since it is where you will
 be declaring the dependencies for your package. The cleanest way to do this is
 to specify one package per line, as shown above. You can optionally include version
-restrictions if needed (as shown with ``astropy>=3.2`` above. If your package has no dependencies then you don't need this option.
+restrictions if needed (as shown with ``astropy>=3.2`` above). If your package has no dependencies then you don't need this option.
 
 A complete list of keywords in ``[project]`` can be found in the `Python packaging documentation <https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#declaring-project-metadata>`_.
 
