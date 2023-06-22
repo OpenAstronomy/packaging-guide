@@ -13,8 +13,8 @@ including for example to speed up code that is otherwise slow in Python, or
 because you want to include an existing stable library without having to
 re-implement it in Python.
 
-Defining extensions in setup.py
--------------------------------
+Defining extensions in ``setup.py``
+-----------------------------------
 
 To define an extension, we need to create an instance of
 :class:`distutils.core.Extension` inside the ``setup.py`` file. For a simple

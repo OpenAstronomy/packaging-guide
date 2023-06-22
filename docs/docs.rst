@@ -111,14 +111,14 @@ Declaring dependencies for documentation
 To make it easier for contributors to get set up with the dependencies
 required to build the documentation, as well as to make it easier to
 configure automated builds (whether for :ref:`ReadTheDocs <readthedocs>`
-or :ref:`tox <tox>`), you should define an ``[options.extras_require]`` section in
-your ``setup.cfg`` file named ``docs`` which lists the dependencies
+or :ref:`tox <tox>`), you should define an ``[project.optional-dependencies]`` section in
+your ``pyproject.toml`` file named ``docs`` which lists the dependencies
 required to build the documentation (not including dependencies already
-mentioned in ``install_requires``):
+mentioned in ``dependencies``):
 
-.. code-block:: cfg
+.. code-block:: toml
 
-    [options.extras_require]
+    [project.optional-dependencies]
     docs =
         sphinx
         sphinx-automodapi

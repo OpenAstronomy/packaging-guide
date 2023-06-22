@@ -12,7 +12,7 @@ built by following the rest of this guide.
 
 This section of the guide is assuming you configured `setuptools_scm
 <https://pypi.org/project/setuptools-scm/>`__ in the :ref:`minimal` guide. If
-you didn't you will need to update your ``setup.cfg`` file as well as using
+you didn't you will need to update your ``pyproject.toml`` file as well as using
 ``git tag``.
 
 Incrementing Version Numbers
@@ -59,19 +59,18 @@ The source distribution is a tarball of all the files needed by your package,
 which includes everything in your ``my_package`` directory as well as everything
 specified in your :ref:`manifest` file.
 
-The most common way to build a source distribution (sdist) is with ``python
-setup.py sdist``. This will put a tarball in the ``dist/`` folder next to your
-``setup.py`` file. As we have setup a package with a :ref:`pyproject` file, we
-recommend you use the `build <https://pypa-build.readthedocs.io/en/latest/>`__ package to
-build your sdist in the isolated environment specified in :ref:`pyproject`. You can do this with:
+As we have setup a package with a :ref:`pyproject` file, we recommend you use the 
+`build <https://pypa-build.readthedocs.io/en/latest/>`__ package to build your 
+source  distribution in the isolated environment specified in :ref:`pyproject`. 
+You can do this with:
 
 .. code-block:: console
 
    $ pip install build
    $ python -m build --sdist --outdir dist .
 
-This is equivalent to running ``python setup.py sdist`` but ensures that the
-state of your local environment does not affect the generated package.
+This is equivalent to running the legacy ``python setup.py sdist`` but ensures 
+that the state of your local environment does not affect the generated package.
 
 Publishing to PyPI
 ------------------

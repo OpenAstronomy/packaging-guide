@@ -40,7 +40,9 @@ specify in the tox file (unless they are later overridden), here we default
 the ``commands =`` option to run pytest. The ``{posargs}`` is a tox
 `substitution
 <https://tox.readthedocs.io/en/latest/config.html#substitutions>`__ which
-passes extra arguments through to ``pytest``. The ``extras = test`` line tells tox to install the dependencies listed in ``setup.cfg`` for running your test suite, this should include ``pytest``.
+passes extra arguments through to ``pytest``. 
+The ``extras = test`` line tells tox to install the ``optional-dependencies`` section
+ listed in ``pyproject.toml`` for running your test suite; this should include ``pytest``.
 
 To run your tests with tox run:
 
@@ -86,7 +88,7 @@ Named Environments
 Using generative build environments you can define extra named environments
 which can be useful for builds that need to specify specific dependencies or
 settings. So far on this page we have assumed that all your dependencies are
-specified in :ref:`setup_cfg`. You can extend or override this by using the
+specified in :ref:`pyproject`. You can extend or override this by using the
 ``deps =`` configuration option in tox. Here we define a named test
 environment which installs the development version of numpy.
 

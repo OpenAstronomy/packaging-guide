@@ -50,11 +50,13 @@ Defining default pytest options
 
 If you regularly need to run tests with the same command-line flags for your
 package, or if you want to set options that are required for certain pytest
-plugins, you can control these by adding a ``[tool:pytest]`` section to your
-``setup.cfg`` file, for example::
+plugins, you can control these by adding a ``[tool.pytest.ini_options]`` section 
+to your ``pyproject.toml`` file; for example
 
-    [tool:pytest]
-    addopts = -v
+.. code-block:: toml
+
+    [tool.pytest.ini_options]
+    addopts = "-v"
 
 will ensure that tests are always run in verbose mode.
 
@@ -64,12 +66,14 @@ Running doctests
 It is possible to use pytest to run doctests (blocks of code in docstrings or in
 the .rst docs) as part of the test suite. If you want to do this, we recommend
 using the `pytest-doctestplus <https://github.com/astropy/pytest-doctestplus>`
-plugin. You can define the following options in your ``setup.cfg`` file to make
-sure that this option is always enabled::
+plugin. You can define the following options in your ``pyproject.toml`` file to make
+sure that this option is always enabled
 
-    [tool:pytest]
-    doctest_plus = enabled
-    addopts = --doctest-rst
+.. code-block:: toml
+
+    [tool.pytest.ini_options]
+    doctest_plus = "enabled"
+    addopts = "--doctest-rst"
 
 Declaring dependencies for tests
 --------------------------------
@@ -77,17 +81,20 @@ Declaring dependencies for tests
 To make it easier for contributors to get set up with the dependencies
 required to run the tests, as well as to make it easier to
 configure automated builds (with e.g. :ref:`tox <tox>`), you should
-define an ``[options.extras_require]`` section in
-your ``setup.cfg`` file named ``test`` which lists the dependencies
+define an ``[project.optional-dependencies]`` section in
+your ``pyproject.toml`` file named ``test`` which lists the dependencies
 required to run the tests (not including dependencies already
-mentioned in ``install_requires``)::
+mentioned in ``dependencies``)::
 
-    [options.extras_require]
-    test =
-        pytest
-        pytest-doctestplus
+    [project.optional-dependencies]
+    test = [
+        "pytest",
+        "pytest-doctestplus",
+    ]
 
-This will then allow contributors to type::
+This will then allow contributors to type
+
+.. code-block:: shell
 
     pip install -e .[test]
 
