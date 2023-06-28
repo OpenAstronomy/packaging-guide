@@ -147,15 +147,15 @@ recommend starting off with:
     version: 2
 
     build:
-    image: latest
+      image: latest
 
     python:
-    version: 3.7
-    install:
-        - method: pip
-        path: .
-        extra_requirements:
-            - docs
+      version: 3.7
+      install:
+          - method: pip
+          path: .
+          extra_requirements:
+              - docs
 
 Once you have added this to your repository, you can then import your
 package into ReadTheDocs as described in `this guide
