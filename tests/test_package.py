@@ -1,3 +1,5 @@
+import io
+import sys
 import subprocess
 
 import pytest
@@ -15,7 +17,6 @@ def installed_cookiejar(cookiejar_examples):
     subprocess.call(["pip", "uninstall", "-y", "packagename"])
 
 
-
 def test_examples_present(installed_cookiejar):
     cj = installed_cookiejar
 
@@ -31,26 +32,39 @@ def test_examples_present(installed_cookiejar):
         assert primes == cprimes
 
 
-def test_dev_version_number(bake_examples_compiled_dev_version):
+def test_dev_version_number(virtualenv, bake_examples_compiled_dev_version):
     cj = bake_examples_compiled_dev_version
     path = str(cj.project_path)
 
     subprocess.call(["git", "init", path])
-    subprocess.call(["git", "commit", "-m", "initial", "."])
-    subprocess.call(["pip", "install", "-e", path])
+    with open(cj.project_path / ".gitignore", "w") as fobj:
+        fobj.writelines([
+            "packagename/_compiler.c\n",
+            "packagename/_version.py\n",
+            "packagename/example_c.c\n",
+            "*.so\n",
+            "*.egg-info\n",
+            "__pycache__\n",
+        ])
+    subprocess.call(["git", "-C", path, "add", "."])
+    subprocess.call(["git", "-C", path, "commit", "-m", "initial"])
+    subprocess.call(["git", "-C", path, "tag", "v0.1"])
 
-    import packagename
+    # Create a new virtualenv with the package installed
+    virtualenv.run(f"pip install setuptools_scm")
+    virtualenv.run(f"pip install -e {path}")
 
-    # assert it hasn't fallen back to missing
-    assert packagename.__version__ != "0.0.0"
     # assert it's actually correct
-    assert packagename.__version__ == "0.1.dev0"
+    dynamic_version = virtualenv.run('python -c "import packagename; print(packagename.__version__)"', capture=True).strip()
+    assert dynamic_version == "0.1"
 
-    with open(cj.project_path / "test", "w") as fobj:
+    with open(cj.project_path / "README.md", "a") as fobj:
+        fobj.seek(0, io.SEEK_END)
         fobj.write("add untracked file to repo")
 
-    # assert it's actually correct
-    assert packagename.__version__ != "0.1.dev0"
-    breakpoint()
+    subprocess.call(["git", "-C", path, "add", "."])
+    subprocess.call(["git", "-C", path, "commit", "-m", "second"])
 
-    subprocess.call(["pip", "uninstall", "-y", "packagename"])
+    # assert it's actually correct
+    dynamic_version = virtualenv.run('python -c "import packagename; print(packagename.__version__)"', capture=True).strip()
+    assert dynamic_version.startswith("0.2.dev1")
