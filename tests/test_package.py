@@ -51,5 +51,6 @@ def test_dev_version_number(bake_examples_compiled_dev_version):
 
     # assert it's actually correct
     assert packagename.__version__ != "0.1.dev0"
+    breakpoint()
 
     subprocess.call(["pip", "uninstall", "-y", "packagename"])

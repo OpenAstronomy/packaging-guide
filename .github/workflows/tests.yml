@@ -5,8 +5,6 @@ on:
     branches:
       - main
   pull_request:
-    branches:
-      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -17,15 +15,12 @@ jobs:
     uses: OpenAstronomy/github-actions-workflows/.github/workflows/tox.yml@v1
     with:
       envs: |
-        - linux: test-oldestdeps-xdist
+        - windows: test
           python-version: 3.8
-        - linux: test-xdist
-          python-version: 3.8
-        - linux: test-xdist
+        - macos: test
           python-version: 3.9
-        - linux: test-xdist
+        - linux: test
           python-version: 3.10
-        - linux: test-xdist
+        - linux: test
           python-version: 3.11
-        - linux: test-cov-xdist
-          coverage: codecov
+        - linux: build-docs
