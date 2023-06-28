@@ -2,7 +2,7 @@
 {% if cookiecutter.enable_dynamic_dev_versions == 'y' %}
 from .version import version as __version__
 {% else %}
-from ._version import version as __version__
+from .version import version as __version__
 {% endif %}
 
 {%- if cookiecutter.include_example_code == 'y' %}

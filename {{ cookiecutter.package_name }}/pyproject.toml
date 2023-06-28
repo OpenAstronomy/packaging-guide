@@ -12,14 +12,16 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = {{ cookiecutter.module_name }}
-description = {{ cookiecutter.short_description }}
+name = "{{ cookiecutter.module_name }}"
+description = "{{ cookiecutter.short_description }}"
 readme = "README.rst"
 requires-python = ">={{ cookiecutter.minimum_python_version }}"
 license = { file = "licenses/LICENSE.rst", content-type = "text/plain" }
+{% if cookiecutter.author_name and cookiecutter.author_email %}
 authors = [
-  { name = {{ cookiecutter.author_name }}, email = {{ cookiecutter.author_email }} },
+  { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}" },
 ]
+{% endif %}
 dependencies = [
   {{ cookiecutter._install_requires }}
 ]
@@ -41,12 +43,14 @@ docs = [
 astropy_package_template_example = "{{ cookiecutter.module_name }}.example_mod:main"
 {% endif %}
 
+{% if cookiecutter.project_url %}
 [project.urls]
-repository = {{ cookiecutter.project_url }} 
+repository = "{{ cookiecutter.project_url }}"
+{% endif %}
 
 [tool.setuptools]
 zip-safe = false
-include-package-date = true
+include-package-data = true
 
 [tool.setuptools.packages.find]
 
