@@ -46,8 +46,9 @@ def test_dev_version_number(virtualenv, bake_examples_compiled_dev_version):
             "*.egg-info\n",
             "__pycache__\n",
         ])
-    subprocess.run(["git", "-C", path, "config", "author.name", "Test User"], check=True)
-    subprocess.run(["git", "-C", path, "config", "author.email", "test@openastronomy.org"], check=True)
+    subprocess.run(["git", "-C", path, "config", "author.name", "'Test User'"], check=True)
+    subprocess.run(["git", "-C", path, "config", "author.email", "'test@openastronomy.org'"], check=True)
+    subprocess.run(["git", "-C", path, "config", "-l"], check=True)
     subprocess.run(["git", "-C", path, "add", "."], check=True)
     subprocess.run(["git", "-C", path, "commit", "-m", "initial"], check=True)
     subprocess.run(["git", "-C", path, "tag", "v0.1"], check=True)
