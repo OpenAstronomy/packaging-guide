@@ -22,7 +22,7 @@ and any development installs.
 * It calculates the version number from the git history.
 * It uses the git repository to get a list of all files to include in the package.
 
-This section is focusing on the first one, the second is discussed in :ref:`manifest`.
+This section is focusing on the first one, the second is discussed in :ref:`data`.
 
 ``setuptools_scm`` works by calling ``$ git describe`` which returns information
 about the current version of the repository, based on distance away from the

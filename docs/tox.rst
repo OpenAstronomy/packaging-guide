@@ -40,7 +40,7 @@ the ``commands =`` option to run pytest. The ``{posargs}`` is a tox
 <https://tox.readthedocs.io/en/latest/config.html#substitutions>`__ which
 passes extra arguments through to ``pytest``. 
 The ``extras = test`` line tells tox to install the ``optional-dependencies`` section
- listed in ``pyproject.toml`` for running your test suite; this should include ``pytest``.
+listed in ``pyproject.toml`` for running your test suite; this should include ``pytest``.
 
 To run your tests with tox run:
 
