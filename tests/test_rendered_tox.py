@@ -17,4 +17,4 @@ def test_tox_runs(cookiejar_examples, tox_project):
 
     project = tox_project({}, prj_path=cj.project_path)
     res = project.run("--skip-missing-interpreters", "true")
-    assert res.success
+    assert res.success, print(res)
