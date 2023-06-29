@@ -20,4 +20,4 @@ jobs:
         - macos: py39-test
         - linux: py310-test
         - linux: py311-test
-        - linux: build-docs
+        - linux: build_docs
