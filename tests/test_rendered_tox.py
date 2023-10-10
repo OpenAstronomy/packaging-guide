@@ -11,10 +11,14 @@ def test_tox_runs(cookiejar_examples, tox_project):
     cj = cookiejar_examples
     # We have to git init so that setuptools_scm and it's generated manifest
     path = str(cj.project_path)
-    subprocess.call(["git", "init", path])
-    subprocess.call(["git", "-C", path, "add", "."])
-    subprocess.call(["git", "-C", path, "commit", "-m", "initial"])
+    print(f"path : {path}")
+    sp1 = subprocess.call(["git", "init", path])
+    sp2 = subprocess.call(["git", "-C", path, "add", "."])
+    sp3 = subprocess.call(["git", "-C", path, "commit", "-m", "initial"])
 
     project = tox_project({}, prj_path=cj.project_path)
-    res = project.run("--skip-missing-interpreters", "true")
-    assert res.success, print(res)
+    # workdir not inherited project path, defaulting to local tox
+    # therefore workdir needs to be specified on run call
+    res = project.run("--skip-missing-interpreters", "true",
+                      "--workdir", path)
+    res.assert_success()
