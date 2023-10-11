@@ -14,7 +14,6 @@ jobs:
   test:
     uses: OpenAstronomy/github-actions-workflows/.github/workflows/tox.yml@v1
     with:
-      toxdeps: "virtualenv"
       envs: |
         - windows: py38-test
         - macos: py39-test
