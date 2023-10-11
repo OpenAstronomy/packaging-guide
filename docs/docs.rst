@@ -148,9 +148,10 @@ recommend starting off with:
 
     build:
       image: latest
+      tools:
+        python: 3.9
 
     python:
-      version: 3.7
       install:
           - method: pip
           path: .

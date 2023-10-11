@@ -16,7 +16,7 @@ def test_tox_runs(cookiejar_examples, tox_project):
     sp2 = subprocess.call(["git", "-C", path, "add", "."])
     sp3 = subprocess.call(["git", "-C", path, "commit", "-m", "initial"])
 
-    project = tox_project({}, prj_path=cj.project_path)
+    project = tox_project({}, prj_path=path)
     # workdir not inherited project path, defaulting to local tox
     # therefore workdir needs to be specified on run call
     res = project.run("--skip-missing-interpreters", "true",
