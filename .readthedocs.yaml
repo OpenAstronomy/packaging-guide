@@ -7,6 +7,3 @@ build:
 
 conda:
   environment: docs/rtd_environment.yaml
-
-python:
-  system_packages: false
