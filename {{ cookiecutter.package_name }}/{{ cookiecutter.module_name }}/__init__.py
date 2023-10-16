@@ -1,6 +1,4 @@
-# Licensed under a 3-clause BSD style license - see LICENSE.rst
-
-from .version import __version__
+from .version import version as __version__
 
 {%- if cookiecutter.include_example_code == 'y' %}
 from .example_mod import do_primes

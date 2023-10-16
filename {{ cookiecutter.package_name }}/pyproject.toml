@@ -1,12 +1,27 @@
+[build-system]
+requires = [
+  "setuptools>=61.2",
+  "setuptools_scm[toml]>=6.2",
+  "wheel",
+{% if cookiecutter.use_compiled_extensions == 'y' %}
+  "extension-helpers",
+  "oldest-supported-numpy",
+  "cython"
+{% endif %}
+]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "{{ cookiecutter.module_name }}"
 description = "{{ cookiecutter.short_description }}"
 readme = "README.rst"
 requires-python = ">={{ cookiecutter.minimum_python_version }}"
 license = { file = "licenses/LICENSE.rst", content-type = "text/plain" }
+{% if cookiecutter.author_name and cookiecutter.author_email %}
 authors = [
   { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}" },
 ]
+{% endif %}
 dependencies = [
   {{ cookiecutter._install_requires }}
 ]
@@ -28,21 +43,10 @@ docs = [
 astropy_package_template_example = "{{ cookiecutter.module_name }}.example_mod:main"
 {% endif %}
 
+{% if cookiecutter.project_url %}
 [project.urls]
-repository = "{{ cookiecutter.project_url }}" 
-
-[build-system]
-requires = [
-  "setuptools>=61.2",
-  "setuptools_scm[toml]>=3.4",
-  "wheel",
-{% if cookiecutter.use_compiled_extensions == 'y' %}
-  "extension-helpers",
-  "oldest-supported-numpy",
-  "cython==0.29.14"
+repository = "{{ cookiecutter.project_url }}"
 {% endif %}
-]
-build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 zip-safe = false
@@ -51,7 +55,12 @@ include-package-data = true
 [tool.setuptools.packages.find]
 
 [tool.setuptools_scm]
+{% if cookiecutter.enable_dynamic_dev_versions == 'y' %}
+write_to = "{{ cookiecutter.module_name }}/_version.py"
+{% else %}
 write_to = "{{ cookiecutter.module_name }}/version.py"
+{% endif %}
+
 
 [tool.pytest.ini_options]
 testpaths = [

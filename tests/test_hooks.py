@@ -12,10 +12,10 @@ def test_examples_removed(cookiejar_no_examples):
         "example_c.pyx",
         "example_subpkg/"
         "tests/"
-        ]
+    ]
 
     for afile in example_files:
-        assert not cj.project.join(ctx['package_name'], afile).exists()
+        assert not (cj.project_path / ctx['package_name'] / afile).exists()
 
 
 def test_examples_present(cookiejar_examples):
@@ -31,13 +31,13 @@ def test_examples_present(cookiejar_examples):
         "tests/",
         "tests/test_example.py",
         "tests/__init__.py",
-        ]
+    ]
 
     if ctx['use_compiled_extensions'] == 'y':
         example_files.append("example_c.pyx")
 
     for afile in example_files:
-        assert cj.project.join(ctx['package_name'], afile).exists()
+        assert (cj.project_path / ctx['package_name'] / afile).exists()
 
 
 @pytest.mark.parametrize("license, lfile", [
@@ -48,10 +48,10 @@ def test_examples_present(cookiejar_examples):
 def test_licence(license, lfile, cookies):
     cj = cookies.bake(extra_context={'license': license})
 
-    assert cj.project.join("licenses", "TEMPLATE_LICENSE.rst").exists()
-    assert cj.project.join("licenses", "LICENSE.rst").exists()
+    assert (cj.project_path / "licenses" / "TEMPLATE_LICENSE.rst").exists()
+    assert (cj.project_path / "licenses" / "LICENSE.rst").exists()
 
-    with open(cj.project.join("licenses", "LICENSE.rst")) as fobj:
+    with open(cj.project_path / "licenses" / "LICENSE.rst") as fobj:
         license_content = fobj.readlines()
 
     base_path = Path(".") / "{{ cookiecutter.package_name }}"
@@ -66,10 +66,9 @@ def test_licence(license, lfile, cookies):
 def test_other_licence(cookies):
     cj = cookies.bake(extra_context={'license': 'Other'})
 
-    assert cj.project.join("licenses", "TEMPLATE_LICENSE.rst").exists()
+    assert (cj.project_path / "licenses" / "TEMPLATE_LICENSE.rst").exists()
 
-    assert not cj.project.join("licenses", "LICENSE.rst").exists()
-
+    assert not (cj.project_path / "licenses" / "LICENSE.rst").exists()
 
     license_files = {"BSD 3-Clause": 'BSD3.rst',
                      "GNU GPL v3+": 'GPLv3.rst',
@@ -77,5 +76,4 @@ def test_other_licence(cookies):
                      "BSD 2-Clause": 'BSD2.rst'}
 
     for name, lfile in license_files.items():
-        assert cj.project.join("licenses", lfile).exists()
-
+        assert (cj.project_path / "licenses" / lfile).exists()
