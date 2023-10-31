@@ -7,6 +7,8 @@ This is the documentation for {{ cookiecutter.package_name }}.
    :maxdepth: 2
    :caption: Contents:
 
+
+
 Indices and tables
 ==================
 

@@ -12,8 +12,10 @@ LICENSE_FILES = {"BSD 3-Clause": 'BSD3.rst',
 def remove_file(filepath):
     os.remove(os.path.join(PROJECT_DIRECTORY, filepath))
 
+
 def remove_dir(filepath):
     shutil.rmtree(os.path.join(PROJECT_DIRECTORY, filepath))
+
 
 def copy_file(original_filepath, new_filepath):
     shutil.copyfile(os.path.join(PROJECT_DIRECTORY, original_filepath),
@@ -35,6 +37,7 @@ def process_version(enable_dynamic_dev_versions):
         remove_file(os.path.join(PROJECT_DIRECTORY, '{{ cookiecutter.module_name }}', 'version.py'))
 
 if __name__ == '__main__':
+
     process_license('{{ cookiecutter.license }}')
     process_version('{{ cookiecutter.enable_dynamic_dev_versions }}')
     include_examples = '{{ cookiecutter.include_example_code }}' == 'y'
