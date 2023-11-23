@@ -1,0 +1,28 @@
+{
+  "template": "https://github.com/CyclingNinja/packaging-guide",
+  "commit": "8fbd8e7825ca747dece08c592965570403e25fec",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "package_name": "test_sub_package",
+      "module_name": "sub_package",
+      "short_description": "a package",
+      "author_name": "sam bennett",
+      "author_email": "sam.bennett@aperiosoftware.com",
+      "license": "BSD 3-Clause",
+      "project_url": "a_project.com",
+      "minimum_python_version": "3.8",
+      "use_compiled_extensions": "n",
+      "include_example_code": "y",
+      "_sphinx_theme": "alabaster",
+      "_parent_project": "",
+      "_install_requires": "",
+      "_copy_without_render": [
+        "docs/_templates",
+        "docs/_static"
+      ],
+      "_template": "https://github.com/CyclingNinja/packaging-guide"
+    }
+  },
+  "directory": null
+}
