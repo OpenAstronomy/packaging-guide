@@ -1,6 +1,6 @@
 [build-system]
 requires = [
-  "setuptools>=61.2",
+  "setuptools>=64.3",
   "setuptools_scm[toml]>=6.2",
   "wheel",
 {% if cookiecutter.use_compiled_extensions == 'y' %}
