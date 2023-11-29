@@ -22,7 +22,21 @@ Using the Template
 
 With this guide is a `cookiecutter <https://cookiecutter.readthedocs.io/>`__ template which allows you to get started quickly with a package as described in this guide.
 
-To get started run:
+To create a new package based on the template run:
+
+.. code-block:: console
+   $ pip install cookiecutter cruft
+   $ cruft create https://github.com/OpenAstronomy/packaging-guide
+
+and go through the steps offered in the cli naming your package and filling in your details.
+Cruft is built on cookiecutter, and enables the updating of the template from the source.
+This takes the form of pull requests to the repository that the new package is pushed to.
+If a package already has a cookiecutter template, it can be linked to the parent repository using ``cruft link url-to-template``.
+
+To manually check whether the current environment matches with the template then ``cruft check`` will tell you what the current status is.
+``cruft update`` will manually trigger an updating of the package to the template.
+
+If you would like to stick to simply the cookiecutter approach, the template still supports that functionality thusly:
 
 .. code-block:: console
 
