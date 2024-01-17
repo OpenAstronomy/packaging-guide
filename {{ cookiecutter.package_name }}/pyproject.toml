@@ -38,15 +38,15 @@ docs = [
     "tomli; python_version <\"3.11\"",
 ]
 
-{% if cookiecutter.include_example_code == 'y' %}
+{%0 if cookiecutter.include_example_code == 'y' %}
 [project.scripts]
 astropy_package_template_example = "{{ cookiecutter.module_name }}.example_mod:main"
-{% endif %}
+{% endif -%}
 
-{% if cookiecutter.project_url %}
+{%- if cookiecutter.project_url %}
 [project.urls]
 repository = "{{ cookiecutter.project_url }}"
-{% endif %}
+{% endif -%}
 
 [tool.setuptools]
 zip-safe = false
@@ -55,11 +55,11 @@ include-package-data = true
 [tool.setuptools.packages.find]
 
 [tool.setuptools_scm]
-{% if cookiecutter.enable_dynamic_dev_versions == 'y' %}
+{%- if cookiecutter.enable_dynamic_dev_versions == 'y' %}
 write_to = "{{ cookiecutter.module_name }}/_version.py"
 {% else %}
 write_to = "{{ cookiecutter.module_name }}/version.py"
-{% endif %}
+{% endif -%}
 
 
 [tool.pytest.ini_options]

@@ -5,9 +5,9 @@ prune build
 prune docs/_build
 prune docs/api
 global-exclude *.pyc *.o
-{% if cookiecutter.enable_dynamic_dev_versions == 'y' %}
+{%- if cookiecutter.enable_dynamic_dev_versions == 'y' %}
 
 # This subpackage is only used in development checkouts
 # and should not be included in built tarballs
 prune {{ cookiecutter.module_name }}/_dev
-{% endif %}
+{% endif -%}

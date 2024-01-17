@@ -25,11 +25,11 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-{% if cookiecutter.enable_dynamic_dev_versions == 'y' %}
+{%- if cookiecutter.enable_dynamic_dev_versions == 'y' %}
 {{ cookiecutter.module_name }}/_version.py
 {% else %}
 {{ cookiecutter.module_name }}/version.py
-{% endif %}
+{% endif -%}
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
