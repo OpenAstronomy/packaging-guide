@@ -38,7 +38,7 @@ docs = [
     "tomli; python_version <\"3.11\"",
 ]
 
-{%0 if cookiecutter.include_example_code == 'y' %}
+{%- if cookiecutter.include_example_code == 'y' %}
 [project.scripts]
 astropy_package_template_example = "{{ cookiecutter.module_name }}.example_mod:main"
 {% endif -%}

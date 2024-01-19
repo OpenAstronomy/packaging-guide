@@ -34,9 +34,16 @@ def process_version(enable_dynamic_dev_versions):
         remove_dir(os.path.join(PROJECT_DIRECTORY, '{{ cookiecutter.module_name }}', '_dev'))
         remove_file(os.path.join(PROJECT_DIRECTORY, '{{ cookiecutter.module_name }}', 'version.py'))
 
+
+def process_github_workflow(include_cruft_update_github_workflow):
+    if include_cruft_update_github_workflow != "y":
+        remove_dir(os.path.join(PROJECT_DIRECTORY,  '{{ cookiecutter.module_name }}', '.github'))
+
+
 if __name__ == '__main__':
     process_license('{{ cookiecutter.license }}')
     process_version('{{ cookiecutter.enable_dynamic_dev_versions }}')
+    process_github_workflow('{{ cookiecutter.include_cruft_update_github_workflow }}')
     include_examples = '{{ cookiecutter.include_example_code }}' == 'y'
     use_compiled = '{{ cookiecutter.use_compiled_extensions }}' == 'y'
 
