@@ -4,6 +4,7 @@
     "short_description": "",
     "author_name": "",
     "author_email": "",
+    "project_url": "",
     "license": [
         "BSD 3-Clause",
         "GNU GPL v3+",
@@ -11,7 +12,6 @@
         "BSD 2-Clause",
         "Other"
     ],
-    "project_url": "",
     "minimum_python_version": [
         "3.9",
         "3.10",

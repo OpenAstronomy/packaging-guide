@@ -2,10 +2,8 @@
 from setuptools import setup
 {%- if cookiecutter.use_compiled_extensions == 'y' %}
 from extension_helpers import get_extensions
-{% endif -%}
+{%- endif %}
 
-{%- if cookiecutter.use_compiled_extensions == 'y' %}
-setup(
+setup( {%- if cookiecutter.use_compiled_extensions == 'y' -%}
     ext_modules=get_extensions()
-)
-{% endif -%}
+{%- endif -%} )
