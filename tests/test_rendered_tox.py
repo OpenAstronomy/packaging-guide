@@ -11,6 +11,8 @@ def test_tox_runs(cookiejar_examples, tox_project):
     cj = cookiejar_examples
     # We have to git init so that setuptools_scm and it's generated manifest
     path = str(cj.project_path)
+    print("==============================")
+    print("PATH IS : {}".format(path))
 
     subprocess.call(["git", "config", "--global", "init.defaultBranch", "main"])
     subprocess.call(["git", "init", path])
