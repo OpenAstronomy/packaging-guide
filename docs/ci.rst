@@ -43,8 +43,10 @@ No Compiled Extensions
 ######################
 
 Python packages should be published on `pypi <https://pypi.org/>`__, in which case GitHub actions can facilitate this.
-The ``on`` command will need to be more selective in this case.
-Publishing to pypi would only be desirable on merges to master, here the trigger for the flow will be on push to the main branch specifically.
+When we are building and publishing releases to PyPI we only want this to happen on a `git tag <https://git-scm.com/book/en/v2/Git-Basics-Tagging>`__, as opposed to on every commit.
+However, if we only run the build job on tags, we never have a way to test that the job works before we tag a release of our package.
+The OpenAstronomy publish workflows will (by default) only publish to PyPI on a tag which starts with `v` (`see here <https://github-actions-workflows.openastronomy.org/en/stable/publish.html#upload-to-pypi>`__).
+Therefore, we recommend running the workflow on both push to your default branch (`main`), on tags and on manual runs.
 .. code-block:: yml
     on:
       push:
