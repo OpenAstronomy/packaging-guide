@@ -25,6 +25,7 @@ With this guide is a `cookiecutter <https://cookiecutter.readthedocs.io/>`__ tem
 To create a new package based on the template run:
 
 .. code-block:: console
+
    $ pip install cookiecutter cruft
    $ cruft create https://github.com/OpenAstronomy/packaging-guide
 
