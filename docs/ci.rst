@@ -20,7 +20,10 @@ Testing
 In order GitHub Actions to run your workflow, it requires; an event to trigger the workflow, one or more jobs to complete and all steps must either run a script or trigger an action.
 Looking at this in context:
 
-.. code-block:: yml
+.. code-block:: yaml
+
+    name: Run template tests
+
     on:
       push:
       pull_request:
@@ -31,7 +34,7 @@ Looking at this in context:
         uses: OpenAstronomy/github-actions-workflows/.github/workflows/tox.yml@v1
         with:
           envs: |
-            - linux: py311
+            - linux: py311-test
 
 In this case the workflow is triggered on a push to a branch, a PR, or a manual trigger of the workflow (`workflow_dispatch`).
 The second line of the job defines the name of the job, in this case ``test``, and uses Open Astronomy's pre-defined workflow to run the tests with tox.
@@ -49,7 +52,9 @@ When we are building and publishing releases to PyPI we only want this to happen
 However, if we only run the build job on tags, we never have a way to test that the job works before we tag a release of our package.
 The OpenAstronomy publish workflows will (by default) only publish to PyPI on a tag which starts with `v` (`see here <https://github-actions-workflows.openastronomy.org/en/stable/publish.html#upload-to-pypi>`__).
 Therefore, we recommend running the workflow on both push to your default branch (`main`), on tags and on manual runs.
-.. code-block:: yml
+
+.. code-block:: yaml
+
     on:
       push:
         branches:
@@ -82,7 +87,8 @@ In this case, in addition to the running the tests, the ``with`` block also incl
 'Targets' are the distributions which the binary will be built for, so in this case it would be linux and MacOS 64 bit.
 The ``publish`` method from the Open Astronomy GitHub actions packages the module with the dependencies for the specific targets listed
 
-.. code-block:: yml
+.. code-block:: yaml
+
     jobs:
       publish:
         uses: OpenAstronomy/github-actions-workflows/.github/workflows/publish.yml@v1
@@ -104,7 +110,8 @@ Putting it all together
 
 Combining the above steps reveals a total workflow, build, testing and publishing
 
-.. code-block:: yml
+.. code-block:: yaml
+
     name: package_deployment
 
     on:

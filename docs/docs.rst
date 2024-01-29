@@ -119,10 +119,11 @@ mentioned in ``dependencies``):
 .. code-block:: toml
 
     [project.optional-dependencies]
-    docs =
-        sphinx
-        sphinx-automodapi
-        numpydoc
+    docs = [
+        "sphinx",
+        "sphinx-automodapi",
+        "numpydoc",
+    ]
 
 This will then allow contributors to type::
 
