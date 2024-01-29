@@ -42,7 +42,8 @@ Publishing to PyPI
 No Compiled Extensions
 ######################
 
-Python packages should be published on `pypi <https://pypi.org/>`__, in which case GitHub actions can facilitate this.
+Python packages should be published on `PyPI <https://pypi.org/>`__, which can be automated on CI.
+This can improve security (as fewer people need access to publish on PyPI) and make it less effort for maintainers to publish a release.
 When we are building and publishing releases to PyPI we only want this to happen on a `git tag <https://git-scm.com/book/en/v2/Git-Basics-Tagging>`__, as opposed to on every commit.
 However, if we only run the build job on tags, we never have a way to test that the job works before we tag a release of our package.
 The OpenAstronomy publish workflows will (by default) only publish to PyPI on a tag which starts with `v` (`see here <https://github-actions-workflows.openastronomy.org/en/stable/publish.html#upload-to-pypi>`__).
