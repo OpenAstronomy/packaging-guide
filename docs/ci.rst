@@ -45,26 +45,28 @@ No Compiled Extensions
 Python packages should be published on `pypi <https://pypi.org/>`__, in which case GitHub actions can facilitate this.
 The ``on`` command will need to be more selective in this case.
 Publishing to pypi would only be desirable on merges to master, here the trigger for the flow will be on push to the main branch specifically.
-We also need to pass a pypi key, associated with your pypi account.
-`Instructions on creating up your key here <https://pypi.org/help/#apitoken>`__.
-The secret can be stored at organisation or repo level in GitHub settings, and the secret defined earlier in the workflow.
-
-
 .. code-block:: yml
     on:
       push:
+        branches:
+          - 'main'
       tag:
+      workflow_dispatch:
 
    jobs:
      publish:
        uses: OpenAstronomy/github-actions-workflows/.github/workflows/publish_pure_python.yml@v1
        with:
          test_extras: test
-         test_command: pytest --pyargs test_package
+         test_command: pytest --pyargs <package name>
      secrets:
        pypi_token: ${{ secrets.pypi_token }}
 
-Replace references to test_package with the package to be published.
+Replace references to `<package_name>` with the package to be published.
+
+To publish to PyPI we need a PyPI token, associated with your PyPI account.
+`Instructions on creating up your key here <https://pypi.org/help/#apitoken>`__.
+The secret can be stored at `organisation <https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-an-organization>`__ or `repo level <https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository>`__ in GitHub settings.
 
 With Compiled Extensions
 ########################
