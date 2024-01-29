@@ -35,7 +35,6 @@ Looking at this in context:
 In this case the workflow is triggered on push to branch, a PR and a manual trigger of the workflow on GitHub actions.
 The second line of the job defines the name, in this case ``test`` and uses instructs the virtual machine to use Open Astronomy's pre-defined test with tox.
 The ``envs`` list, defines which environments the test set is going to be ran on.
-Therefore the package will be built using tox, will then trigger the testing in the selected environment/s.
 
 Publishing to PyPI
 ------------------
