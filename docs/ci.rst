@@ -5,7 +5,7 @@ Continuous Integration
 
 Continuous Integration (CI) is the method by which software is tested and built before deployment to users.
 A set of 'jobs' are defined in a ``.yml`` file, roughly taking the flow build - test - deploy.
-Each run is built from a clean environment that ideally supplies the basic requirements to perform the task.
+Each run is built from a clean environment.
 Workflows can be set to begin on triggers such as a ``git push`` or the completion of another workflow.
 
 There are an array solutions for running CI, Open Astronomy recommends `GitHub Actions <https://docs.github.com/en/actions/>`__.
