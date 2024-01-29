@@ -16,7 +16,7 @@ Examples
 ++++++++
 Testing
 -------
-In order GitHub Actions to run your workflow, it requires; an event to trigger the workflow, one or more jobs to complete on virtual machines and all steps must either run a script or trigger an action.
+In order GitHub Actions to run your workflow, it requires; an event to trigger the workflow, one or more jobs to complete and all steps must either run a script or trigger an action.
 Looking at this in context:
 
 .. code-block:: yml
