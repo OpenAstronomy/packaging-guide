@@ -9,7 +9,7 @@ Each run is built from a clean environment.
 Workflows can be set to begin on triggers such as a ``git push`` or the completion of another workflow.
 
 There are an array solutions for running CI, Open Astronomy recommends `GitHub Actions <https://docs.github.com/en/actions/>`__.
-GitHub Actions workflows are defined in ``.github/workflows/`` at the root of the repo.
+GitHub Actions workflows are defined in the ``.github/workflows/`` folder at the root of the repo.
 Open Astronomy supplies a `set of tooling <https://github.com/OpenAstronomy/github-actions-workflow>`__ to make configuring GitHub Actions easier.
 
 Examples
