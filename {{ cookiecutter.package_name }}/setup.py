@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 from setuptools import setup
-{% if cookiecutter.use_compiled_extensions == 'y' %}
+{%- if cookiecutter.use_compiled_extensions == 'y' %}
 from extension_helpers import get_extensions
-{% endif %}
+{%- endif %}
 
-setup(
-{% if cookiecutter.use_compiled_extensions == 'y' %}
+setup( {%- if cookiecutter.use_compiled_extensions == 'y' -%}
     ext_modules=get_extensions()
-{% endif %}
-)
+{%- endif -%} )

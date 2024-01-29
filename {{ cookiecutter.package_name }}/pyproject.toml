@@ -1,13 +1,13 @@
 [build-system]
 requires = [
-  "setuptools>=61.2",
+  "setuptools>=62.1",
   "setuptools_scm[toml]>=6.2",
   "wheel",
-{% if cookiecutter.use_compiled_extensions == 'y' %}
+{%- if cookiecutter.use_compiled_extensions == 'y' %}
   "extension-helpers",
   "oldest-supported-numpy",
   "cython"
-{% endif %}
+{% endif -%}
 ]
 build-backend = "setuptools.build_meta"
 
@@ -17,16 +17,21 @@ description = "{{ cookiecutter.short_description }}"
 readme = "README.rst"
 requires-python = ">={{ cookiecutter.minimum_python_version }}"
 license = { file = "licenses/LICENSE.rst", content-type = "text/plain" }
-{% if cookiecutter.author_name and cookiecutter.author_email %}
+{%- if cookiecutter.author_name and cookiecutter.author_email %}
 authors = [
   { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}" },
 ]
-{% endif %}
+{%- endif %}
 dependencies = [
-  {{ cookiecutter._install_requires }}
+  {{- cookiecutter._install_requires -}}
 ]
 dynamic = ["version"]
 
+{% if cookiecutter.include_example_code == 'y' -%}
+[project.scripts]
+open_astronomy_package_template_example = "{{ cookiecutter.module_name }}.example_mod:main"
+
+{% endif -%}
 [project.optional-dependencies]
 test = [
     "pytest",
@@ -38,15 +43,10 @@ docs = [
     "tomli; python_version <\"3.11\"",
 ]
 
-{% if cookiecutter.include_example_code == 'y' %}
-[project.scripts]
-astropy_package_template_example = "{{ cookiecutter.module_name }}.example_mod:main"
-{% endif %}
-
-{% if cookiecutter.project_url %}
+{% if cookiecutter.project_url -%}
 [project.urls]
 repository = "{{ cookiecutter.project_url }}"
-{% endif %}
+{%- endif %}
 
 [tool.setuptools]
 zip-safe = false
@@ -55,12 +55,11 @@ include-package-data = true
 [tool.setuptools.packages.find]
 
 [tool.setuptools_scm]
-{% if cookiecutter.enable_dynamic_dev_versions == 'y' %}
+{% if cookiecutter.enable_dynamic_dev_versions == 'y' -%}
 write_to = "{{ cookiecutter.module_name }}/_version.py"
-{% else %}
+{%- else -%}
 write_to = "{{ cookiecutter.module_name }}/version.py"
-{% endif %}
-
+{%- endif %}
 
 [tool.pytest.ini_options]
 testpaths = [
