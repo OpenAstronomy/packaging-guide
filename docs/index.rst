@@ -45,7 +45,7 @@ If you would like to stick to simply the cookiecutter approach, the template sti
    $ cookiecutter gh:OpenAstronomy/packaging-guide -o ./output_directory
 
 This will create a new directory in your current directory named the same as the value of "packagename" you supplied.
-Change into this directory and run ``git init`` to make it into a git repository.
+Change into this directory and run ``git init`` to make it into a git repository, and make an initial commit.
 This is required in order to have software versioning working for your package.
 
 The goal of the template is to quickly get you setup with the files described in the guide.

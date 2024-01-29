@@ -120,9 +120,9 @@ mentioned in ``dependencies``):
 
     [project.optional-dependencies]
     docs = [
-        sphinx
-        sphinx-automodapi
-        numpydoc
+        "sphinx",
+        "sphinx-automodapi",
+        "numpydoc",
     ]
 
 This will then allow contributors to type::
