@@ -1,0 +1,8 @@
+exclude: "\\.asdf$"
+repos:
+  # This should be before any formatting hooks
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.1.15"
+    hooks:
+      - id: ruff
+        args: ["--fix"]
