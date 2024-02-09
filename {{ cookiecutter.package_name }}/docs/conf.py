@@ -67,9 +67,9 @@ html_theme = "{{ cookiecutter._sphinx_theme }}"
 # so a file named "default.css" will overwrite the builtin "default.css".
 # html_static_path = ["_static"]
 
-# By default, when rendering docstrings for classes, sphinx.ext.autodoc will 
-# make docs with the class-level docstring and the class-method docstrings, 
-# but not the __init__ docstring, which often contains the parameters to 
+# By default, when rendering docstrings for classes, sphinx.ext.autodoc will
+# make docs with the class-level docstring and the class-method docstrings,
+# but not the __init__ docstring, which often contains the parameters to
 # class constructors across the scientific Python ecosystem. The option below
 # will append the __init__ docstring to the class-level docstring when rendering
 # the docs. For more options, see:

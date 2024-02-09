@@ -50,7 +50,7 @@ Defining default pytest options
 
 If you regularly need to run tests with the same command-line flags for your
 package, or if you want to set options that are required for certain pytest
-plugins, you can control these by adding a ``[tool.pytest.ini_options]`` section 
+plugins, you can control these by adding a ``[tool.pytest.ini_options]`` section
 to your ``pyproject.toml`` file; for example
 
 .. code-block:: toml
