@@ -58,9 +58,9 @@ The source distribution is a tarball of all the files needed by your package,
 which includes everything in your ``my_package`` directory as well as everything
 specified in your :ref:`manifest` file.
 
-As we have setup a package with a :ref:`pyproject` file, we recommend you use the 
-`build <https://pypa-build.readthedocs.io/en/latest/>`__ package to build your 
-source  distribution in the isolated environment specified in :ref:`pyproject`. 
+As we have setup a package with a :ref:`pyproject` file, we recommend you use the
+`build <https://pypa-build.readthedocs.io/en/latest/>`__ package to build your
+source  distribution in the isolated environment specified in :ref:`pyproject`.
 You can do this with:
 
 .. code-block:: console
@@ -68,7 +68,7 @@ You can do this with:
    $ pip install build
    $ python -m build --sdist --outdir dist .
 
-This is equivalent to running the legacy ``python setup.py sdist`` but ensures 
+This is equivalent to running the legacy ``python setup.py sdist`` but ensures
 that the state of your local environment does not affect the generated package.
 
 Publishing to PyPI

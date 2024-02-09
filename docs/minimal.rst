@@ -91,8 +91,8 @@ declared in :ref:`pyproject` or set by the `setuptools_scm
 ``pyproject.toml``
 ------------------
 
-The ``pyproject.toml`` file is where we will define the metadata about the package. 
-At a minimum, this file should contain the ``[project]`` table (defined by 
+The ``pyproject.toml`` file is where we will define the metadata about the package.
+At a minimum, this file should contain the ``[project]`` table (defined by
 `PEP621 <https://peps.python.org/pep-0621/>`_) and the ``[build-system]`` table
 (defined by `PEP518 <https://peps.python.org/pep-0518/>`__).
 
@@ -124,10 +124,10 @@ the same as the module name, so in this case we've set the package name to
 the case where the package name has a hyphen and the module name has an underscore,
 we strongly recommend making the package and the module name the same to avoid confusion.
 
-Note that the version of the package is **not** explicitly defined in the file above, 
-(rather, defined as ``dynamic``), because we are using the 
-`setuptools_scm <https://pypi.org/project/setuptools-scm/>`_ package to automatically 
-retrieve the latest version from Git tags. However, if you choose to not use that 
+Note that the version of the package is **not** explicitly defined in the file above,
+(rather, defined as ``dynamic``), because we are using the
+`setuptools_scm <https://pypi.org/project/setuptools-scm/>`_ package to automatically
+retrieve the latest version from Git tags. However, if you choose to not use that
 package, you can explicitly set the version in the ``[project]`` section (and remove it
 from the ``dynamic`` list):
 
@@ -154,11 +154,11 @@ In the previous section we discussed the ``dependencies`` which can
 be used to declare run-time dependencies for the package, which are
 dependencies that are needed for the package to import and run correctly.
 However, your package may have dependencies that are needed to build the
-package in the first place. For example, the :ref:`setup_py` file 
-will only run correctly if `setuptools <https://setuptools.readthedocs.io>`_ 
+package in the first place. For example, the :ref:`setup_py` file
+will only run correctly if `setuptools <https://setuptools.readthedocs.io>`_
 is installed.
 
-The recommended way to specify build-time dependencies is to define the 
+The recommended way to specify build-time dependencies is to define the
 ``build-system`` table:
 
 .. code-block:: toml
@@ -198,7 +198,7 @@ producing application bundles with Python packages.
 The ``packages.find`` line can be left as-is - this will automatically determine the
 Python modules to install based on the presence of ``__init__.py`` files.
 
-A complete list of keywords in ``[tool.setuptools]`` can be found in the 
+A complete list of keywords in ``[tool.setuptools]`` can be found in the
 `setuptools documentation <https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html>`_.
 
 ``[tool.setuptools_scm]``
@@ -213,8 +213,8 @@ The ``[tool.setuptools_scm]`` table indicates that we want to use the `setuptool
 <https://pypi.org/project/setuptools-scm/>`_ package to set the version
 automatically based on git tags, which will produce version strings such as
 ``0.13`` for a stable release, or ``0.16.0.dev113+g3d1a8747`` for a developer
-version. The ``write_to`` option is not necessary; it will write the parsed version 
-to a ``version.py`` with a ``__version__`` variable that can be imported by the 
+version. The ``write_to`` option is not necessary; it will write the parsed version
+to a ``version.py`` with a ``__version__`` variable that can be imported by the
 package itself.
 
 .. _setup_py:
@@ -222,9 +222,9 @@ package itself.
 ``setup.py``
 ------------
 
-The ``setup.py`` file used to be where project metadata was defined, before the 
-advent of ``setup.cfg`` and then PEP621 and PEP517 (``pyproject.toml``). 
-It is no longer necessary to include a ``setup.py`` file in your project, 
+The ``setup.py`` file used to be where project metadata was defined, before the
+advent of ``setup.cfg`` and then PEP621 and PEP517 (``pyproject.toml``).
+It is no longer necessary to include a ``setup.py`` file in your project,
 unless you are building C extensions in your code.
 However, it can increase compatibility with old versions of pip and other packaging tools.
 
@@ -233,7 +233,7 @@ The minimal ``setup.py`` file is very simple:
 .. code-block:: python
 
     from setuptools import setup
-    
+
     setup()
 
 .. _manifest:
