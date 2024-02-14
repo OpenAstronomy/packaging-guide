@@ -1,0 +1,7 @@
+name: {{ cookiecutter.package_name }}
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - graphviz!=2.42.*,!=2.43.*
