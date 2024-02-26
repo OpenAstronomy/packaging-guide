@@ -73,11 +73,11 @@ def main(args=None):
     primes = do_primes(res.n, res.cy)
     post = time()
 
-    print('Found {0} prime numbers'.format(len(primes)))
-    print('Largest prime: {0}'.format(primes[-1]))
+    print(f'Found {len(primes)} prime numbers')
+    print(f'Largest prime: {primes[-1]}')
 
     if res.time:
-        print('Running time: {0} s'.format(post - pre))
+        print(f'Running time: {post - pre} s')
 
     if res.prnt:
-        print('Primes: {0}'.format(primes))
+        print(f'Primes: {primes}')

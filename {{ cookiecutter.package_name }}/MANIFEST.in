@@ -10,4 +10,4 @@ global-exclude *.pyc *.o
 # This subpackage is only used in development checkouts
 # and should not be included in built tarballs
 prune {{ cookiecutter.module_name }}/_dev
-{% endif -%}
+{%- endif %}
