@@ -36,7 +36,7 @@ open_astronomy_package_template_example = "{{ cookiecutter.module_name }}.exampl
 tests = [
     "pytest",
     "pytest-doctestplus",
-    "pytest-cov",
+    "pytest-cov"
 ]
 docs = [
     "sphinx",

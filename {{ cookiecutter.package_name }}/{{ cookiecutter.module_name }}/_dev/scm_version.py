@@ -9,4 +9,4 @@ try:
 except ImportError:
     raise
 except Exception as e:
-    raise ValueError(f'setuptools_scm can not determine version.') from e
+    raise ValueError('setuptools_scm can not determine version.') from e
