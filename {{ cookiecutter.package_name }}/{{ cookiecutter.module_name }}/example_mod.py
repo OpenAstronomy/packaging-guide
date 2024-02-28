@@ -54,8 +54,9 @@ def do_primes(n, usecython=False):
 
 def main(args=None):
 
-    from astropy.utils.compat import argparse
     from time import time
+
+    from astropy.utils.compat import argparse
 
     parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument('-c', '--use-cython', dest='cy', action='store_true',
