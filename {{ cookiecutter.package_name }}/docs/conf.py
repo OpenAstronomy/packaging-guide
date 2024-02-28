@@ -5,6 +5,8 @@
 # http://www.sphinx-doc.org/en/master/config
 
 
+import datetime
+
 # -- Project information -----------------------------------------------------
 
 # The full version, including alpha/beta/rc tags
@@ -12,7 +14,7 @@ from {{ cookiecutter.module_name }} import __version__
 release = __version__
 
 project = "{{ cookiecutter.package_name }}"
-copyright = "2022, {{ cookiecutter.author_name }}"
+copyright = str(datetime.datetime.now().year) + " , {{ cookiecutter.author_name }}"  # NOQA: A001
 author = "{{ cookiecutter.author_name }}"
 
 # -- General configuration ---------------------------------------------------
