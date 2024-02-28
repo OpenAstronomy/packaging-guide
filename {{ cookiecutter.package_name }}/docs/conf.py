@@ -14,7 +14,7 @@ from {{ cookiecutter.module_name }} import __version__
 release = __version__
 
 project = "{{ cookiecutter.package_name }}"
-copyright = str(datetime.datetime.now().year) + " , {{ cookiecutter.author_name }}"  # NOQA: A001
+copyright = str(datetime.datetime.now().year) + " , {{ cookiecutter.author_name }}"  # noqa: A001
 author = "{{ cookiecutter.author_name }}"
 
 # -- General configuration ---------------------------------------------------
