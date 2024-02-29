@@ -4,7 +4,6 @@ omit = [
  "{{ cookiecutter.module_name }}/*setup_package*",
  "{{ cookiecutter.module_name }}/extern/*",
  "{{ cookiecutter.module_name }}/version*",
- "*/{{ cookiecutter.module_name }}/_{{ cookiecutter._parent_project }}_init*",
  "*/{{ cookiecutter.module_name }}/conftest.py",
  "*/{{ cookiecutter.module_name }}/*setup_package*",
  "*/{{ cookiecutter.module_name }}/tests/*",
