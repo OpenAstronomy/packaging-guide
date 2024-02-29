@@ -14,8 +14,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "{{ cookiecutter.module_name }}"
 description = "{{ cookiecutter.short_description }}"
-readme = "README.rst"
 requires-python = ">={{ cookiecutter.minimum_python_version }}"
+readme = { file = "README.rst", content-type = "text/x-rst" }
 license = { file = "licenses/LICENSE.rst", content-type = "text/plain" }
 {%- if cookiecutter.author_name and cookiecutter.author_email %}
 authors = [
@@ -34,14 +34,14 @@ open_astronomy_package_template_example = "{{ cookiecutter.module_name }}.exampl
 {% endif -%}
 [project.optional-dependencies]
 tests = [
-    "pytest",
-    "pytest-doctestplus",
-    "pytest-cov"
+  "pytest",
+  "pytest-doctestplus",
+  "pytest-cov"
 ]
 docs = [
-    "sphinx",
-    "sphinx-automodapi",
-    "tomli; python_version <\"3.11\"",
+  "sphinx",
+  "sphinx-automodapi",
+  "tomli; python_version <\"3.11\"",
 ]
 
 {% if cookiecutter.project_url -%}
@@ -73,20 +73,20 @@ addopts = "--doctest-rst"
 
 [tool.coverage.run]
 omit = [
- "{{ cookiecutter.module_name }}/_{{ cookiecutter._parent_project }}_init*",
- "{{ cookiecutter.module_name }}/conftest.py",
- "{{ cookiecutter.module_name }}/*setup_package*",
- "{{ cookiecutter.module_name }}/tests/*",
- "{{ cookiecutter.module_name }}/*/tests/*",
- "{{ cookiecutter.module_name }}/extern/*",
- "{{ cookiecutter.module_name }}/version*",
- "*/{{ cookiecutter.module_name }}/_{{ cookiecutter._parent_project }}_init*",
- "*/{{ cookiecutter.module_name }}/conftest.py",
- "*/{{ cookiecutter.module_name }}/*setup_package*",
- "*/{{ cookiecutter.module_name }}/tests/*",
- "*/{{ cookiecutter.module_name }}/*/tests/*",
- "*/{{ cookiecutter.module_name }}/extern/*",
- "*/{{ cookiecutter.module_name }}/version*",
+  "{{ cookiecutter.module_name }}/_{{ cookiecutter._parent_project }}_init*",
+  "{{ cookiecutter.module_name }}/conftest.py",
+  "{{ cookiecutter.module_name }}/*setup_package*",
+  "{{ cookiecutter.module_name }}/tests/*",
+  "{{ cookiecutter.module_name }}/*/tests/*",
+  "{{ cookiecutter.module_name }}/extern/*",
+  "{{ cookiecutter.module_name }}/version*",
+  "*/{{ cookiecutter.module_name }}/_{{ cookiecutter._parent_project }}_init*",
+  "*/{{ cookiecutter.module_name }}/conftest.py",
+  "*/{{ cookiecutter.module_name }}/*setup_package*",
+  "*/{{ cookiecutter.module_name }}/tests/*",
+  "*/{{ cookiecutter.module_name }}/*/tests/*",
+  "*/{{ cookiecutter.module_name }}/extern/*",
+  "*/{{ cookiecutter.module_name }}/version*",
 ]
 
 [tool.coverage.report]

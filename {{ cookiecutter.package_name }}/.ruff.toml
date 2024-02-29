@@ -20,20 +20,16 @@ extend-ignore = [
   "PT023", # Always use () on pytest decorators
 ]
 
-[lint.flake8-tidy-imports]
-[lint.flake8-tidy-imports.banned-api]
-"warnings.warn".msg = "Use sunpy specific warning helpers warn_* from sunpy.utils.exceptions"
-
 [lint.per-file-ignores]
 # Part of configuration, not a package.
 "setup.py" = ["INP001"]
 "conftest.py" = ["INP001"]
-# Implicit-namespace-package. The examples are not a package.
-"docs/*.py" = ["INP001"]
+"docs/*.py" = [
+  "INP001",  # Implicit-namespace-package. The examples are not a package.
+  "E402",  # Module imports not at top of file
+]
 "__init__.py" = ["E402", "F401", "F403"]
 "test_*.py" = ["B011", "D", "E402", "PGH001", "S101"]
-# Need to import clients to register them, but don't use them in file
-"{{ cookiecutter.package_name }}/net/__init__.py" = ["F811"]
 
 [lint.pydocstyle]
 convention = "numpy"
