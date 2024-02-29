@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 # Configuration file for the Sphinx documentation builder.
 #
 # This file does only contain a selection of the most common options. For a
@@ -9,13 +7,13 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "{{ cookiecutter.package_name }}"
-copyright = "2022, {{ cookiecutter.author_name }}"
-author = "{{ cookiecutter.author_name }}"
-
 # The full version, including alpha/beta/rc tags
 from {{ cookiecutter.module_name }} import __version__
 release = __version__
+
+project = "{{ cookiecutter.package_name }}"
+copyright = "2022, {{ cookiecutter.author_name }}"
+author = "{{ cookiecutter.author_name }}"
 
 # -- General configuration ---------------------------------------------------
 
