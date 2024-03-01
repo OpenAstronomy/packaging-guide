@@ -39,14 +39,8 @@ tests = [
   "pytest-cov"
 ]
 docs = [
-<<<<<<< HEAD
   "sphinx",
   "sphinx-automodapi",
-  "tomli; python_version <\"3.11\"",
-=======
-    "sphinx",
-    "sphinx-automodapi",
->>>>>>> openastronomy/main
 ]
 
 {% if cookiecutter.project_url -%}
