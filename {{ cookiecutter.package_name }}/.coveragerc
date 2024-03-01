@@ -1,5 +1,5 @@
 [run]
-omit = 
+omit =
   {{ cookiecutter.module_name }}/conftest.py
   {{ cookiecutter.module_name }}/*setup_package*
   {{ cookiecutter.module_name }}/extern/*
@@ -10,7 +10,7 @@ omit =
   */{{ cookiecutter.module_name }}/version*
 
 [report]
-exclude_lines = 
+exclude_lines =
   # Have to re-enable the standard pragma
   pragma: no cover
   # Don't complain about packages we have installed
