@@ -22,10 +22,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Add OpenAstronomy/packaging-guide remote
         run: |
-          git remote add openastronomy git@github.com:OpenAstronomy/packaging-guide.git
+          git remote add openastronomy https://github.com/OpenAstronomy/packaging-guide.git
           git remote update
 
       - name: Check if there are new commits in OpenAstronomy/packaging-guide
@@ -33,7 +35,7 @@ jobs:
         id: check
         run: |
           CHANGES=0
-          if [ "$(git rev-list main..openastronomy/main --count)" -gt 0 ]; then
+          if [ "$(git rev-list HEAD..openastronomy/main --count)" -gt 0 ]; then
               CHANGES=1
           fi
           echo "has_changes=$CHANGES" >> "$GITHUB_OUTPUT"
@@ -41,14 +43,16 @@ jobs:
       - name: Merge in OpenAstronomy/packaging-guide
         if: steps.check.outputs.has_changes == '1'
         id: merge
+        continue-on-error: false
         run: |
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git config --global user.name "${{ github.actor }}"
 
-          git merge --no-edit openastronomy/main
+          git merge --no-edit openastronomy/main || true
           if [[ -n $(git ls-files --unmerged) ]]; then
               CONFLICTS=1
               # Commit the unresolved conflicts
+              git add .
               git commit -m "Merge branch 'OpenAstronomy/main' into main (with unresolved conflicts)"
           else
               CONFLICTS=0
