@@ -51,6 +51,9 @@ source_suffix = ".rst"
 # The master toctree document.
 master_doc = "index"
 
+# Treat everything in single ` as a Python reference.
+default_role = 'py:obj'
+
 # -- Options for intersphinx extension ---------------------------------------
 
 # Example configuration for intersphinx: refer to the Python standard library.
