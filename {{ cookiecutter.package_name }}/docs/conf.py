@@ -6,11 +6,12 @@
 
 
 import datetime
-
 # -- Project information -----------------------------------------------------
 
 # The full version, including alpha/beta/rc tags
 from {{ cookiecutter.module_name }} import __version__
+
+
 release = __version__
 
 project = "{{ cookiecutter.package_name }}"
