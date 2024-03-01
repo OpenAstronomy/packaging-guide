@@ -14,3 +14,5 @@ repos:
         exclude: "{{ cookiecutter.package_name }}"
       - id: debug-statements
         exclude: "{{ cookiecutter.package_name }}"
+ci:
+  autofix_prs: false
