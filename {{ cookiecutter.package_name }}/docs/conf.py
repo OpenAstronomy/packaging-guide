@@ -78,3 +78,5 @@ html_theme = "{{ cookiecutter._sphinx_theme }}"
 # the docs. For more options, see:
 # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#confval-autoclass_content
 autoclass_content = "both"
+
+# -- Other options ----------------------------------------------------------
