@@ -6,6 +6,6 @@ from .version import version as __version__
 {% if cookiecutter.include_example_code == 'y' -%}
 # Then you can be explicit to control what ends up in the namespace,
 __all__ = ['do_primes']
-{%- else -%}
+{% else -%}
 __all__ = []
 {% endif -%}
