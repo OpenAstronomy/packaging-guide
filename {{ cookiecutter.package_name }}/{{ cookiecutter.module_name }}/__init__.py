@@ -8,4 +8,4 @@ from .version import version as __version__
 __all__ = ['do_primes']
 {%- else -%}
 __all__ = []
-{%- endif -%}
+{% endif -%}
