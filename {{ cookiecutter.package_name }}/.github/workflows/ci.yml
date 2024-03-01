@@ -67,6 +67,9 @@ jobs:
       submodules: false
       pytest: false
       toxdeps: tox-pypi-filter
+      libraries: |
+        apt:
+          - graphviz
       envs: |
         - linux: build_docs
 
