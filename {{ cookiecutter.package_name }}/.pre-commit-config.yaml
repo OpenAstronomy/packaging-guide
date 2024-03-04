@@ -32,3 +32,6 @@ repos:
         additional_dependencies:
           - tomli
         args: [ "--write-changes" ]
+ci:
+  autofix_prs: false
+  autoupdate_schedule: quarterly
