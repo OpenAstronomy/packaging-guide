@@ -7,12 +7,14 @@
 
 import datetime
 
-# -- Project information -----------------------------------------------------
-
 # The full version, including alpha/beta/rc tags
 from {{ cookiecutter.module_name }} import __version__
 
 release = __version__
+# -- Project information -----------------------------------------------------
+
+
+
 
 project = "{{ cookiecutter.package_name }}"
 copyright = str(datetime.datetime.now().year) + " , {{ cookiecutter.author_name }}"  # noqa: A001
