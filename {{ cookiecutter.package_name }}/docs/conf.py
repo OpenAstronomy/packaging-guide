@@ -6,6 +6,7 @@
 
 
 import datetime
+
 # -- Project information -----------------------------------------------------
 
 # The full version, including alpha/beta/rc tags
