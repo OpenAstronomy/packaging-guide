@@ -3,6 +3,7 @@ import sys
 import subprocess
 
 import pytest
+from pytest_venv import venv
 
 
 @pytest.fixture
@@ -32,7 +33,7 @@ def test_examples_present(installed_cookiejar):
         assert primes == cprimes
 
 
-def test_dev_version_number(virtualenv, bake_examples_compiled_dev_version):
+def test_dev_version_number(venv, bake_examples_compiled_dev_version):
     cj = bake_examples_compiled_dev_version
     path = str(cj.project_path)
 
@@ -54,12 +55,13 @@ def test_dev_version_number(virtualenv, bake_examples_compiled_dev_version):
     subprocess.run(["git", "-C", path, "tag", "v0.1"], check=True)
 
     # Create a new virtualenv with the package installed
-    virtualenv.run(f"pip install setuptools_scm")
-    virtualenv.run(f"pip install -e {path}")
+    venv.install('setuptools_scm')
+    venv.install(path, editable=True)
 
     # assert it's actually correct
-    dynamic_version = virtualenv.run('python -c "import packagename; print(packagename.__version__)"', capture=True).strip()
-    assert dynamic_version == "0.1"
+    dynamic_version = subprocess.run([venv.python, '-c', 'import packagename; print(packagename.__version__)'],
+                                     capture_output=True)
+    assert dynamic_version.stdout.decode().strip() == "0.1"
 
     with open(cj.project_path / "README.md", "a") as fobj:
         fobj.seek(0, io.SEEK_END)
@@ -69,5 +71,6 @@ def test_dev_version_number(virtualenv, bake_examples_compiled_dev_version):
     subprocess.run(["git", "-C", path, "commit", "-m", "second"], check=True)
 
     # assert it's actually correct
-    dynamic_version = virtualenv.run('python -c "import packagename; print(packagename.__version__)"', capture=True).strip()
-    assert dynamic_version.startswith("0.2.dev1")
+    dynamic_version = subprocess.run([venv.python, '-c', 'import packagename; print(packagename.__version__)'],
+                                     capture_output=True)
+    assert dynamic_version.stdout.decode().startswith("0.2.dev1")
