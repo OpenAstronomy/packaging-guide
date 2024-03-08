@@ -6,9 +6,11 @@
 
 
 import datetime
+# -- Project information -----------------------------------------------------
 
 # The full version, including alpha/beta/rc tags
 from {{ cookiecutter.module_name }} import __version__
+
 
 release = __version__
 # -- Project information -----------------------------------------------------
@@ -54,6 +56,9 @@ source_suffix = ".rst"
 # The master toctree document.
 master_doc = "index"
 
+# Treat everything in single ` as a Python reference.
+default_role = 'py:obj'
+
 # -- Options for intersphinx extension ---------------------------------------
 
 # Example configuration for intersphinx: refer to the Python standard library.
@@ -78,3 +83,5 @@ html_theme = "{{ cookiecutter._sphinx_theme }}"
 # the docs. For more options, see:
 # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#confval-autoclass_content
 autoclass_content = "both"
+
+# -- Other options ----------------------------------------------------------
