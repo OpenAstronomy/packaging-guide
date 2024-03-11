@@ -5,6 +5,11 @@ repos:
     hooks:
       - id: ruff
         args: ["--fix"]
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        exclude: ".*(.fits|.fts|.fit|.header|.txt|tca.*|extern.*|{{ cookiecutter.module_name }}/extern)$"
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
     hooks:
@@ -20,6 +25,11 @@ repos:
         exclude: ".*(.fits|.fts|.fit|.header|.txt|tca.*|.json)$|^CITATION.rst$"
       - id: mixed-line-ending
         exclude: ".*(.fits|.fts|.fit|.header|.txt|tca.*)$"
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.6
+    hooks:
+      - id: codespell
+        args: [ "--write-changes" ]
 ci:
   autofix_prs: false
   autoupdate_schedule: "quarterly"
