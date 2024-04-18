@@ -1,4 +1,3 @@
-{# Note that this file must be valid yaml (and not only after rendering by jinja) so that pre-commit can autoupdate it. #}
 repos:
     # This should be before any formatting hooks like isort
   - repo: https://github.com/astral-sh/ruff-pre-commit
