@@ -37,6 +37,7 @@ tests = [
   "pytest",
   "pytest-doctestplus",
   "pytest-cov"
+  "pytest-xdist"
 ]
 docs = [
   "sphinx",
