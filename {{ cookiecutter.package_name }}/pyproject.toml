@@ -44,7 +44,7 @@ docs = [
   "sphinx-automodapi",
 ]
 
-{% if cookiecutter.project_url -%}
+{%- if cookiecutter.project_url %}
 [project.urls]
 repository = "{{ cookiecutter.project_url }}"
 {%- endif %}
@@ -54,6 +54,9 @@ zip-safe = false
 include-package-data = true
 
 [tool.setuptools.packages.find]
+{% if cookiecutter.enable_dynamic_dev_versions == 'y' -%}
+exclude = ["{{ cookiecutter.module_name }}._dev*"]
+{%- endif %}
 
 [tool.setuptools_scm]
 {% if cookiecutter.enable_dynamic_dev_versions == 'y' -%}
