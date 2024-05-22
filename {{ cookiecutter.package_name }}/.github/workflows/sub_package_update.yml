@@ -42,7 +42,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install Cruft
-        run: python -m pip install cruft
+        run: python -m pip install git+https://github.com/Cadair/cruft@patch-p1
 
       - name: Check if update is available
         continue-on-error: false
