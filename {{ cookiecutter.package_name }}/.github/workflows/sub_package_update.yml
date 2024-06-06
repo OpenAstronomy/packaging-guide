@@ -28,11 +28,6 @@ jobs:
             branch: cruft/update
             commit-message: "Automatic package template update"
             title: Updates from the package template
-          - add-paths: .cruft.json
-            body: reject these changes for this repo.
-            branch: cruft/reject
-            commit-message: "Reject this package template update"
-            title: Reject new updates from package template
 
     steps:
       - uses: actions/checkout@v4
