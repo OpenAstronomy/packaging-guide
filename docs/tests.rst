@@ -96,7 +96,7 @@ This will then allow contributors to type
 
 .. code-block:: shell
 
-    pip install -e .[test]
+    pip install -e ".[test]"
 
 to install the package in developer/editable mode along with the test
 dependencies.
