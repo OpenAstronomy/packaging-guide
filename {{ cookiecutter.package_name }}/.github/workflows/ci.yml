@@ -1,4 +1,4 @@
-{% set default_python = '3.10' %}
+{% set default_python = '3.12' %}
 name: CI
 
 on:
@@ -90,21 +90,17 @@ jobs:
     secrets:
       CODECOV_TOKEN: {{ '${{ secrets.CODECOV_TOKEN }}' }}
 
-{% if cookiecutter.use_compiled_extensions == 'y' -%}
   publish:
-    # Build wheels when pushing to any branch except main
-    # publish.yml will only publish if tagged ^v.*
+    needs: [test, docs]
+    # Build wheels on PRs only when labelled. Releases will only be published if tagged ^v.*
+    # see https://github-actions-workflows.openastronomy.org/en/latest/publish.html#upload-to-pypi
     if: |
+      github.event_name != 'pull_request' ||
       (
-        github.event_name != 'pull_request' && (
-          github.ref_name != 'main' ||
-          github.event_name == 'workflow_dispatch'
-        )
-      ) || (
         github.event_name == 'pull_request' &&
         contains(github.event.pull_request.labels.*.name, 'Run publish')
       )
-    needs: [test, docs]
+{%- if cookiecutter.use_compiled_extensions == 'y' %}
     uses: OpenAstronomy/github-actions-workflows/.github/workflows/publish.yml@main
     with:
       sdist: true
@@ -116,17 +112,13 @@ jobs:
         - cp3{9,10,11,12}-macosx_x86_64
         - cp3{9,10,11,12}-macosx_arm64
         - cp3{9,10,11,12}-win_amd64
+{%- else %}
+    uses: OpenAstronomy/github-actions-workflows/.github/workflows/publish_pure_python.yml@main
+    with:
+      python-version: '{{ default_python }}'
+      test_extras: 'tests'
+      test_command: 'pytest -p no:warnings --doctest-rst --pyargs {{ cookiecutter.module_name }}'
+      submodules: false
+{%- endif %}
     secrets:
       pypi_token: {{ '${{ secrets.pypi_token }}' }}
-{%- else -%}
-    publish_pure:
-      needs: [test, docs]
-      uses: OpenAstronomy/github-actions-workflows/.github/workflows/publish_pure_python.yml@main
-      with:
-        python-version: '{{ default_python }}'
-        test_extras: 'tests'
-        test_command: 'pytest -p no:warnings --doctest-rst --pyargs {{ cookiecutter.module_name }}'
-        submodules: false
-      secrets:
-        pypi_token: {{ '${{ secrets.pypi_token }}' }}
-{%- endif %}
