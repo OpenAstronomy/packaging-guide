@@ -94,7 +94,6 @@ def bake_examples_compiled_dev_version(cookies):
     return _handle_cookiecutter_errors(result)
 
 
-# Add support for saving out rendered cookies to a specific location for inspection
-
 def pytest_addoption(parser):
+    # Add support for saving out rendered cookies to a specific location for inspection
     parser.addoption("--cookie-location", action="store", default=None)
