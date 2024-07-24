@@ -89,7 +89,7 @@ def bake_examples_compiled_dev_version(cookies):
                                          "use_compiled_extensions": "y",
                                          "enable_dynamic_dev_versions": "y",
                                          "author_name": "test",
-                                         "include_cruft_update_github_workflow": "n",
+                                         "include_cruft_update_github_workflow": "y",
                                          })
     return _handle_cookiecutter_errors(result)
 
