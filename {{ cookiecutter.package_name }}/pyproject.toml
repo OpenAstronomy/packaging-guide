@@ -16,7 +16,7 @@ name = "{{ cookiecutter.module_name }}"
 description = "{{ cookiecutter.short_description }}"
 requires-python = ">={{ cookiecutter.minimum_python_version }}"
 readme = { file = "README.rst", content-type = "text/x-rst" }
-license = { file = "licenses/LICENSE.rst", content-type = "text/plain" }
+license = { file = "licenses/LICENSE.rst" }
 {%- if cookiecutter.author_name and cookiecutter.author_email %}
 authors = [
   { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}" },
