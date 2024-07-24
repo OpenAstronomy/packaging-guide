@@ -1,8 +1,8 @@
-import py
+import py  # noqa: F401
 import pytest
 
-import tox
-from tox.pytest import init_fixture
+import tox  # noqa: F401
+from tox.pytest import init_fixture  # noqa: F401
 
 
 @pytest.fixture(params=["bake_default",
@@ -88,5 +88,13 @@ def bake_examples_compiled_dev_version(cookies):
     result = cookies.bake(extra_context={"include_example_code": "y",
                                          "use_compiled_extensions": "y",
                                          "enable_dynamic_dev_versions": "y",
-                                         "author_name": "test"})
+                                         "author_name": "test",
+                                         "include_cruft_update_github_workflow": "n",
+                                         })
     return _handle_cookiecutter_errors(result)
+
+
+# Add support for saving out rendered cookies to a specific location for inspection
+
+def pytest_addoption(parser):
+    parser.addoption("--cookie-location", action="store", default=None)
