@@ -6,8 +6,8 @@ requires = [
 {%- if cookiecutter.use_compiled_extensions == 'y' %}
   "extension-helpers",
   "numpy>=1.25",
-  "cython"
-{% endif -%}
+  "cython",
+{%- endif %}
 ]
 build-backend = "setuptools.build_meta"
 
