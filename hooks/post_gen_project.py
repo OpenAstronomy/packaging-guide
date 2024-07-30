@@ -37,7 +37,7 @@ def process_version(enable_dynamic_dev_versions):
 
 def process_github_workflow(include_cruft_update_github_workflow):
     if include_cruft_update_github_workflow != "y":
-        remove_dir(os.path.join(PROJECT_DIRECTORY,  '.github'))
+        remove_file(os.path.join(PROJECT_DIRECTORY,  '.github', 'workflows', 'sub_package_update.yml'))
 
 
 if __name__ == '__main__':

@@ -77,3 +77,33 @@ def test_other_licence(cookies):
 
     for name, lfile in license_files.items():
         assert (cj.project_path / "licenses" / lfile).exists()
+
+
+def test_cruft_update_exists(bake_examples_compiled_dev_version):
+    cj = bake_examples_compiled_dev_version
+
+    present_files = [
+        ".github/workflows/sub_package_update.yml",
+        ".github/workflows/ci.yml",
+    ]
+
+    for afile in present_files:
+        assert (cj.project_path / afile).exists()
+
+
+def test_cruft_update_absent(bake_examples_compiled):
+    cj = bake_examples_compiled
+
+    present_files = [
+        ".github/workflows/ci.yml"
+    ]
+
+    absent_files = [
+        ".github/workflows/sub_package_update.yml"
+    ]
+
+    for afile in present_files:
+        assert (cj.project_path / afile).exists()
+
+    for afile in absent_files:
+        assert not (cj.project_path / afile).exists()
