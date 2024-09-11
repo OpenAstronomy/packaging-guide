@@ -1,10 +1,9 @@
 version: 2
 updates:
   - package-ecosystem: "github-actions"
+    directroies:
+      - "/"
+      - "{{ cookiecutter.package_name }}/.github/workflows"
     directory: "/"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "github-actions"
-    directory: "{{ cookiecutter.package_name }}/"
     schedule:
       interval: "weekly"
