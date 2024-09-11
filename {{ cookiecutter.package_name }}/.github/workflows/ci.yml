@@ -91,7 +91,6 @@ jobs:
       CODECOV_TOKEN: {{ '${{ secrets.CODECOV_TOKEN }}' }}
 
   publish:
-    needs: [test, docs]
     # Build wheels on PRs only when labelled. Releases will only be published if tagged ^v.*
     # see https://github-actions-workflows.openastronomy.org/en/latest/publish.html#upload-to-pypi
     if: |
@@ -100,6 +99,7 @@ jobs:
         github.event_name == 'pull_request' &&
         contains(github.event.pull_request.labels.*.name, 'Run publish')
       )
+    needs: [test, docs]
 {%- if cookiecutter.use_compiled_extensions == 'y' %}
     uses: OpenAstronomy/github-actions-workflows/.github/workflows/publish.yml@main
     with:
