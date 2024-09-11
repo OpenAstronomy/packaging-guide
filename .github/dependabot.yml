@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: "github-actions"
-    directroies:
+    directories:
       - "/"
       - "{{ cookiecutter.package_name }}/.github/workflows"
     directory: "/"
