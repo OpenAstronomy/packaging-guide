@@ -4,6 +4,5 @@ updates:
     directories:
       - "/"
       - "{{ cookiecutter.package_name }}/.github/workflows"
-    directory: "/"
     schedule:
       interval: "weekly"
