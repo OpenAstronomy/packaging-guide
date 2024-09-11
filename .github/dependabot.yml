@@ -3,6 +3,7 @@ updates:
   - package-ecosystem: "github-actions"
     directories:
       - "/"
-      - "{{ cookiecutter.package_name }}/.github/workflows"
+      # This doesn't work because of jinja templating.
+      # - "{{ cookiecutter.package_name }}/.github/workflows"
     schedule:
       interval: "weekly"
