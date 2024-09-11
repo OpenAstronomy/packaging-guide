@@ -36,6 +36,7 @@ ALL_REPOS = (
     "sunpy/sunkit-image",
     "sunpy/sunkit-pyvista",
     "sunpy/sunpy-soar",
+    "sunpy/sunkit-instruments",
 )
 
 
