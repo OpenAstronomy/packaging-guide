@@ -6,12 +6,23 @@
 
 import datetime
 
+from packaging.version import Version
+
 # -- Project information -----------------------------------------------------
 
 # The full version, including alpha/beta/rc tags
 from {{ cookiecutter.module_name }} import __version__
 
-release = __version__
+_version_ = Version(__version__)
+# NOTE: Avoid "post" appearing in version string in rendered docs
+if _version_.is_postrelease:
+    version = release = f'{_version_.major}.{_version_.minor}.{_version_.micro}'
+# NOTE: Avoid long githashes in rendered Sphinx docs
+elif _version_.is_devrelease:
+    version = release = f'{_version_.major}.{_version_.minor}.dev{_version_.dev}'
+else:
+    version = release = str(_version_)
+is_development = _version_.is_devrelease
 
 project = "{{ cookiecutter.package_name }}"
 author = "{{ cookiecutter.author_name }}"
