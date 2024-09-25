@@ -13,16 +13,15 @@ from packaging.version import Version
 # The full version, including alpha/beta/rc tags
 from {{ cookiecutter.module_name }} import __version__
 
-_version_ = Version(__version__)
-# NOTE: Avoid "post" appearing in version string in rendered docs
-if _version_.is_postrelease:
-    version = release = _version_.base_version
-# NOTE: Avoid long githashes in rendered Sphinx docs
-elif _version_.is_devrelease:
-    version = release = f'{_version_.base_version}.dev{_version_.dev}'
-else:
-    version = release = str(_version_)
-is_development = _version_.is_devrelease
+_version = Version(__version__)
+version = release = str(_version)
+# Avoid "post" appearing in version string in rendered docs
+if _version.is_postrelease:
+    version = release = _version.base_version
+# Avoid long githashes in rendered Sphinx docs
+elif _version.is_devrelease:
+    version = release = f'{_version.base_version}.dev{_version.dev}'
+is_development = _version.is_devrelease
 
 project = "{{ cookiecutter.package_name }}"
 author = "{{ cookiecutter.author_name }}"
