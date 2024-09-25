@@ -42,6 +42,7 @@ tests = [
 docs = [
   "sphinx",
   "sphinx-automodapi",
+  "packaging",
 ]
 
 {%- if cookiecutter.project_url %}
