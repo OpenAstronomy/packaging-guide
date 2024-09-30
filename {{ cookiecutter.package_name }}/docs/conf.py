@@ -63,7 +63,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # Treat everything in single ` as a Python reference.
-default_role = 'py:obj'
+default_role = "py:obj"
 
 # -- Options for intersphinx extension ---------------------------------------
 
