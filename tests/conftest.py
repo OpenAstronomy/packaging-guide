@@ -65,7 +65,8 @@ def bake_examples(cookies):
     Examples on.
     """
     result = cookies.bake(extra_context={"include_example_code": "y",
-                                         "author_name": "test"})
+                                         "author_name": "test",
+                                         "use_extended_ruff_linting": "y"})
     return _handle_cookiecutter_errors(result)
 
 
@@ -76,7 +77,8 @@ def bake_examples_compiled(cookies):
     """
     result = cookies.bake(extra_context={"include_example_code": "y",
                                          "use_compiled_extensions": "y",
-                                         "author_name": "test"})
+                                         "author_name": "test",
+                                         "use_extended_ruff_linting": "n"})
     return _handle_cookiecutter_errors(result)
 
 
@@ -90,6 +92,7 @@ def bake_examples_compiled_dev_version(cookies):
                                          "enable_dynamic_dev_versions": "y",
                                          "author_name": "test",
                                          "include_cruft_update_github_workflow": "y",
+                                         "use_extended_ruff_linting": "y",
                                          })
     return _handle_cookiecutter_errors(result)
 
