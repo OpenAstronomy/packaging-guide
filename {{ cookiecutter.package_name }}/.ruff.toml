@@ -1,5 +1,5 @@
 target-version = "py310"
-line-length = 110
+line-length = 120
 exclude = [
   ".git,",
   "__pycache__",
@@ -8,16 +8,53 @@ exclude = [
 ]
 
 [lint]
-select = ["E", "F", "W", "UP", "PT"]
+select = [
+  "E",
+  "F",
+  "W",
+  "N",
+  "UP",
+  "BLE",
+  "A",
+  "C4",
+  "INP",
+  "PIE",
+  "T20",
+  "PT",
+  "RET",
+  "TID",
+  "PTH",
+  "PD",
+  "PLC",
+  "PLE",
+  "FLY",
+  "NPY",
+  "PERF",
+  "RUF",
+]
 extend-ignore = [
-  # pycodestyle (E, W)
-  "E501", # LineTooLong                             # TODO! fix
+  "E501", # ignore line length will use a formatter instead
+  "E712",
+  "E721",
+   # flake8-pie
+  "PIE808", # Disallow passing 0 as the first argument to range
+  # upgrades
+  "UP038", # Use | in isinstance - not compatible with models and is slower
+  # numpy
+  "NPY002", # TODO: migrate from np.random.rand to np.random.Generator
   # pytest (PT)
   "PT001", # Always use pytest.fixture()
   "PT004", # Fixtures which don't return anything should have leading _
-  "PT007", # Parametrize should be lists of tuples  # TODO! fix
-  "PT011", # Too broad exception assert             # TODO! fix
+  "PT011",  # except(ValueRaises) is too broad
+  "PT012", # TODO: temporary override for test_global_coords::test_overwrite
   "PT023", # Always use () on pytest decorators
+  # flake8-use-pathlib
+  "PTH123", # open() should be replaced by Path.open()
+  # Ruff
+  "RUF003", # Ignore ambiguous quote marks, doesn't allow ' in comments
+  "RUF012",  # Mutable class attributes should be annotated with `typing.ClassVar`
+  "RUF013",  # PEP 484 prohibits implicit `Optional`
+  "RUF015",  # Prefer `next(iter(...))` over single element slice
 ]
 
 [lint.per-file-ignores]
