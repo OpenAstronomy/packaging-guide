@@ -14,13 +14,14 @@ select = [
   "W",
   "N",
   "UP",
+  "PT",
+  {% if cookiecutter.use_extended_ruff_linting == 'y' %}
   "BLE",
   "A",
   "C4",
   "INP",
   "PIE",
   "T20",
-  "PT",
   "RET",
   "TID",
   "PTH",
@@ -31,23 +32,23 @@ select = [
   "NPY",
   "PERF",
   "RUF",
+  {% endif -%}
 ]
 extend-ignore = [
   # pycodestyle
   "E501", # ignore line length will use a formatter instead
   "E712", # Avoid equality comparisons to True; use if {cond}: for truth checks
   "E721", # type comparison Use is and is not for type comparisons, or isinstance() for isinstance checks
-   # flake8-pie
-  "PIE808", # Disallow passing 0 as the first argument to range
   # upgrades
   "UP038", # Use | in isinstance - not compatible with models and is slower
-  # numpy
-  "NPY002", # TODO: migrate from np.random.rand to np.random.Generator
   # pytest (PT)
   "PT001", # Always use pytest.fixture()
   "PT004", # Fixtures which don't return anything should have leading _
   "PT011",  # except(ValueRaises) is too broad
   "PT023", # Always use () on pytest decorators
+  {% if cookiecutter.use_extended_ruff_linting == 'y'}
+  # flake8-pie
+  "PIE808", # Disallow passing 0 as the first argument to range
   # flake8-use-pathlib
   "PTH123", # open() should be replaced by Path.open()
   # Ruff
@@ -55,6 +56,7 @@ extend-ignore = [
   "RUF012",  # Mutable class attributes should be annotated with `typing.ClassVar`
   "RUF013",  # PEP 484 prohibits implicit `Optional`
   "RUF015",  # Prefer `next(iter(...))` over single element slice
+  {% endif -%}
 ]
 
 [lint.per-file-ignores]
