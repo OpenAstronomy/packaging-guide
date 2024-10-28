@@ -15,7 +15,7 @@ select = [
   "N",
   "UP",
   "PT",
-  {% if cookiecutter.use_extended_ruff_linting == 'y' %}
+  {%- if cookiecutter.use_extended_ruff_linting == 'y' %}
   "BLE",
   "A",
   "C4",
@@ -46,7 +46,6 @@ extend-ignore = [
   "PT004", # Fixtures which don't return anything should have leading _
   "PT011",  # except(ValueRaises) is too broad
   "PT023", # Always use () on pytest decorators
-  {% if cookiecutter.use_extended_ruff_linting == 'y'}
   # flake8-pie
   "PIE808", # Disallow passing 0 as the first argument to range
   # flake8-use-pathlib
@@ -56,7 +55,6 @@ extend-ignore = [
   "RUF012",  # Mutable class attributes should be annotated with `typing.ClassVar`
   "RUF013",  # PEP 484 prohibits implicit `Optional`
   "RUF015",  # Prefer `next(iter(...))` over single element slice
-  {% endif -%}
 ]
 
 [lint.per-file-ignores]
