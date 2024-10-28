@@ -33,9 +33,10 @@ select = [
   "RUF",
 ]
 extend-ignore = [
+  # pycodestyle
   "E501", # ignore line length will use a formatter instead
-  "E712",
-  "E721",
+  "E712", # Avoid equality comparisons to True; use if {cond}: for truth checks
+  "E721", # type comparison Use is and is not for type comparisons, or isinstance() for isinstance checks
    # flake8-pie
   "PIE808", # Disallow passing 0 as the first argument to range
   # upgrades
@@ -46,7 +47,6 @@ extend-ignore = [
   "PT001", # Always use pytest.fixture()
   "PT004", # Fixtures which don't return anything should have leading _
   "PT011",  # except(ValueRaises) is too broad
-  "PT012", # TODO: temporary override for test_global_coords::test_overwrite
   "PT023", # Always use () on pytest decorators
   # flake8-use-pathlib
   "PTH123", # open() should be replaced by Path.open()
@@ -66,6 +66,9 @@ extend-ignore = [
 ]
 "docs/*.py" = [
   "INP001",  # Implicit-namespace-package. The examples are not a package.
+]
+"{{ cookiecutter.package_name }}/*.py" = [
+  "T201", # allow use of print in examples
 ]
 "__init__.py" = ["E402", "F401", "F403"]
 "test_*.py" = ["B011", "D", "E402", "PGH001", "S101"]

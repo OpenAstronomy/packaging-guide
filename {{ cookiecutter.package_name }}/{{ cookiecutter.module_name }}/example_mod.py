@@ -47,9 +47,8 @@ def do_primes(n, usecython=False):
         print('Using cython-based primes')
         return cprimes(n)
 {% endif %}
-    else:
-        print('Using pure python primes')
-        return primes(n)
+    print('Using pure python primes')
+    return primes(n)
 
 
 def main(args=None):
