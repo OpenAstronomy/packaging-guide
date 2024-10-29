@@ -23,7 +23,7 @@
     "include_example_code": "n",
     "include_cruft_update_github_workflow": "n",
     "use_extended_ruff_linting": "n",
-    "_sphinx_theme": "alabaster",
+    "_sphinx_theme": "sunpy",
     "_parent_project": "",
     "_install_requires": "",
     "_copy_without_render": [
