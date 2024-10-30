@@ -67,7 +67,7 @@ extend-ignore = [
 "docs/*.py" = [
   "INP001",  # Implicit-namespace-package. The examples are not a package.
 ]
-"{{ cookiecutter.package_name }}/*.py" = [
+"examples/**.py" = [
   "T201", # allow use of print in examples
 ]
 "__init__.py" = ["E402", "F401", "F403"]
