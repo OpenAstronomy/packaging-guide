@@ -44,10 +44,10 @@ def do_primes(n, usecython=False):
         raise Exception("This template does not have the example C code included.")
 {% else %}
         from .example_c import primes as cprimes
-        print('Using cython-based primes')
+        print('Using cython-based primes')  # noqa: T201
         return cprimes(n)
 {% endif %}
-    print('Using pure python primes')
+    print('Using pure python primes')  # noqa: T201
     return primes(n)
 
 
@@ -73,11 +73,11 @@ def main(args=None):
     primes = do_primes(res.n, res.cy)
     post = time()
 
-    print(f'Found {len(primes)} prime numbers')
-    print(f'Largest prime: {primes[-1]}')
+    print(f'Found {len(primes)} prime numbers')  # noqa: T201
+    print(f'Largest prime: {primes[-1]}')  # noqa: T201
 
     if res.time:
-        print(f'Running time: {post - pre} s')
+        print(f'Running time: {post - pre} s')  # noqa: T201
 
     if res.prnt:
-        print(f'Primes: {primes}')
+        print(f'Primes: {primes}')  # noqa: T201
