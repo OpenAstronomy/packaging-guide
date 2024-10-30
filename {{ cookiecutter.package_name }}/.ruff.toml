@@ -12,10 +12,10 @@ select = [
   "E",
   "F",
   "W",
-  "N",
   "UP",
   "PT",
   {%- if cookiecutter.use_extended_ruff_linting == 'y' %}
+  "N",
   "BLE",
   "A",
   "C4",
@@ -32,7 +32,7 @@ select = [
   "NPY",
   "PERF",
   "RUF",
-  {% endif -%}
+  {%- endif %}
 ]
 extend-ignore = [
   # pycodestyle
