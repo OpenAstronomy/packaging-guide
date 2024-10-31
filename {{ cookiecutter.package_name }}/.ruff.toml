@@ -70,7 +70,7 @@ extend-ignore = [
 "examples/**.py" = [
   "T201", # allow use of print in examples
 ]
-"__init__.py" = ["E402", "F401", "F403"]
+"__init__.py" = ["E402", "F401", "F403", "F405"]
 "test_*.py" = ["B011", "D", "E402", "PGH001", "S101"]
 
 [lint.pydocstyle]
