@@ -15,7 +15,6 @@ select = [
   "UP",
   "PT",
   {%- if cookiecutter.use_extended_ruff_linting == 'y' %}
-  "N",
   "BLE",
   "A",
   "C4",
