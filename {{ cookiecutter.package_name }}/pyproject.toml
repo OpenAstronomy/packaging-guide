@@ -69,3 +69,76 @@ write_to = "{{ cookiecutter.module_name }}/_version.py"
 {%- else -%}
 write_to = "{{ cookiecutter.module_name }}/version.py"
 {%- endif %}
+
+[tool.gilesbot]
+  [tool.gilesbot.circleci_artifacts]
+  enabled = true
+
+  [tool.gilesbot.circleci_artifacts.figure_report]
+  url = ".tmp/py312-figure/figure_test_images/fig_comparison.html"
+  message = "Click details to see the figure test comparisons, for py312-figure."
+  report_on_fail = true
+
+  [tool.gilesbot.circleci_artifacts.figure_report_devdeps]
+  url = ".tmp/py312-figure-devdeps/figure_test_images/fig_comparison.html"
+  message = "Click details to see the figure test comparisons for py312-figure-devdeps."
+  report_on_fail = true
+
+  [tool.gilesbot.pull_requests]
+  enabled = true
+
+  [tool.gilesbot.towncrier_changelog]
+  enabled = true
+  verify_pr_number = true
+  changelog_skip_label = "No Changelog Entry Needed"
+  help_url = "https://github.com/sunpy/sunpy/blob/main/changelog/README.rst"
+
+  changelog_missing_long = "There isn't a changelog file in this pull request. Please add a changelog file to the `changelog/` directory following the instructions in the changelog [README](https://github.com/sunpy/sunpy/blob/main/changelog/README.rst)."
+
+  type_incorrect_long = "The changelog file you added is not one of the allowed types. Please use one of the types described in the changelog [README](https://github.com/sunpy/sunpy/blob/main/changelog/README.rst)"
+
+  number_incorrect_long = "The number in the changelog file you added does not match the number of this pull request. Please rename the file."
+
+# TODO: This should be in towncrier.toml but Giles currently only works looks in
+# pyproject.toml we should move this back when it's fixed.
+[tool.towncrier]
+  package = "{{ cookiecutter.package_name }}"
+  filename = "CHANGELOG.rst"
+  directory = "changelog/"
+  issue_format = "`#{issue} <https://github.com/sunpy/sunpy/pull/{issue}>`__"
+  title_format = "{version} ({project_date})"
+
+  [[tool.towncrier.type]]
+  directory = "breaking"
+  name = "Breaking Changes"
+  showcontent = true
+
+  [[tool.towncrier.type]]
+  directory = "deprecation"
+  name = "Deprecations"
+  showcontent = true
+
+  [[tool.towncrier.type]]
+  directory = "removal"
+  name = "Removals"
+  showcontent = true
+
+  [[tool.towncrier.type]]
+  directory = "feature"
+  name = "New Features"
+  showcontent = true
+
+  [[tool.towncrier.type]]
+  directory = "bugfix"
+  name = "Bug Fixes"
+  showcontent = true
+
+  [[tool.towncrier.type]]
+  directory = "doc"
+  name = "Documentation"
+  showcontent = true
+
+  [[tool.towncrier.type]]
+  directory = "trivial"
+  name = "Internal Changes"
+  showcontent = true
