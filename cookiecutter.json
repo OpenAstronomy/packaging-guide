@@ -22,7 +22,8 @@
     "enable_dynamic_dev_versions": "n",
     "include_example_code": "n",
     "include_cruft_update_github_workflow": "n",
-    "_sphinx_theme": "alabaster",
+    "use_extended_ruff_linting": "n",
+    "_sphinx_theme": "sunpy",
     "_parent_project": "",
     "_install_requires": "",
     "_copy_without_render": [
