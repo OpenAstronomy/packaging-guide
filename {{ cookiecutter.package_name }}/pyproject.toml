@@ -27,11 +27,34 @@ dependencies = [
 ]
 dynamic = ["version"]
 
+# Okay strip the whitespace motherfucker!
+[project.urls]
+{% if cookiecutter.project_url -%}
+Homepage = "{{ cookiecutter.project_url }}"
+{% else -%}
+Homepage = "https://sunpy.org"
+{% endif -%}
+{% if cookiecutter.sourcecode_url -%}
+"Source Code" = "{{ cookiecutter.sourcecode_url }}"
+{% endif -%}
+{% if cookiecutter.download_url -%}
+Download = "{{ cookiecutter.download_url }}"
+{% endif -%}
+{% if cookiecutter.documentation_url -%}
+Documentation = "{{ cookiecutter.documentation_url }}"
+{% endif -%}
+{% if cookiecutter.changelog_url -%}
+Changelog = "{{ cookiecutter.changelog_url }}"
+{% endif -%}
+{% if cookiecutter.issue_tracker_url -%}
+"Issue Tracker" = "{{ cookiecutter.issue_tracker_url }}"
+{% endif -%}
+
 {% if cookiecutter.include_example_code == 'y' -%}
 [project.scripts]
 open_astronomy_package_template_example = "{{ cookiecutter.module_name }}.example_mod:main"
 
-{% endif -%}
+{% endif %}
 [project.optional-dependencies]
 tests = [
   "pytest",
@@ -45,11 +68,6 @@ docs = [
   "sunpy-sphinx-theme",
   "packaging",
 ]
-
-{%- if cookiecutter.project_url %}
-[project.urls]
-repository = "{{ cookiecutter.project_url }}"
-{%- endif %}
 
 [tool.setuptools]
 zip-safe = false

@@ -5,6 +5,11 @@
     "author_name": "",
     "author_email": "",
     "project_url": "",
+    "sourcecode_url": "",
+    "download_url": "",
+    "documentation_url": "",
+    "changelog_url": "",
+    "issue_tracker_url": "",
     "license": [
         "BSD 3-Clause",
         "GNU GPL v3+",
@@ -30,5 +35,13 @@
         "docs/_templates",
         "docs/_static",
         ".github/workflows/sub_package_update.yml"
-    ]
+    ],
+    "__prompts__" : {
+        "project_url": "Primary website for the project, leave blank for Sunpy Homepage",
+        "sourcecode_url": "Version control link for the project",
+        "download_url": "Pypi address for the project, optional",
+        "documentation_url": "Documentation url, optional",
+        "changelog_url": "Url to the changelog, optional",
+        "issue_tracker_url": "Url to the issue tracker, optional"
+    }
 }
