@@ -73,9 +73,6 @@ write_to = "{{ cookiecutter.module_name }}/version.py"
 {%- endif %}
 
 [tool.gilesbot]
-  [tool.gilesbot.circleci_artifacts]
-  enabled = true
-
   [tool.gilesbot.pull_requests]
   enabled = true
 
@@ -85,9 +82,9 @@ write_to = "{{ cookiecutter.module_name }}/version.py"
   changelog_skip_label = "No Changelog Entry Needed"
   help_url = "https://github.com/sunpy/sunpy/blob/main/changelog/README.rst"
 
-  changelog_missing_long = "There isn't a changelog file in this pull request. Please add a changelog file to the `changelog/` directory following the instructions in the changelog [README](https://github.com/sunpy/sunpy/blob/main/changelog/README.rst)."
+  changelog_missing_long = "There isn't a changelog file in this pull request. Please add a changelog file to the `changelog/` directory following the instructions in the changelog [README](https://github.com/sunpy/{[ cookiecutter.package_name }/blob/main/changelog/README.rst)."
 
-  type_incorrect_long = "The changelog file you added is not one of the allowed types. Please use one of the types described in the changelog [README](https://github.com/sunpy/sunpy/blob/main/changelog/README.rst)"
+  type_incorrect_long = "The changelog file you added is not one of the allowed types. Please use one of the types described in the changelog [README](https://github.com/sunpy/{{ cookiecutter.package_name }}/blob/main/changelog/README.rst)"
 
   number_incorrect_long = "The number in the changelog file you added does not match the number of this pull request. Please rename the file."
 
@@ -97,7 +94,7 @@ write_to = "{{ cookiecutter.module_name }}/version.py"
   package = "{{ cookiecutter.package_name }}"
   filename = "CHANGELOG.rst"
   directory = "changelog/"
-  issue_format = "`#{issue} <https://github.com/sunpy/sunpy/pull/{issue}>`__"
+  issue_format = "`#{issue} <https://github.com/{{ cookiecutter.package_name }}/{{ cookiecutter.module_name }}/pull/{issue}>`__"
   title_format = "{version} ({project_date})"
 
   [[tool.towncrier.type]]
