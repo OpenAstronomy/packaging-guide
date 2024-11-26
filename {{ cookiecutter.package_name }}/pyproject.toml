@@ -27,7 +27,6 @@ dependencies = [
 ]
 dynamic = ["version"]
 
-# Okay strip the whitespace motherfucker!
 [project.urls]
 {% if cookiecutter.project_url -%}
 Homepage = "{{ cookiecutter.project_url }}"
