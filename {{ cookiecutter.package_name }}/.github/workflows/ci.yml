@@ -1,4 +1,4 @@
-{% set default_python = '3.12' %}
+# Main CI Workflow {%- set default_python = '3.12' %}
 name: CI
 
 on:
