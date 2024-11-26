@@ -97,6 +97,22 @@ def bake_examples_compiled_dev_version(cookies):
     return _handle_cookiecutter_errors(result)
 
 
+@pytest.fixture
+def bake_examples_url_extensions(cookies):
+    """
+    setting url parameters
+    """
+    result = cookies.bake(extra_context={
+        "project_url": "https://sunpy.org",
+        "sourcecode_url": "https://github.com/sunpy/sunpy",
+        "download_url": "https://github.com/sunpy/sunpy/archive/master.zip",
+        "documentation_url": "https://sunpy.org/docs",
+        "changelog_url": "https://sunpy.org/changelog",
+        "issue_tracker_url": "https://github.com/sunpy/sunpy/issues"
+    })
+    return _handle_cookiecutter_errors(result)
+
+
 def pytest_addoption(parser):
     # Add support for saving out rendered cookies to a specific location for inspection
     parser.addoption("--cookie-location", action="store", default=None)
