@@ -3,6 +3,10 @@ updates:
   - package-ecosystem: "github-actions"
     directories:
       - "/"
-      - "{{ cookiecutter.package_name }}/.github/workflows"
+      - "{{ cookiecutter.package_name }}/.github/workflows/sub_package_update.yml"
     schedule:
       interval: "weekly"
+    groups:
+      actions:
+        patterns:
+          - "*"
