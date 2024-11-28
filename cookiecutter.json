@@ -43,7 +43,7 @@
         "github_repo": "user/repo format GitHub repository. Leave blank if project is not on GitHub.",
         "download_url": "PyPi address for the project, optional",
         "documentation_url": "Documentation URL, optional",
-        "changelog_url": "Url to the changelog, optional",
-        "issue_tracker_url": "Url to the issue tracker, optional"
+        "changelog_url": "URL to the changelog, optional",
+        "issue_tracker_url": "URL to the issue tracker, optional"
     }
 }
