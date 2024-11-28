@@ -42,7 +42,7 @@
         "sourcecode_url": "Version control link for the project",
         "github_repo": "user/repo format GitHub repository. Leave blank if project is not on GitHub.",
         "download_url": "Pypi address for the project, optional",
-        "documentation_url": "Documentation url, optional",
+        "documentation_url": "Documentation URL, optional",
         "changelog_url": "Url to the changelog, optional",
         "issue_tracker_url": "Url to the issue tracker, optional"
     }
