@@ -6,6 +6,7 @@
     "author_email": "",
     "project_url": "",
     "sourcecode_url": "",
+    "github_repo": "{{ cookiecutter.sourcecode_url | replace('https://github.com/', '') }}",
     "download_url": "",
     "documentation_url": "",
     "changelog_url": "",
@@ -39,6 +40,7 @@
     "__prompts__" : {
         "project_url": "Primary website for the project, leave blank for Sunpy Homepage",
         "sourcecode_url": "Version control link for the project",
+        "github_repo": "Leave blank to pull form sourcecode_url or if not github",
         "download_url": "Pypi address for the project, optional",
         "documentation_url": "Documentation url, optional",
         "changelog_url": "Url to the changelog, optional",
