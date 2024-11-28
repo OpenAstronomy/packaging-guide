@@ -40,7 +40,7 @@
     "__prompts__" : {
         "project_url": "Primary website for the project, leave blank for Sunpy Homepage",
         "sourcecode_url": "Version control link for the project",
-        "github_repo": "Leave blank to pull form sourcecode_url or if not github",
+        "github_repo": "user/repo format GitHub repository. Leave blank if project is not on GitHub.",
         "download_url": "Pypi address for the project, optional",
         "documentation_url": "Documentation url, optional",
         "changelog_url": "Url to the changelog, optional",
