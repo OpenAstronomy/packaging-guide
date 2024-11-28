@@ -31,7 +31,7 @@ dynamic = ["version"]
 [project.scripts]
 open_astronomy_package_template_example = "{{ cookiecutter.module_name }}.example_mod:main"
 
-{% endif %}
+{%- endif %}
 [project.optional-dependencies]
 tests = [
   "pytest",

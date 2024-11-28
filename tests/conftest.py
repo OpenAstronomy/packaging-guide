@@ -25,7 +25,8 @@ def cookiejar_no_examples(request):
 
 @pytest.fixture(params=["bake_examples_compiled",
                         "bake_examples",
-                        "bake_examples_compiled_dev_version"])
+                        "bake_examples_compiled_dev_version",
+                        "bake_examples_url_extensions"])
 def cookiejar_examples(request):
     """
     Templates rendered with the examples
@@ -103,6 +104,8 @@ def bake_examples_url_extensions(cookies):
     setting url parameters
     """
     result = cookies.bake(extra_context={
+        "author_name": "test",
+        "include_example_code": "y",
         "project_url": "https://sunpy.org",
         "github_repo": "sunpy/sunpy",
         "sourcecode_url": "",
