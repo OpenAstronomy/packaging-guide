@@ -104,7 +104,8 @@ def bake_examples_url_extensions(cookies):
     """
     result = cookies.bake(extra_context={
         "project_url": "https://sunpy.org",
-        "sourcecode_url": "https://github.com/sunpy/sunpy",
+        "github_repo": "sunpy/sunpy",
+        "sourcecode_url": "",
         "download_url": "https://github.com/sunpy/sunpy/archive/master.zip",
         "documentation_url": "https://sunpy.org/docs",
         "changelog_url": "https://sunpy.org/changelog",
