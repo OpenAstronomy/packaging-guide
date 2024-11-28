@@ -31,7 +31,7 @@ dynamic = ["version"]
 [project.scripts]
 open_astronomy_package_template_example = "{{ cookiecutter.module_name }}.example_mod:main"
 
-{% endif %}
+{% endif -%}
 [project.optional-dependencies]
 tests = [
   "pytest",
@@ -52,8 +52,11 @@ Homepage = "{{ cookiecutter.project_url }}"
 {% else -%}
 Homepage = "https://sunpy.org"
 {% endif -%}
+{% if cookiecutter.github_repo -%}
+"GitHub Repo" = "{{ cookiecutter.github_repo }}"
+{% endif -%}
 {% if cookiecutter.sourcecode_url -%}
-"Source Code" = "{{ cookiecutter.sourcecode_url }}"
+"Source Code" = "{{ https:/github.com/cookiecutter.github_repo | cookiecutter.sourcecode_url }}"
 {% endif -%}
 {% if cookiecutter.download_url -%}
 Download = "{{ cookiecutter.download_url }}"
