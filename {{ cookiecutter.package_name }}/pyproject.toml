@@ -27,6 +27,25 @@ dependencies = [
 ]
 dynamic = ["version"]
 
+{% if cookiecutter.include_example_code == 'y' -%}
+[project.scripts]
+open_astronomy_package_template_example = "{{ cookiecutter.module_name }}.example_mod:main"
+
+{% endif %}
+[project.optional-dependencies]
+tests = [
+  "pytest",
+  "pytest-doctestplus",
+  "pytest-cov",
+  "pytest-xdist",
+]
+docs = [
+  "sphinx",
+  "sphinx-automodapi",
+  "sunpy-sphinx-theme",
+  "packaging",
+]
+
 [project.urls]
 {% if cookiecutter.project_url -%}
 Homepage = "{{ cookiecutter.project_url }}"
@@ -48,25 +67,6 @@ Changelog = "{{ cookiecutter.changelog_url }}"
 {% if cookiecutter.issue_tracker_url -%}
 "Issue Tracker" = "{{ cookiecutter.issue_tracker_url }}"
 {% endif -%}
-
-{% if cookiecutter.include_example_code == 'y' -%}
-[project.scripts]
-open_astronomy_package_template_example = "{{ cookiecutter.module_name }}.example_mod:main"
-
-{% endif %}
-[project.optional-dependencies]
-tests = [
-  "pytest",
-  "pytest-doctestplus",
-  "pytest-cov",
-  "pytest-xdist",
-]
-docs = [
-  "sphinx",
-  "sphinx-automodapi",
-  "sunpy-sphinx-theme",
-  "packaging",
-]
 
 [tool.setuptools]
 zip-safe = false
