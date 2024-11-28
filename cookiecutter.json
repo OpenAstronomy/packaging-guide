@@ -6,7 +6,7 @@
     "author_email": "",
     "project_url": "",
     "github_repo": "",
-    "sourcecode_url": "{{ 'https://github.com/' + cookiecutter.github_repo if github_repo else '' }}",
+    "sourcecode_url": "{{ 'https://github.com/' + cookiecutter.github_repo if cookiecutter.github_repo else '' }}",
     "download_url": "",
     "documentation_url": "",
     "changelog_url": "",
