@@ -94,7 +94,9 @@ def bake_examples_compiled_dev_version(cookies):
                                          "author_name": "test",
                                          "include_cruft_update_github_workflow": "y",
                                          "use_extended_ruff_linting": "y",
-                                         })
+                                         "download_url": "https://github.com/sunpy/sunpy/archive/master.zip",
+                                         "issue_tracker_url": "https://github.com/sunpy/sunpy/issues",
+    })
     return _handle_cookiecutter_errors(result)
 
 
@@ -108,7 +110,6 @@ def bake_examples_url_extensions(cookies):
         "include_example_code": "y",
         "project_url": "https://sunpy.org",
         "github_repo": "sunpy/sunpy",
-        "sourcecode_url": "",
         "download_url": "https://github.com/sunpy/sunpy/archive/master.zip",
         "documentation_url": "https://sunpy.org/docs",
         "changelog_url": "https://sunpy.org/changelog",

@@ -7,7 +7,7 @@
     "project_url": "",
     "github_repo": "",
     "sourcecode_url": "{{ 'https://github.com/' + cookiecutter.github_repo if cookiecutter.github_repo else '' }}",
-    "download_url": "",
+    "download_url": "https://pypi.org/project/{{ cookiecutter.package_name }}",
     "documentation_url": "",
     "changelog_url": "",
     "issue_tracker_url": "",

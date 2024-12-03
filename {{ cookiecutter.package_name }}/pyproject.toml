@@ -47,29 +47,26 @@ docs = [
 ]
 
 [project.urls]
-{% if cookiecutter.project_url -%}
+{%- if cookiecutter.project_url %}
 Homepage = "{{ cookiecutter.project_url }}"
-{% else -%}
+{%- else %}
 Homepage = "https://sunpy.org"
-{% endif -%}
-{% if cookiecutter.github_repo -%}
-"GitHub Repo" = "{{ cookiecutter.github_repo }}"
-{% endif -%}
-{% if cookiecutter.sourcecode_url -%}
-"Source Code" = "{{ https:/github.com/cookiecutter.github_repo | cookiecutter.sourcecode_url }}"
-{% endif -%}
-{% if cookiecutter.download_url -%}
+{%- endif %}
+{%- if cookiecutter.sourcecode_url %}
+"Source Code" = "{{ cookiecutter.sourcecode_url }}"
+{%- endif %}
+{%- if cookiecutter.download_url %}
 Download = "{{ cookiecutter.download_url }}"
-{% endif -%}
-{% if cookiecutter.documentation_url -%}
+{%- endif %}
+{%- if cookiecutter.documentation_url %}
 Documentation = "{{ cookiecutter.documentation_url }}"
-{% endif -%}
-{% if cookiecutter.changelog_url -%}
+{%- endif %}
+{%- if cookiecutter.changelog_url %}
 Changelog = "{{ cookiecutter.changelog_url }}"
-{% endif -%}
-{% if cookiecutter.issue_tracker_url -%}
+{%- endif %}
+{%- if cookiecutter.issue_tracker_url %}
 "Issue Tracker" = "{{ cookiecutter.issue_tracker_url }}"
-{% endif -%}
+{%- endif %}
 
 [tool.setuptools]
 zip-safe = false
