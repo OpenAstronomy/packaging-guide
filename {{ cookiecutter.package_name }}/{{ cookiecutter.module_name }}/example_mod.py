@@ -1,4 +1,4 @@
-__all__ = ['primes', 'do_primes']
+__all__ = ['do_primes', 'primes']
 
 
 def primes(imax):
