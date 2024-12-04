@@ -5,6 +5,12 @@
     "author_name": "",
     "author_email": "",
     "project_url": "",
+    "github_repo": "",
+    "sourcecode_url": "{{ 'https://github.com/' + cookiecutter.github_repo if cookiecutter.github_repo else '' }}",
+    "download_url": "https://pypi.org/project/{{ cookiecutter.package_name }}",
+    "documentation_url": "",
+    "changelog_url": "",
+    "issue_tracker_url": "{{ 'https://github.com/' + cookiecutter.github_repo + '/issues/' if cookiecutter.github_repo else '' }}",
     "license": [
         "BSD 3-Clause",
         "GNU GPL v3+",
@@ -30,5 +36,14 @@
         "docs/_templates",
         "docs/_static",
         ".github/workflows/sub_package_update.yml"
-    ]
+    ],
+    "__prompts__" : {
+        "project_url": "Primary website for the project, leave blank for Sunpy Homepage",
+        "github_repo": "user/repo format GitHub repository. Leave blank if project is not on GitHub.",
+        "sourcecode_url": "URL for source code, i.e. https://github.com/...",
+        "download_url": "PyPI address for the project, optional",
+        "documentation_url": "Documentation URL, optional",
+        "changelog_url": "URL to the changelog, optional",
+        "issue_tracker_url": "URL to the issue tracker, optional"
+    }
 }
