@@ -12,7 +12,8 @@ from pathlib import Path
                          ["bake_default",
                           "bake_examples",
                           "bake_examples_compiled",
-                          "bake_examples_compiled_dev_version"])
+                          "bake_examples_compiled_dev_version",
+                          "bake_examples_url_extensions"])
 def test_render_template(request, bake_name, pytestconfig):
     bake = request.getfixturevalue(bake_name)
     cached_dir = pytestconfig.getoption("--cookie-location")
