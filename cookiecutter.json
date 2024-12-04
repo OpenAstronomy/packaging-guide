@@ -10,7 +10,7 @@
     "download_url": "https://pypi.org/project/{{ cookiecutter.package_name }}",
     "documentation_url": "",
     "changelog_url": "",
-    "issue_tracker_url": "",
+    "issue_tracker_url": "{{ 'https://github.com/' + cookiecutter.github_repo + '/issues/' if cookiecutter.github_repo else '' }}",
     "license": [
         "BSD 3-Clause",
         "GNU GPL v3+",
