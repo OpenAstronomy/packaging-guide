@@ -4,7 +4,7 @@
 Release History
 ***************
 
-This page documents the incremental releases for {{ cookiecutter.package_name }}
+This page documents the releases for {{ cookiecutter.package_name }}
 
 .. toctree::
    :maxdepth: 1
