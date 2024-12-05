@@ -97,7 +97,7 @@ write_to = "{{ cookiecutter.module_name }}/version.py"
   enabled = true
   verify_pr_number = true
   changelog_skip_label = "No Changelog Entry Needed"
-  help_url = "https://github.com/{{cookiecutter.github_repo}}/blob/main/changelog/README.rst"
+  help_url = "https://github.com/{{ cookiecutter.github_repo | default('sunpy/sunpy') }}/blob/main/changelog/README.rst"
 
   changelog_missing_long = "There isn't a changelog file in this pull request. Please add a changelog file to the `changelog/` directory following the instructions in the changelog [README](https://github.com/{{ cookiecutter.github_repo}}/blob/main/changelog/README.rst)."
 
