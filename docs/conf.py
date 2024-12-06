@@ -44,13 +44,13 @@ default_role = 'py:obj'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'sunpy'
 
 html_theme_options = {
     "description": "A generic Python packaging guide and template.",
     "code_font_family": "'Fira Code', monospace",
-    "github_user": "OpenAstronomy",
-    "github_repo": "packaging-guide",
+    "github_user": "SunPy",
+    "github_repo": "packaging-template",
     "sidebar_width": "300px"
 }
 

@@ -54,3 +54,28 @@ The template currently implements the following optional flags, all of which def
 * ``include_example_code``: This option will fill your new package with some example functions to allow you to test it.
 * ``use_compiled_extensions``: This turns on the features needed to support compiled extensions as described in :ref:`extensions`.
 * ``enable_dynamic_dev_versions``: This enables a feature which ensures that ``my_package.__version__`` always returns the current git version as calculated by ``setuptools_scm`` when the package is installed as an editable install. See :ref:`dev-versions` for more details.
+* ``include_cruft_update_github_repo``: This option adds a github workflow with pulls in the latest changes from the template every Monday morning and creates a PR against the repo which can then be accepted or closed.
+* ``use_extended_ruff_linting``: This option flag enables the stricter ruff rules. Recommend `Y` on creation of a new project.
+
+==========
+Pre-commit
+==========
+Pre-commit is configured through `.ruff`, and can be installed locally as normal using `pre-commit run --all-files`.
+However it is also run through tox, and is integrated into the CI, therefore it needs to be run though tox when you're checking it before PR.
+As mentioned above, we have a strictly defined `.ruff.toml` and we strongly recommend using the full set of rules using the Y option in the setup wizard.
+
+=====================================================
+Updating a Package with a new version of the template
+=====================================================
+
+Updating the package can be performed either automatically though the GitHub workflow or automatically using crufts CLI tool.
+Doing so thought the workflow is a case of reviewing a merging the PR through the GitHub interface.
+Updating through the Cruft CLI is sometimes necessary, this is done using initially checking the status of the repo using `cruft check`.
+This will let you know whether the repo is upto date or not.
+If not, `cruft update` will update the repo, it is then a case of resolving any conflicts and clearing out any `.rej` files.
+`.rej` files are artifacts of the cruft process.
+
+If you need up explicitly update one of the variables in the package `.cruft.json` e.g. changing a `n` to a `y` this can be done using `variables_to_update`.
+`cruft update --variables-to-update '{"use_extended_ruff_linting": "y"}`.
+This will work through the repo and include the desired functionality without any further action.
+Commit and push the resulting changes and you're done!
