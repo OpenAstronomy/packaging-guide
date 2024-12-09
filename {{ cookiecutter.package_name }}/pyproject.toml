@@ -111,7 +111,7 @@ write_to = "{{ cookiecutter.module_name }}/version.py"
   package = "{{ cookiecutter.package_name }}"
   filename = "CHANGELOG.rst"
   directory = "changelog/"
-  issue_format = "`#{issue} https:github.com/{{ cookiecutter.github_repo | default('sunpy/sunpy') }}/changelog/pull/{issue}>`__"
+  issue_format = "`#{issue} https:github.com/{{ cookiecutter.github_repo | default('sunpy/sunpy') }}/pull/{issue}>`__"
   title_format = "{version} ({project_date})"
 
   [[tool.towncrier.type]]
