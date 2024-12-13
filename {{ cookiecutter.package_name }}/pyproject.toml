@@ -108,7 +108,7 @@ write_to = "{{ cookiecutter.module_name }}/version.py"
 # TODO: This should be in towncrier.toml but Giles currently only works looks in
 # pyproject.toml we should move this back when it's fixed.
 [tool.towncrier]
-  package = "{{ cookiecutter.package_name }}"
+  package = "{{ cookiecutter.module_name }}"
   filename = "CHANGELOG.rst"
   directory = "changelog/"
   issue_format = "`#{issue} <https://github.com/{{ cookiecutter.github_repo | default('sunpy/sunpy') }}/pull/{issue}>`__"
