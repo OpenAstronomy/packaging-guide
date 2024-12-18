@@ -65,7 +65,9 @@ def bake_examples(cookies):
     """
     Examples on.
     """
-    result = cookies.bake(extra_context={"include_example_code": "y",
+    result = cookies.bake(extra_context={"package_name": "example-package",
+                                         "module_name": "example_package",
+                                         "include_example_code": "y",
                                          "author_name": "test",
                                          "use_extended_ruff_linting": "y"})
     return _handle_cookiecutter_errors(result)
