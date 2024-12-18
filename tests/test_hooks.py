@@ -37,7 +37,7 @@ def test_examples_present(cookiejar_examples):
         example_files.append("example_c.pyx")
 
     for afile in example_files:
-        assert (cj.project_path / ctx['package_name'] / afile).exists()
+        assert (cj.project_path / ctx['module_name'] / afile).exists()
 
 
 @pytest.mark.parametrize("license, lfile", [
