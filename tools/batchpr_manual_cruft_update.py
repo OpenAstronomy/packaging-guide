@@ -94,7 +94,8 @@ def run_multi_updater(
 
     The GITHUB_TOKEN should be a Personal Access Token (classic) with the workflow permission and public_repo permissions.
     """
-    helper = CruftUpdater(token=os.environ["GITHUB_TOKEN"], dry_run=dry_run, verbose=verbose, cleanup_remote_branch=cleanup_remote_branch, extra_context=json.loads(extra_context))
+    extra_context = json.loads(extra_context) if extra_context else extra_context
+    helper = CruftUpdater(token=os.environ["GITHUB_TOKEN"], dry_run=dry_run, verbose=verbose, cleanup_remote_branch=cleanup_remote_branch, extra_context=extra_context)
     for repo in repos:
         helper.run(repo)
 
