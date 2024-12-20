@@ -46,14 +46,6 @@ default_role = 'py:obj'
 #
 html_theme = 'sunpy'
 
-html_theme_options = {
-    "description": "A generic Python packaging guide and template.",
-    "code_font_family": "'Fira Code', monospace",
-    "github_user": "SunPy",
-    "github_repo": "packaging-template",
-    "sidebar_width": "300px"
-}
-
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
