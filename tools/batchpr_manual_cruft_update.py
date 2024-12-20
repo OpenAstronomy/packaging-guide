@@ -3,7 +3,7 @@
 # requires-python = ">=3.10"
 # dependencies = [
 #   "typer",
-#   "batchpr@git+https://github.com/astrofrog/batchpr",
+#   "batchpr@git+https://github.com/astrofrog/batchpr@main",
 #   "cruft@git+https://github.com/Cadair/cruft@patch-p1",
 # ]
 # ///
@@ -19,6 +19,7 @@ You can run this script with:
 """
 
 import os
+import json
 from typing import Annotated, Optional
 
 from batchpr import Updater
@@ -37,13 +38,26 @@ ALL_REPOS = (
     "sunpy/sunkit-pyvista",
     "sunpy/sunpy-soar",
     "sunpy/sunkit-instruments",
+    "sunpy/drms",
+    "sunpy/sunraster",
+    "sunpy/sunkit-spex",
+    "sunpy/radiospectra",
 )
 
 
 class CruftUpdater(Updater):
+    def __init__(self, token, author_name=None, author_email=None,
+                 dry_run=False, verbose=False, cleanup_remote_branch=False, extra_context=None):
+        super().__init__(token, author_name, author_email, dry_run, verbose)
+        self.cleanup_remote_branch = cleanup_remote_branch
+        self.extra_context = extra_context
 
     def process_repo(self):
-        ret = update(skip_apply_ask=True, refresh_private_variables=True)
+        if self.cleanup_remote_branch:
+            out = self.run_command(f"git ls-remote --heads origin {self.branch_name}")
+            if out:
+                self.run_command(f'git push https://{self.user.login}:{self.token}@github.com/{self.fork.full_name} :{self.branch_name}')
+        ret = update(skip_apply_ask=True, refresh_private_variables=True, extra_context=self.extra_context)
         if not ret:
             self.error(f"Cruft update failed for {self.repo}")
             return False
@@ -70,6 +84,8 @@ class CruftUpdater(Updater):
 def run_multi_updater(
     github_token: Annotated[str, typer.Option(envvar="GITHUB_TOKEN")],
     repos: Annotated[list[str], typer.Option()] = ALL_REPOS,
+    cleanup_remote_branch: bool = False,
+    extra_context: str = None,
     dry_run: bool = False,
     verbose: bool = False
 ):
@@ -78,7 +94,8 @@ def run_multi_updater(
 
     The GITHUB_TOKEN should be a Personal Access Token (classic) with the workflow permission and public_repo permissions.
     """
-    helper = CruftUpdater(token=os.environ["GITHUB_TOKEN"], dry_run=dry_run, verbose=verbose)
+    extra_context = json.loads(extra_context) if extra_context else extra_context
+    helper = CruftUpdater(token=os.environ["GITHUB_TOKEN"], dry_run=dry_run, verbose=verbose, cleanup_remote_branch=cleanup_remote_branch, extra_context=extra_context)
     for repo in repos:
         helper.run(repo)
 
