@@ -15,9 +15,9 @@ jobs:
     uses: OpenAstronomy/github-actions-workflows/.github/workflows/tox.yml@9f1f43251dde69da8613ea8e11144f05cdea41d5  # v1.15.0
     with:
       envs: |
-        - macos: py310-test
-        - linux: py311-test
+        - macos: py311-test
         - linux: py312-test
+        - linux: py313-test
         - linux: build_docs
 
   bake_cookies:

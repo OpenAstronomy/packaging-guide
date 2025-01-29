@@ -1,7 +1,7 @@
 [build-system]
 requires = [
   "setuptools>=62.1",
-  "setuptools_scm[toml]>=6.2",
+  "setuptools_scm[toml]>=8.0.0",
   "wheel",
 {%- if cookiecutter.use_compiled_extensions == 'y' %}
   "extension-helpers",
@@ -84,9 +84,9 @@ exclude = ["{{ cookiecutter.module_name }}._dev*"]
 {% endif %}
 [tool.setuptools_scm]
 {% if cookiecutter.enable_dynamic_dev_versions == 'y' -%}
-write_to = "{{ cookiecutter.module_name }}/_version.py"
+version_file = "{{ cookiecutter.module_name }}/_version.py"
 {%- else -%}
-write_to = "{{ cookiecutter.module_name }}/version.py"
+version_file = "{{ cookiecutter.module_name }}/version.py"
 {%- endif %}
 
 [tool.gilesbot]
