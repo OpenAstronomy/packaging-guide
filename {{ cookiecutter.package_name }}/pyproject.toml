@@ -75,7 +75,11 @@ include-package-data = true
 
 [tool.setuptools.packages.find]
 include = ["{{ cookiecutter.module_name }}*"]
+<<<<<<< HEAD
 {%- if cookiecutter.enable_dynamic_dev_versions == 'y' %}
+=======
+{% if cookiecutter.enable_dynamic_dev_versions == 'y' -%}
+>>>>>>> openastronomy/main
 exclude = ["{{ cookiecutter.module_name }}._dev*"]
 {%- endif %}
 {% if cookiecutter.use_compiled_extensions == 'y' %}
