@@ -2,7 +2,7 @@
 {{ '-' * cookiecutter.short_description|length }}
 
 Usage of Generative AI
-======================
+----------------------
 
 We expect authentic engagement in our community.
 Be wary of posting output from Large Language Models or similar generative AI as comments on GitHub or any other platform, as such comments tend to be formulaic and low quality content.
