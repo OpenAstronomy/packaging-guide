@@ -44,15 +44,7 @@ default_role = 'py:obj'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
-
-html_theme_options = {
-    "description": "A generic Python packaging guide and template.",
-    "code_font_family": "'Fira Code', monospace",
-    "github_user": "OpenAstronomy",
-    "github_repo": "packaging-guide",
-    "sidebar_width": "300px"
-}
+html_theme = 'sunpy'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
