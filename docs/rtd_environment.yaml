@@ -7,4 +7,4 @@ dependencies:
  - pip
  - graphviz
  - pip:
-    - sphinx-bootstrap-theme
+    - sunpy-sphinx-theme
