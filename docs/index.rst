@@ -92,7 +92,7 @@ From there, you can run:
 
 To update the repo and if there is a case conflicting files, ``.rej`` files will be created and you will have to manually deal with them and merge changes.
 
-If you need up update one of the variables in the package ``.cruft.json`` for example, changing a ``n`` to a ``` this can be done using:
+If you need up update one of the variables in the package ``.cruft.json`` for example, changing a ``n`` to a ``y`` this can be done using:
 
 .. code-block:: console
 
