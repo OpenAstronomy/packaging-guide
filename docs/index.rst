@@ -27,7 +27,7 @@ To create a new package based on the template run:
 .. code-block:: console
 
    $ pip install cookiecutter cruft
-   $ cruft create https://github.com/OpenAstronomy/packaging-guide
+   $ cruft create https://github.com/sunpy/package-template
 
 and go through the steps offered in the cli naming your package and filling in your details.
 Cruft is built on cookiecutter, and enables the updating of the template from the source.
@@ -42,7 +42,7 @@ If you would like to stick to simply the cookiecutter approach, the template sti
 .. code-block:: console
 
    $ pip install cookiecutter
-   $ cookiecutter gh:OpenAstronomy/packaging-guide -o ./output_directory
+   $ cookiecutter gh:sunpy/package-template -o ./output_directory
 
 This will create a new directory in your current directory named the same as the value of "packagename" you supplied.
 Change into this directory and run ``git init`` to make it into a git repository, and make an initial commit.
