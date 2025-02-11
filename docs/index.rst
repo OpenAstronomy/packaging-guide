@@ -79,20 +79,23 @@ This will trigger a pull request one can review and merge via GitHub's UI.
 If you do not want to wait, or want to do it manually, you will have to use cruft's CLI.
 For this you will need to install cruft locally and then you can check the status of the package by running:
 
-.. code-block:: bash
+.. code-block:: console
+
     $ cruft check
 
 This will let you know whether the repository is up to date or not.
 From there, you can run:
 
-.. code-block:: bash
+.. code-block:: console
+
     $ cruft update
 
 To update the repo and if there is a case conflicting files, ``.rej`` files will be created and you will have to manually deal with them and merge changes.
 
 If you need up update one of the variables in the package ``.cruft.json`` for example, changing a ``n`` to a ``` this can be done using:
 
-.. code-block:: bash
+.. code-block:: console
+
     $ cruft update --variables-to-update '{"use_extended_ruff_linting": "y"}'
 
 This will work through the codebase and include the desired functionality without any further action.
