@@ -81,7 +81,7 @@ For this you will need to install cruft locally and then you can check the statu
 
 .. code-block:: bash
     $ cruft check
-  
+
 This will let you know whether the repository is up to date or not.
 From there, you can run:
 
