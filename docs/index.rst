@@ -57,25 +57,43 @@ The template currently implements the following optional flags, all of which def
 * ``include_cruft_update_github_repo``: This option adds a github workflow with pulls in the latest changes from the template every Monday morning and creates a PR against the repo which can then be accepted or closed.
 * ``use_extended_ruff_linting``: This option flag enables the stricter ruff rules. Recommend `Y` on creation of a new project.
 
-==========
 Pre-commit
 ==========
-Pre-commit is configured through `.ruff`, and can be installed locally as normal using `pre-commit run --all-files`.
-However it is also run through tox, and is integrated into the CI, therefore it needs to be run though tox when you're checking it before PR.
-As mentioned above, we have a strictly defined `.ruff.toml` and we strongly recommend using the full set of rules using the Y option in the setup wizard.
 
-=====================================================
-Updating a Package with a new version of the template
-=====================================================
+Pre-commit is configured through ``.pre-commit-config.yaml`` and can be installed locally and ran:
 
-Updating the package can be performed either automatically though the GitHub workflow or automatically using crufts CLI tool.
-Doing so thought the workflow is a case of reviewing a merging the PR through the GitHub interface.
-Updating through the Cruft CLI is sometimes necessary, this is done using initially checking the status of the repo using `cruft check`.
-This will let you know whether the repo is upto date or not.
-If not, `cruft update` will update the repo, it is then a case of resolving any conflicts and clearing out any `.rej` files.
-`.rej` files are artifacts of the cruft process.
+.. code-block:: bash
 
-If you need up explicitly update one of the variables in the package `.cruft.json` e.g. changing a `n` to a `y` this can be done using `variables_to_update`.
-`cruft update --variables-to-update '{"use_extended_ruff_linting": "y"}`.
-This will work through the repo and include the desired functionality without any further action.
-Commit and push the resulting changes and you're done!
+    $ pre-commit run --all-files
+
+It also possible to use the tox environment to run it and and is integrated into the CI.
+
+Within ``.pre-commit-config.yaml``, there are several tools and each one is configured either within the ``.pre-commit-config.yaml`` or for larger tools like ruff, it is has a dedicated config file ``.ruff.toml`` and we strongly recommend using the full set of rules when you setup your package.
+
+Updating to a new version of the template
+=========================================
+
+It will be simplest to updating a package to a newer template by waiting for the GitHub workflow to trigger.
+This will trigger a pull request one can review and merge via GitHub's UI.
+
+If you do not want to wait, or want to do it manually, you will have to use cruft's CLI.
+For this you will need to install cruft locally and then you can check the status of the package by running:
+
+.. code-block:: bash
+    $ cruft check
+  
+This will let you know whether the repository is up to date or not.
+From there, you can run:
+
+.. code-block:: bash
+    $ cruft update
+
+To update the repo and if there is a case conflicting files, ``.rej`` files will be created and you will have to manually deal with them and merge changes.
+
+If you need up update one of the variables in the package ``.cruft.json`` for example, changing a ``n`` to a ``` this can be done using:
+
+.. code-block:: bash
+    $ cruft update --variables-to-update '{"use_extended_ruff_linting": "y"}'
+
+This will work through the codebase and include the desired functionality without any further action.
+Then you can commit and push the resulting changes.
