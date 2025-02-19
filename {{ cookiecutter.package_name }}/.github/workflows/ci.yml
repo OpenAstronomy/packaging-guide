@@ -73,23 +73,6 @@ jobs:
       envs: |
         - linux: build_docs
 
-  cron:
-    if: |
-      github.event_name == 'workflow_dispatch' || (
-        github.event_name == 'pull_request' &&
-        contains(github.event.pull_request.labels.*.name, 'Run cron CI')
-      )
-    uses: OpenAstronomy/github-actions-workflows/.github/workflows/tox.yml@v1
-    with:
-      default_python: '{{ default_python }}'
-      submodules: false
-      coverage: codecov
-      toxdeps: tox-pypi-filter
-      envs: |
-        - linux: py311-devdeps
-    secrets:
-      CODECOV_TOKEN: {{ '${{ secrets.CODECOV_TOKEN }}' }}
-
   publish:
     # Build wheels on PRs only when labelled. Releases will only be published if tagged ^v.*
     # see https://github-actions-workflows.openastronomy.org/en/latest/publish.html#upload-to-pypi
