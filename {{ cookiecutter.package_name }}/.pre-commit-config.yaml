@@ -1,12 +1,12 @@
 repos:
     # This should be before any formatting hooks like isort
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: "v0.9.7"
+    rev: "v0.9.9"
     hooks:
       - id: ruff
         args: ["--fix"]
   - repo: https://github.com/PyCQA/isort
-    rev: 6.0.0
+    rev: 6.0.1
     hooks:
       - id: isort
         exclude: ".*(.fits|.fts|.fit|.header|.txt|tca.*|extern.*|{{ cookiecutter.module_name }}/extern)$"
