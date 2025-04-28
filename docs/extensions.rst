@@ -8,7 +8,7 @@ commonly C and `Cython <https://cython.org/>`_ (Cython is a language close to
 Python that can be automatically translated into C). An extension, once
 compiled, looks just like a regular Python module/sub-module.
 
-There are a number of reasons why you might want to include compiled extensions
+There are some reasons why you might want to include compiled extensions
 including for example to speed up code that is otherwise slow in Python, or
 because you want to include an existing stable library without having to
 re-implement it in Python.
@@ -17,10 +17,10 @@ Defining extensions in ``setup.py``
 -----------------------------------
 
 To define an extension, we need to create an instance of
-:class:`distutils.core.Extension` inside the ``setup.py`` file. For a simple
+:class:`setuptools.Extension` inside the ``setup.py`` file. For a simple
 case with a single ``.c`` file, this would look like::
 
-    from distutils.core import Extension
+    from setuptools import Extension
     ext = Extension(name='my_package.my_extension',
                     sources=['my_package/my_extension.c'])
 
@@ -39,10 +39,10 @@ specify the Numpy include directory using::
                     sources=['my_package/my_extension.c'],
                     include_dirs=[numpy.get_include()])
 
-There are a number of other options that can be passed to set for example what
+Several other options can be passed to set for example what
 other libraries to link to, flags or macros to pass to the compiler, and so on.
-For more information about these, see the :class:`Extension section
-<distutils.core.Extension>` in the Python documentation.
+For more information about these, see the:class:`Extension section
+<setuptools.Extension>` in the Python documentation.
 
 Once your extension has been defined, you should pass a list of extensions
 to the ``ext_modules`` keyword argument to the ``setup()`` function in the
@@ -80,7 +80,7 @@ package serves two main purposes:
   large packages by placing the ``setup_package.py`` files close to the
   extension code.
 
-To use extension-helpers, first make sure it is included in your ``pyproject.toml``
+To use extension-helpers, first, make sure it is included in your ``pyproject.toml``
 file as a build-time dependency::
 
      [build-system]
@@ -95,4 +95,4 @@ Then adjust your ``setup.py`` to include::
 
 Finally, if needed, create ``setup_package.py`` files in sub-modules where you
 have extensions, add a ``get_extensions()`` function, and make sure that it
-returns a list of :class:`~distutils.core.Extension`  objects.
+returns a list of :class:`~setuptools.Extension`  objects.
