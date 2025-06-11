@@ -35,7 +35,7 @@ jobs:
       coverage: codecov
       toxdeps: tox-pypi-filter
       envs: |
-        - linux: py312
+        - linux: py313
     secrets:
       CODECOV_TOKEN: {{ '${{ secrets.CODECOV_TOKEN }}' }}
 
@@ -61,9 +61,9 @@ jobs:
       posargs: -n auto
       envs: |
         - windows: py311
-        - macos: py310
+        - macos: py312
         - linux: py310-oldestdeps
-        - linux: py311-devdeps
+        - linux: py313-devdeps
     secrets:
       CODECOV_TOKEN: {{ '${{ secrets.CODECOV_TOKEN }}' }}
 
@@ -99,10 +99,10 @@ jobs:
       test_command: 'pytest -p no:warnings --doctest-rst --pyargs {{ cookiecutter.module_name }}'
       submodules: false
       targets: |
-        - cp3{9,10,11,12}-manylinux*_x86_64
-        - cp3{9,10,11,12}-macosx_x86_64
-        - cp3{9,10,11,12}-macosx_arm64
-        - cp3{9,10,11,12}-win_amd64
+        - cp3{10,11,12,13}-manylinux*_x86_64
+        - cp3{10,11,12,13}-macosx_x86_64
+        - cp3{10,11,12,13}-macosx_arm64
+        - cp3{10,11,12,13}-win_amd64
 {%- else %}
     uses: OpenAstronomy/github-actions-workflows/.github/workflows/publish_pure_python.yml@v2
     with:
