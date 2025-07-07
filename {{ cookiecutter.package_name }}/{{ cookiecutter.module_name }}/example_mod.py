@@ -43,7 +43,7 @@ def do_primes(n, usecython=False):
 {% if cookiecutter.use_compiled_extensions != 'y' %}
         raise Exception("This template does not have the example C code included.")
 {% else %}
-        from .example_c import primes as cprimes
+        from .example_c import primes as cprimes  # noqa: PLC0415
         print('Using cython-based primes')  # noqa: T201
         return cprimes(n)
 {% endif %}
@@ -53,9 +53,9 @@ def do_primes(n, usecython=False):
 
 def main(args=None):
 
-    from time import time
+    from time import time  # noqa: PLC0415
 
-    from astropy.utils.compat import argparse
+    from astropy.utils.compat import argparse  # noqa: PLC0415
 
     parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument('-c', '--use-cython', dest='cy', action='store_true',
