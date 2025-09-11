@@ -1,7 +1,7 @@
 [build-system]
 requires = [
   "setuptools>=62.1",
-  "setuptools_scm[toml]>=6.2",
+  "setuptools_scm[toml]>=8.0.0",
   "wheel",
 {%- if cookiecutter.use_compiled_extensions == 'y' %}
   "extension-helpers",
@@ -16,7 +16,7 @@ name = "{{ cookiecutter.module_name }}"
 description = "{{ cookiecutter.short_description }}"
 requires-python = ">={{ cookiecutter.minimum_python_version }}"
 readme = { file = "README.rst", content-type = "text/x-rst" }
-license = { file = "licenses/LICENSE.rst", content-type = "text/plain" }
+license = { file = "licenses/LICENSE.rst" }
 {%- if cookiecutter.author_name and cookiecutter.author_email %}
 authors = [
   { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}" },
@@ -36,14 +36,14 @@ open_astronomy_package_template_example = "{{ cookiecutter.module_name }}.exampl
 test = [
     "pytest",
     "pytest-doctestplus",
-    "pytest-cov"
+    "pytest-cov",
 ]
 docs = [
     "sphinx",
     "sphinx-automodapi",
 ]
 
-{% if cookiecutter.project_url -%}
+{%- if cookiecutter.project_url %}
 [project.urls]
 repository = "{{ cookiecutter.project_url }}"
 {%- endif %}
@@ -53,12 +53,16 @@ zip-safe = false
 include-package-data = true
 
 [tool.setuptools.packages.find]
+include = ["{{ cookiecutter.module_name }}*"]
+{%- if cookiecutter.enable_dynamic_dev_versions == 'y' %}
+exclude = ["{{ cookiecutter.module_name }}._dev*"]
+{%- endif %}
 
 [tool.setuptools_scm]
 {% if cookiecutter.enable_dynamic_dev_versions == 'y' -%}
-write_to = "{{ cookiecutter.module_name }}/_version.py"
+version_file = "{{ cookiecutter.module_name }}/_version.py"
 {%- else -%}
-write_to = "{{ cookiecutter.module_name }}/version.py"
+version_file = "{{ cookiecutter.module_name }}/version.py"
 {%- endif %}
 
 [tool.pytest.ini_options]
@@ -69,6 +73,7 @@ testpaths = [
 doctest_plus = "enabled"
 text_file_format = "rst"
 addopts = "--doctest-rst"
+norecursedirs = ["{{ cookiecutter.module_name }}[\\/]_dev"]
 
 [tool.coverage.run]
 omit = [

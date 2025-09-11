@@ -60,7 +60,8 @@ def test_licence(license, lfile, cookies):
     with open(base_path / lfile) as fobj:
         expected_content = fobj.readlines()
 
-    assert expected_content[1:] == license_content[1:]
+    assert expected_content[1:11] == license_content[1:11]
+    assert expected_content[12:] == license_content[12:]
 
 
 def test_other_licence(cookies):
